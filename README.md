@@ -1,2 +1,4 @@
 # pitshop
 
+See docs folder.
+
