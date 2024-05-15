@@ -1,0 +1,4 @@
+cad-file-icon.png:  https://www.flaticon.com/free-icon/cad-file-format_28866
+laser-cutting-machine_icon.png:	  https://www.flaticon.com/premium-icon/laser-cutting-machine_3799352
+laser-cutting-icon-alternative.png:    https://www.flaticon.com/free-icon/laser-cutting-machine_2162429
+material_icon.png: https://www.flaticon.com/free-icon/membrane_1466492?term=material&page=1&position=20&page=1&position=20&related_id=1466492&origin=tag

@@ -1,0 +1,42 @@
+[tool.black]
+line-length = 100
+target-version = ['py39']
+
+
+[tool.isort]
+profile = "black"
+py_version = 39
+line_length = 100
+
+
+[tool.mypy]
+strict = true
+namespace_packages = true
+python_version = "3.9"
+
+show_error_context = true
+show_column_numbers = true
+show_error_codes = true
+pretty = true
+
+warn_unreachable = true
+warn_unused_configs = true
+no_implicit_reexport = false
+
+
+[tool.pyright]
+typeCheckingMode = "basic"
+reportPrivateImportUsage = false
+
+
+[tool.pytest.ini_options]
+addopts = "--strict-markers --cov --cov-report=xml:coverage.xml --cov-report=term"
+python_files = "tests.py test_*.py *_tests.py"
+
+
+[tool.coverage.run]
+branch = true
+source = ["."]
+
+[tool.coverage.report]
+precision = 2

@@ -1,0 +1,4 @@
+{{ data | json_script:"--material-information" }}
+<script type="application/javascript">
+    const gMaterialInformation = JSON.parse(document.getElementById("--material-information").textContent);
+</script>

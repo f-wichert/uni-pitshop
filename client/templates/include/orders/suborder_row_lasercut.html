@@ -1,0 +1,101 @@
+        {% load static %}
+        <table class="table bg-light mb-0" id="order_{{order.id}}_lasercut_suborder_table">
+            <thead>
+                {% if is_editable %}
+                <th scope="col">
+                    <div>
+                        <img src="{%static 'icons/laser-cutting-machine_icon.png' %}" style="width:32px; height:32px;">
+                    </div>
+                </th>
+                {% endif %}
+                {% if is_staff %}
+                <th scope="col" class="col-1">Fertigstellung</th>
+                {% endif %}
+                <th scope="col" class="col-2">Dateiname</th>
+                <th scope="col" class="col-1">Datei</th>
+                <th scope="col" class="col-2">Materialliste</th>
+                <th scope="col" class="col-2">Schnittzeit (Minuten)</th>
+                <th scope="col" class="col-1">Preis (€)</th>
+                <th scope="col" {% if is_editable %}class="col-3"{% else %} class="col-2"{% endif %}>Kommmentar</th>
+            </thead>
+            <tbody>
+                {% for lasercut_suborder in order.suborders_lasercuts %}
+                <tr class="order_{{order.id}}_suborder_row order_{{order.id}}_lasercut_suborder_row"
+                    id="order_{{order.id}}_lasercut_suborder_{{lasercut_suborder.id}}">
+                    <!-- Edit Button -->
+                    {% if is_editable %}
+                    <td id="order_{{order.id}}_lasercut_suborder_{{lasercut_suborder.id}}_edit_field">
+                        <button class="btn btn-sm btn-light order_{{order.id}}_suborder_edit_button" 
+                            type="button"
+                            id="order_{{order.id}}_lasercut_suborder_{{lasercut_suborder.id}}_edit_button"
+                            onclick="editSuborder('lasercut',{{order.id}},{{lasercut_suborder.id}}, true);"
+                            {% if order.is_finished %} disabled {% endif %}>
+                            <img class="icon" src="{%static 'global_svg/pencil_edit.svg' %}" class="img-fluid">
+                        </button>
+                        <button class="btn btn-sm btn-warning order_{{order.id}}_suborder_edit_button d-none" 
+                            type="button"
+                            id="order_{{order.id}}_lasercut_suborder_{{lasercut_suborder.id}}_edit_disable_button"
+                            onclick="editSuborder('lasercut',{{order.id}},{{lasercut_suborder.id}}, false);">
+                            <img class="icon" src="{%static 'global_svg/pencil_edit.svg' %}" class="img-fluid">
+                        </button>
+                    </td>
+                    {% endif %}
+                    <!-- Checkbox -->
+                    {% if is_staff %}
+                    <td id="order_{{order.id}}_lasercut_suborder_{{lasercut_suborder.id}}_checkbox">
+                    <input
+                            class="form-check-input order_{{order.id}}_suborder_checkbox" type="checkbox" 
+                            {% if lasercut_suborder.is_completed %} checked {% endif %}
+                            {% if order.is_finished %} disabled {% endif %}
+                            onclick="changeSuborderStatus({{order.id}}, {{lasercut_suborder.id}}, 'lasercut', this.checked);">
+                    </td>
+                    {% endif %}
+                    <!-- Lasercut File Name -->
+                    <td id="order_{{order.id}}_lasercut_suborder_{{lasercut_suborder.id}}_filename">{{lasercut_suborder.filename_short}}</td>
+                    <!-- Lasercut Download Button -->
+                    <td id="order_{{order.id}}_lasercut_suborder_{{lasercut_suborder.id}}_file">
+                        <a href="/get_lasercut_file/{{lasercut_suborder.id}}">
+                            <img src="{%static 'global_svg/file_down.svg' %}" class="img-fluid" style="width:32px; height:32px;">
+                        </a>
+                    </td>
+                    <!-- Lasercut Material List -->
+                    <td id="order_{{order.id}}_lasercut_suborder_{{lasercut_suborder.id}}_material_list"
+                        onclick="setUpMaterialListModal({{order.id}}, {{lasercut_suborder.id}}, 
+                        '{{lasercut_suborder.filename_short}}', '{{order.user.first_name}} {{order.user.last_name}}');">
+                        <img src="{%static 'global_svg/clipboard.svg' %}" class="img-fluid" style="width:32px; height:32px;">
+                    </td>
+                    <!-- Lasercut Cutting Time -->
+                    <td id="order_{{order.id}}_lasercut_suborder_{{lasercut_suborder.id}}_cuttingtime">
+                            <input class="form-control text-center editInput" type="number" step="0.01"
+                                id="order_{{order.id}}_lasercut_suborder_{{lasercut_suborder.id}}_minute_input"
+                                placeholder="Eingabe der Minuten"
+                                value="{{lasercut_suborder.minutes}}"
+                                onchange="setLaserCutMinutes({{order.id}}, {{lasercut_suborder.id}}, this.value);"
+                                disabled>
+
+                    </td>
+                    <!-- Lasercut Price -->
+                    <td id="order_{{order.id}}_lasercut_suborder_{{lasercut_suborder.id}}_price">
+                        <div class="input-group">
+                            <input class="form-control text-center editInput" type="number"
+                                id="order_{{order.id}}_lasercut_suborder_{{lasercut_suborder.id}}_price_input" 
+                                placeholder="Preis"
+                                onchange="overrideSuborderPrice({{order.id}}, {{lasercut_suborder.id}}, 'lasercut', this.value);"
+                                value="{{lasercut_suborder.price_valuestr}}" disabled>
+                            <button class="btn btn-sm d-none btn-reset-price" 
+                                type="button"
+                                id="order_{{order.id}}_lasercut_suborder_{{lasercut_suborder.id}}_price_reset_button"
+                                onclick="resetPriceOverride({{order.id}}, {{lasercut_suborder.id}}, 'lasercut');"
+                                {% if lasercut_suborder.price_override is None %} disabled {% endif %}>
+                                <img class="icon" src="{%static 'global_svg/arrow_reset.svg' %}" class="img-fluid">
+                            </button>
+                        </div>
+                    </td>
+                    <!-- Lasercut Comment -->
+                    <td id="order_{{order.id}}_lasercut_suborder_{{lasercut_suborder.id}}_comment">
+                        {{lasercut_suborder.customer_comment}}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>

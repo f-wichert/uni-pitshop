@@ -1,0 +1,10 @@
+ID;007
+Name;007_Administration-Zugang
+Beschreibung; Als Administrator*in möchte ich die Möglichkeit haben Zugriff auf die Administration zu haben, um dort Mitarbeiter festzulegen und neue Nutzer anzulegen.
+Akzeptanzkriterium; Als Administrator*in habe ich jederzeit über einen Button 'Administration' in der Navigationsleiste die Möglichkeit die Administration aufzurufen. Dieser Button ist nur für Administratoren sichtbar. Die Seite der Administration wird nach einem Klick auf den Button erfolgreich geladen.
+Geschätzter Aufwand (Story Points); 1
+Entwickler*in; Jonas Milkovits
+Fertiggestellt in Iteration; 1
+Tatsächlicher Aufwand (h); 1h
+Velocity (Story Points/h); 1
+Bemerkungen;

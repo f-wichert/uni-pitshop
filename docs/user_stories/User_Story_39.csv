@@ -1,0 +1,10 @@
+ID;039
+Name;039_Fehler_Benachrichtigungen
+Beschreibung; Als Nutzer*in der/die die Website verwendet möchte ich über kritische Fehler, welche durch meine Eingaben oder System-intern auftreten informiert werden.
+Akzeptanzkriterium; Es steht für Entwickler*innen eine einfache und einheitliche Möglichkeit bereit, um Front- und Backend Fehler anzuzeigen. Dafür soll ein "Toast" aus der Bootstrap Library verwendet werden, welches unter der Navbar angezeigt wird. Zudem muss das Backend in der Lage sein, Fehlerinformationen zu übermitteln, welche dann dem Nutzer angezeigt werden können.
+Geschätzter Aufwand (Story Points); 8
+Entwickler*in; Jannik Schmidt
+Fertiggestellt in Iteration; 7
+Tatsächlicher Aufwand (h);10h
+Velocity (Story Points/h);0.8
+Bemerkungen;

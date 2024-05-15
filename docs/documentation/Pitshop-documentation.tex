@@ -1,0 +1,455 @@
+\documentclass[12pt]{article}
+\usepackage{fullpage}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{tcolorbox}
+\usepackage{underscore}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{listings}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{textcomp}
+\usetikzlibrary{arrows, positioning, automata}
+
+\renewcommand{\familydefault}{\sfdefault} % Change font to Sant Serif
+\newcommand{\dir}[1]{\textbf{/#1}}
+\newcommand{\class}[1]{{\color{teal} \texttt{#1}}}
+\newcommand{\method}[1]{{\color{violet} \texttt{#1}}}
+\newcommand{\property}[1]{{\color{purple} \texttt{#1}}}
+\newcommand{\attribute}[1]{{\color{orange} \texttt{#1}}}
+\newcommand{\orderState}[1]{{\color{red}\texttt{OrderState}\color{black}.\color{blue}{#1}}}
+\newcommand{\insetContract}{12pt}
+\newcommand{\insetMethodDescription}{-0.7cm}
+
+\newtcolorbox{contract}[1]{colback=red!5!white,colframe=orange!90!black,fonttitle=\bfseries,title=#1}
+
+\title{Pitshop Documentation}
+\author{Jannik Schmidt, Simon Jungherz, Frederick Wichert, \\ Jonas Milkovits, Laurenz Kammeyer}
+\date{18.03.2022}
+\begin{document}
+\maketitle  
+
+\section*{Einleitung}
+Dieses Dokument beschreibt die Funktionen und Datenstrukturen der Pitshop-Software. Sein Ziel ist es Entwicklern und Entwicklerinnen 
+ein fundiertes Wissen über die innere Funktion der Pitshop-Software zu vermitteln, damit diese eigenständig und effizient Änderungen 
+am Quellcode vornehmen zu können. Es dient somit für Instandhaltungsarbeiten als auch für die Entwicklung neuer Funktionen.
+Ein Verständnis von Django wird dabei vorausgesetzt, damit Sachverhalte bündig beschrieben werden können.
+Soweit möglich wird versucht Komponenten isoliert zu betrachten, damit sich Leser*innen nur mit den Abschnitten befassen müssen an denen 
+sie arbeiten möchten. Für größere Modifikationen wird aber empfohlen das ganze Dokument zu lesen.
+Technisch weniger versierte Nutzer*innen sollten sich auf das Benutzer*innenhandbuch beziehen.
+
+\newpage
+
+\section*{Überblick}
+Die Pitshop-Software ist eine webbasierte Abgabeplattform für die Werkstatt des Architekturbereichs der Technischen Universität Darmstadt.
+Das Backend wird mit Django implementiert. Das Frontend besteht aus HTML, CSS zusammen mit Bootstrap und JavaScript. Als Datenbank wird PostgreSQL verwendet.
+Die Applikation läuft innerhalb eines Docker-Containers.
+\\
+\\
+Die Pitshop-Software ist nach dem Model-View-Controller (MVC) Paradigma entwickelt. Jede dieser Komponenten wird von einer eigenen "Django-app"
+umgesetzt.
+
+\subsection{View}
+Alles in Bezug zur Darstellung, befindet sich in der App "client" \dir{pitshop/client/}. Dort befinden sich alle Django-Templates, sowie alle
+CSS und JavaScript-Dateien. Um das Design und Verhalten des Webinterfaces anzupassen, ist hier der richtige Ort.
+Alle Templates befinden sich in einem Subordner des Ordners \dir{templates}. Jeder Subordner kapselt dabei einen Aspekt der Nutzererfahrung.
+Die Namen sollten größtenteils selbsterklärend sein, um ein Template jedoch eindeutig mit einer Webansicht zu verknüpfen, kann die Pfadhierarchie,
+ausgehend von \dir{pitshop/pitshop/urls.py}, nachvollzogen werden.
+Die zugehörigen CSS und JS Dateien befinden sich dabei im Ordner \dir{client} in einem zum Subordner, der so benannt ist wie der des zugehörigen Templates.
+
+\subsection{Model}
+Die Struktur der Datenbank befindet sich im Ordner \dir{pitshop/models/models.py}. Hier werden alle Datenbank-Tabellen und -Spalten definiert.
+Die meisten Klassen haben außerdem zusätzliche Property Funktionen, um ihre Funktionalität zu erweitern und Nutzbarkeit zu verbessern.
+Alles in Bezug zum Aufbau der Datenbank kann hier geändert werden.
+Die Datenbank selber befindet sich jedoch im Basisordner \dir{pitshop/}.
+
+\subsection{Controller}
+Die Backendlogik befindet sich in der App \dir{pitshop/api}. Hier werden alle Funktionen zur Datenbank-Abfrage und -Änderung implementiert.
+Auch die Kontrolllogik befindet sich hier. Die einzelnen Backendfunktionen sind in der Datei \dir{api/views.py} zu finden.
+Wenn angepasst werden soll wie ein Nutzer mit der Datenbank interagiert, ist hier ein guter Anfang
+Wie eine Funtkion aufgerufen werden kann, bestimmt die Pfad-Datei \dir{pitshop/api/urls.py}. 
+
+\section{View}
+Wie schon im Überblick beschrieben, befindet sich die View in der App \dir{pitshop/client/}. Im Ordner \dir{templates} befinden sich dabei alle Django-Templates.
+Wir benutzen die Template-Funktionalität von Django hauptsächlich dafür, um die Pfade von Ressourcen und angeueigte Werte zu verwalten. Aus diesen Templates wird dann die Webseite dynamisch zusammengebaut. CSS und JavaScript Dateien befinden sich
+dabei in dem \dir{static} Ordner. Anderweitige Ressourcen, wie Bilder oder Icons, befinden sich außerhalb der Client-App im Ordner \dir{pitshop/global_static}. 
+\\ \\
+Außerdem werden in den Templates die Navbar und der Footer eingefügt. Diese sollen auf allen Seiten vorhanden sein und werde deshalb in allen Templates eingebunden.
+Innerhalb der Navbar wir auch eine Util.js Datei importiert, die grundlegende Funktionalität bereitstellt, die auf quasi jeder Seite gebraucht wird.
+Sie enthällt beispielsweise eine Funtkion, um mit der Pitshop Api zu kommunizieren, die auch automatisch den Cookie ausliest und mitsendet.
+\\ \\
+Ein Großteil des eigentlichen HTMLs befindet sich dabei garnicht in den Templates, sondern wird, auf eine GET-Request der zugehörigen JS-Datei hin, innerhalb der \dir{client/views.py} dynamisch generiert und zurückgegeben.
+Auf diese Weise können wir viele Komplexitäten im JavaScript vermeiden und stellen sicher, dass die angezeigten Daten immer mit den Daten der Datenbank übereinstimmen.
+Dabei enthalten die Templates die Grundstruktur der Seite, die dann dynamisch erweitert wird, bis alle Daten geladen wurden.
+\\
+Die Funktionalität für größere Einzelaufgaben ist dabei jeweils in ihre eigenen JS-Dateien ausgelagert. Wo genau diese Grenze gezogen wird, liegt größtenteils im Auge des Entwickelnden, die Dateinamen sollten aber eindeutig
+aussagen welcher Aspekt von ihr implementiert wird. Die Datei, die nach der Seite selber benannt ist, behandelt dabei die grundlegende Verwaltung der Seite, wie Animationen, Dropdowns und das Aufrufen der anderen Funktionen.
+\\
+Da die meisten Methoden in \dir{views.py} nur die Aufgabe haben die Dictionary-Werte für den Renderaufruf ihrer Templates zu erzeugen, werden diese hier übergangen. Der Großteil ihrer Komplexität liegt in den 
+Templates, die auch die gesamte Struktur ihrer Rückgabe enthalten. 
+Die wenigen Ausnahmen jedoch sollen hier kurz angesprochen werden.
+
+\subsection{get-file()}
+\begin{contract}{Vertrag}
+    \textbf{Parameter:} HttpRequest: request, suborder_type: str, id: int \\
+    \textbf{Return:} Union[HttpResponse, FileResponse]
+\end{contract}
+\hspace{\insetMethodDescription{}}
+Gibt eine FileResponse zurück, die die Datei mit der Bestellung mit der ID 'id' kapselt.
+
+
+\subsection{controlling_filter()}
+\begin{contract}{Vertrag}
+    \textbf{Parameter:} HttpRequest request mit folgenden Body-Parametern:
+    \begin{description}
+        \item[\hspace{\insetContract} idInput:] Zeige nur Bestellungen mit der ID 'idInput'.
+        \item[\hspace{\insetContract} nameInput:] Zeige nur Bestellungen deren Kundennamen 'nameInput' enthällt.
+        \item[\hspace{\insetContract} dateOrderedFromInput:] Zeige nur Bestellungen, die am 'dateOrderedFromInput' oder später bestellt wurden.
+        \item[\hspace{\insetContract} dateOrderedUntilInput:] Zeige nur Bestellungen an, die am 'dateOrderedUntilInput' oder früher bestellt wurden.
+        \item[\hspace{\insetContract} billedInput $\in $ \texttt{[}"not-billed", "billed", "all"\texttt{]}:] Filtern nach dem Abgabestatus der Bestellungen. \\
+        "not-billed" $\Rightarrow$ \attribute{state} \texttt{=} \orderState{FINISHED} \\
+        "billed" $\Rightarrow$ \attribute{state} \texttt{=} \orderState{BILLED} \\
+        "all" $\Rightarrow$ \attribute{state} \texttt{=} \orderState{FINISHED} oder \attribute{state} \texttt{=} \orderState{BILLED}
+        \item[\hspace{\insetContract} amountFromInput:] Zeige nur Bestellungen, deren Kosten höher als 'amountFromInput' sind.
+        \item[\hspace{\insetContract} amountUntilInput:] Zeige nur Bestellungen, deren Kosten niedriger als'amountFromInput' sind.
+        \item[Switches:]
+        \item[\hspace{\insetContract} sort:] Wenn gesetzt, sortiert die Bestellungen nach IDs.   
+        \item[\hspace{\insetContract} amount:] Wenn gesetzt, sortiert die Bestellungen nach Preis.
+    \end{description}
+\end{contract}
+\hspace{\insetMethodDescription{}}
+Diese Methode setzt die Filterfunktionalität für die Abrechnungsseite um. Je nach den gesetzten Switches wird die Liste der Bestellungen zusätzlich nach den gesetzten Filterkriterien sortiert.
+
+
+
+\subsection{filtered_orders()}
+\begin{contract}{Vertrag}
+    \textbf{Parameter:} HttpRequest request mit folgenden Body-Parametern:
+    \begin{description}
+        \item[\hspace{\insetContract} status:] Iterable. Zeige nur Bestellungen deren Status teil der Liste ist. Darf nur Werte aus der Klasse 'OrderState' in \dir{pitshop/model/models.py} enthalten.
+        \item[\hspace{\insetContract} dateFrom:] Zeige nur Bestellungen, die am 'dateFrom' oder später bestellt wurden.
+        \item[\hspace{\insetContract} dateUntil:] Zeige nur Bestellungen an, die am 'dateUntil' oder früher bestellt wurden.
+        \item[\hspace{\insetContract} id:] Zeige nur Bestellungen mit der ID 'id'.
+        \item[\hspace{\insetContract} name:] Zeige nur Bestellungen deren Kundennamen 'name' enthällt.
+        \item[\hspace{\insetContract} sort:] Switch. Wenn gesetzt, sortiert die Bestellungen nach IDs.
+    \end{description}
+    \textbf{Return:} HttpResponse
+\end{contract}
+\hspace{\insetMethodDescription{}}
+Diese Methode setzt die Filterfunktionalität für die Bestellungsübersicht um. Je nach den gesetzten Switches wird die Liste der Bestellungen zusätzlich nach den IDs sortiert.
+
+\section{Model}
+Die Datenbank-Tabellen und -Spalten werden in der Datei \dir{pitshop/models/models.py} definiert. Die Struktur der Datenbank beschreibt dabei Nutzer*innen (\class{ExtendedUser}), denen 
+Bestellungen (\class{Order}) zugeordnet sind. Diese Stukur wird weiter unterteilt, bis alle Aspekte einer Bestellung abgedeckt sind. So unterteilt sich eine Bestellung weiter in Unterbestellungen usw.
+Ein \class{ExtendedUser} erbt dabei von der abstrakten Django-Klasse \class{AbstractUser}. Eine \class{Order} ist mit einem \class{ExtendedUser} über ihr \attribute{user_id} Attribut verknüpft.
+Dabei kann ein \class{ExtendedUser} maximal eine aufgegebene, aber beliebig viele abgeschlossene \class{Orders} haben. Eine Bestellung im Warenkorb ist ebenfalls eine \class{Order}, deren Status aber \texttt{None} ist.
+So kann der Warenkorb mit wenig Aufwand in der Datenbank zwischengespeichert werden, sodass der Nutzer nicht alle Aufträge verliert, sobald er sein Fenster schließt.
+Alle möglichen Status sind in der Klasse \class{OrderState} enthalten. Jeder Zustand sagt dabei aus wie weit eine Bestellung schon bearbeitet wurde. \\ 
+Eine \class{Order} besteht dabei wieder aus einer Menge assoziierter Lasercut-Suborders (\class{suborderlasercut}), Material-Suborders(\class{subordermaterial}) und 3D-Druck-Suborders(\class{suborder3dprint}).
+Die Suborders sind dabei über ihre \attribute{order_id} Attribute mit der Bestellung verknüpft. Alle Suborder erben außerdem von der abstrakten Klasse \class{Suborder}, die ein Funktionalität bereitstellt, die alle Suborders erfüllen müssen.
+Sie enthällt auch ein Feld um die abgerechneten Kosten einer Suborder zu speichern, damit diese nicht von den aktuellen Preisen in der Datenbank abhängen.
+Die Kinderklassen benötigen so nur noch die für sie spezifischen Attribute. \\
+Die Menge an Materialien, aus der eine Lasercut-Order gefertigt werden soll, wird dabei als Menge von Material-Subordnern modelliert. Eine Material-Suborder kann dazu zusätzlich mit dem \attribute{associated_lasecut_id} mit einer 
+Lasercut-Suborder verbunden werden. \\
+Das Material einer Material-Suborder wird über einen Verweis auf eine Material-Variation \\(\class{materialvariation}) definiert. Die Material-Variation Tabelle beschreibt dabei alle Möglichkeiten wie ein konkretes Material
+von seinen Standardwerten abweichen kann und speichert diese Abweichungen. Die Standardwerte sind wiederum in der Tabelle \class{material} definiert, zusammen mit Namen, dem zugehörigen Tooltip, einem  Vorschaubild und ob ein Kommentar
+benötigt wird.
+\\
+Eine 3D-Druck-Suborder ist ähnlich aufgebaut, aber deutlich weniger komplex. Für den 3D-Druck existieren Filamentvariationen (\class{filamentvariation}), die die möglichen Farben abspeichert in denen ein Filament (\class{filament}) 
+verfügbar ist. 
+\\
+Eine Bestellung kann auch eine eigene Nachricht umfassen (\class{message}).
+\\ 
+Für Authentifizierung und Sicherheit wird das Django eigene Administratorsystem benutzt, dessen Tabellen automatisch erstellt werden.
+\\
+Um die Benutzer*innenfreundlichkeit der Klassen zu erhöhen, sind die meisten ausgiebig mit \property{@property}-Attributen versehen. Diese erfüllen nur sehr einfache und selbsterklärende Aufgaben, die aber das Arbeiten mit der Klasse enorm vereinfachen.
+Vor dem Schreiben einer eigenen Methode für simple Aufgaben im Bezug zu einer dieser Klassen, ist es wert zuerst einen Blick in die Liste der \property{@property}-Attribute zu werfen. Die Chancen stehen gut, dass sie schon existiert.
+\\ \\
+Eine detailierte Übersicht über den Aufbau der Datenbank lässt sich auch dem nachfolgenden ER-Diagramm entnehmen. Es zeigt alle Tabellen, ihre nutzbaren Attribute und wie die Tabellen miteinander in Relation stehen.
+
+
+\includegraphics[width=\textwidth]{media/ER-Diagramm_models.png}
+
+
+\section{Controller}
+Die Backend-Logik befindet sich in der Datei \dir{pitshop/api/views}. Hier werden alle Funktionen zur Verwaltung der Datenbank implementiert. Mit Ausnahme der Django-Administration laufen alle Interaktionen zwischen einer/m Benutzer*in 
+und der Datenbank über eine dieser Methoden. Die Logik ist hier sehr modular aufgebaut. Die Methoden sind jeweils für nur eine Funktionalität verantwortlich, wie z.B. das Hinzufügen oder löschen einer Bestellung. 
+Da es keine übergeordnete Struktur gibt, werden die Methoden hier nur kurz erklärt. Eine Liste aller Zustände in denen sich eine Bestellung befinden kann, finden Sie in der Klasse 'OrderState' in \dir{pitshop/model/models.py} .Die Operationen können nach Bedarf miteinander kombiniert werden, um das gewünschte Resultat zu erreichen.
+Zu achten ist dabei nur darauf, dass die Methoden gewisse Restriktionen enthalten, um illegale Operationen zu verhindern. 
+Diese Bedingungen sind: \\ % TODO: Liste vervollständigen
+\begin{itemize}
+\item Der/Die Benutzer*in muss authentifiziert sein, also eingeloggt.
+\item Ein*e Nutzer*in kann nur eine aktive Bestellung haben. Es kann allerdings eine weitere, noch nicht aufgegbene, Bestellung mit Status \attribute{state} \texttt{= None} als "im Warenkorb" existieren.
+\item Nur Mitarbeiter*innen können eine Bestellung bearbeiten, die von einer anderen Person erstellt wurden.
+\item Ein*e Nutzer*in kann nur eine Bestellung bearbeiten, die noch nicht angefangen wurde (\attribute{state} \texttt{=} \orderState{SUBMITTED}). Ein*e Mitarbeiter*in kann eine Bestellung so lange bearbeiten, bis sie abgerechnet ist (\attribute{state} \texttt{=} \orderState{BILLED}).
+\item Eine Änderung an einer Bestellung, muss alle Vorgaben des zugrundeliegenden Mediums erfüllen. Eine Bestellung kann nur in einen Zustand versetzt werden, in dem sie auch hätte bestellt werden können. Minimale Materialgrößen und andere Bedingugen 
+müssen also respektiert werden.
+\item Nur Mitarbeiter*innen können den Zustand einer Order ändern.
+\end{itemize}
+
+\newpage
+
+\subsection{Methoden}
+\enlargethispage*{0.5cm}
+
+\subsection{auth()}
+\begin{contract}{Vertrag}
+    \textbf{Parameter:} HttpRequest request mit folgenden Body-Parametern:
+    \begin{description}
+        \item[\hspace{\insetContract} username:] Gültiger Benutzername des Benutzers, der sich einloggen möchte
+        \item[\hspace{\insetContract} password:] Gültiger Passwort des Benutzers, der sich einloggen möchte
+    \end{description}
+    \textbf{Return:} JsonResponse(\{\})
+    
+\end{contract}
+\hspace{\insetMethodDescription{}}
+Nutzt Djangos eigene Authentifizierungsmethoden, um den Benutzer*in einzuloggen, wenn er/sie korrekte Accountdaten bereitstellt. Returnt eine JsonResponse, der eine leere Antwort enthält.
+
+
+\subsection{unauth()}
+\begin{contract}{Vertrag}
+    \textbf{Parameter:} HttpRequest request. Es werden keine extra Parameter benötigt. \\*
+    \textbf{Return:} JsonResponse(\{\})
+\end{contract}
+\hspace{\insetMethodDescription{}}
+Diese Methode loggt den Nutzer aus, der die Anfrage gesendet hat. Er muss vorher eingeloggt gewesen sein. 
+
+
+\subsection{get_order()}
+\begin{contract}{Vertrag}
+    \textbf{Parameter:} 
+    \begin{description}
+        \item[\hspace{\insetContract} user:] ExtendedUser dessen Bestellung gewünscht ist
+        \item[\hspace{\insetContract} order_id:] ID der Bestellung des users, die gewünscht ist
+    \end{description}
+    \textbf{Return:} Tupel(order, ErrorCode)
+\end{contract}
+\hspace{\insetMethodDescription{}}
+Gibt die order des user mit der ID order_id zurück. Falls diese nicht existiert wird ein Fehlercode abhängig von der Rolle des Users zurückgegeben.
+
+
+\subsection{add_suborder()}
+\begin{contract}{Vertrag}
+    \textbf{Parameter:} HttpRequest request mit folgenden Body-Parametern:
+    \begin{description}
+        \item[\hspace{\insetContract} type] $\in \{$ 'lasercut', 'material', '3dprint' $\}$ Typ der Teilbestellung, die angelegt werden soll.
+        \item[\hspace{\insetContract} comment:] String mit dem Kommentar zur Teilbestellung
+        \item[Für Lasercut:] (siehe unten)
+        \item[Für Material:]
+        \item[\hspace{\insetContract} amount:] Integer $[$ 0 $<$ amount $<$ 100 $]$
+        \item[\hspace{\insetContract} variation_id:] ID der Variation des Materials
+        \item[\hspace{\insetContract} width:] Integer mit Breite in Milimetern
+        \item[\hspace{\insetContract} length:] Integer mit Länge in Milimetern
+        \item[Für 3D-Druck:]
+        \item[\hspace{\insetContract} amount:]  Integer $[$ 0 $<$ amount $<$ 100 $]$
+        \item[] 
+        \item[Parameter, die direkt Element der HttpRequest sind und nicht im Body:]
+        \item[Für Lasercut und 3D-Druck:]
+        \item[\hspace{\insetContract} FILES:] MultiValueDict[str "upload-file", uploadedfile.UploadedFile] mit der Datei der Teilbestellung] 
+    \end{description}
+    \textbf{Return:} JsonResponse(\{\})
+\end{contract}
+\hspace{\insetMethodDescription{}}
+Erzeugt eine neue Teilbestellung mit den spezifizierten Parametern. Wenn die Teilbestellung erfolgreich angelegt wurde, wird eine leere JsonResponse zurückgegeben.
+Falls der/die Benutzer*in keine Bestellung hat, wird eine erstellt.
+
+% TODO: Ausfüllen
+\subsection{add_lasercut_order()}
+\begin{contract}{Vertrag}
+    \textbf{Parameter:} HttpRequest request mit folgenden POST-Parametern:
+    \begin{description}
+        \item[\hspace{\insetContract} "lc-variation":] Liste mit variation_id der Materialien, die für den Lasercut
+        \item[\hspace{\insetContract} "lc-cut-width":] Liste mit den Breiten der Materialien in Milimetern
+        \item[\hspace{\insetContract} "lc-cut-length":] Liste mit den Breiten der Materialien in Milimetern
+        \item[\hspace{\insetContract} "lc-count":] Liste an Integern mit wie oft welches Material verwendet werden soll
+    \end{description}
+    \textbf{Return:} Tuple[Optional[ErrorCode], Optional[SubOrderLaserCut]]
+\end{contract}
+\hspace{\insetMethodDescription{}}
+Erzeugt eine neue Lasercut-Bestellung mit den spezifizierten Parametern. Wenn die Bestellung erfolgreich angelegt wurde, wird ein Tupel aus 'None' neuen SubOrderLaserCut zurückgegeben.
+Andernfalls ein Tupel aus einem ErrorCode 'None'). 
+
+
+\subsection{add_material_order()}
+\begin{contract}{Vertrag}
+    \textbf{Parameter:} 
+    \begin{description}
+        \item[\hspace{\insetContract} data:] dict[str, Any] mit den Parametern der Materialbestellung
+        \item[\hspace{\insetContract} order:]  Order zu der die Materialbestellung hinzugefügt werden soll
+    \end{description}
+    \textbf{Return:} Optional[ErrorCode]
+\end{contract}
+\hspace{\insetMethodDescription{}}
+Erzeugt eine neue Materialbestellung mit den spezifizierten Parametern und fügt sie der Bestellung 'order' hinzu. Das Dictionary data muss $[$ 'amount', 'material', 'comment, 'width', 'length' $]$ enthalten.
+Diese Werte sind genau so zu belgen wie in \method{add_suborder()} beschrieben. Wenn die Materialbestellung erfolgreich angelegt wurde, wird "None" zurückgegeben. \\
+Diese Methode ist eine Hilfsmethode von \method{add_suborder()} und sollte nur in Sonderfällen direkt aufgerufen werden. Für das normale Hinzufügen einer Materialbestellung sollte \method{add_suborder()} verwendet werden.
+
+
+\subsection{add_3dprint_order()}
+\begin{contract}{Vertrag}
+    \textbf{Parameter:} 
+    \begin{description}
+        \item[\hspace{\insetContract} HttpRequest:] HttpRequest mit den Werten der 3D-Druckbestellung als POST-Parameter in Form-data und einem MultiValueDict[str, uploadedfile.UploadedFile] mit der Datei der 3D-Druckbestellung im 'FILES'-Parameter 
+        \item[\hspace{\insetContract} order:]  Order zu der die 3D-Druckbestellung hinzugefügt werden soll 
+    \end{description}
+    \textbf{Return:}  Optional[ErrorCode]
+\end{contract}
+\hspace{\insetMethodDescription{}}
+Erzeugt eine neue 3D-Druckbestellung mit den spezifizierten Parametern und fügt sie der Bestellung 'order' hinzu. Das Dictionary data muss $[$ 'amount', 'comment', 'variation_id' $]$ enthalten.
+Der Kommentar darf maximal 10.000 Zeichen lang sein und es können nicht mehr als 99 Exemplare bestellt werden. 
+Wenn die 3D-Druckbestellung erfolgreich angelegt wurde, wird "None" zurückgegeben. \\
+Diese Methode ist eine Hilfsmethode von \method{add_suborder()} und sollte nur in Sonderfällen direkt aufgerufen werden. Für das normale Hinzufügen einer 3D-Druckbestellung sollte \method{add_suborder()} verwendet werden.
+\enlargethispage*{5cm}
+
+\subsection{change_suborder()}
+\begin{contract}{Vertrag change_suborder() Teil 1}
+    \textbf{Parameter:} HttpRequest request mit folgenden Body-Parametern:
+    \begin{description}
+        \item[Pflicht:]
+        \item[\hspace{\insetContract} type] $\in \{$ 'lasercut', 'material', '3dprint' $\}$ Typ der Teilbestellung, die geändert werden soll.
+        \item[\hspace{\insetContract} id:] ID der Teilbestellung, die geändert werden soll
+        \item[Optional:]
+        \item[\hspace{\insetContract} order_id:] ID der Bestellung, deren Teilbestellung geändert werden soll (Wenn nicht angegeben, wird die aktive Bestellung der/des anfragenden User*in verwendet)
+        \item[\hspace{\insetContract} newState:] Boolean, ob die Teilbestellung auf abgeschlossen gesetzt werden soll
+        \item[\hspace{\insetContract} comment:] String mit neuem Kommentar zur Teilbestellung
+        \item[\hspace{\insetContract} price:] Integer mit neuem Preis der Teilbestellung (überschreibt berechneten Preis)
+        \item[\hspace{\insetContract} reset_price_override:] Boolean. Wenn definiert wird der Preis der Teilbestellung auf den normal berechneten Preis zurückgesetzt (unabhängig vom Wert von reset_price_override)
+        \item[Für Material:] 
+        \item[\hspace{\insetContract} amount:] Integer $[$ 0 $<$ amount $<$ 100 $]$
+        \item[\hspace{\insetContract} variation_id:] ID der Variation des Materials
+        \item[\hspace{\insetContract} width:] Integer mit Breite in Milimetern
+        \item[\hspace{\insetContract} length:] Integer mit Länge in Milimetern
+    \end{description}
+\end{contract}
+% Doesn't fit a full page anymore, so has to be broken up in two parts
+\begin{contract}{Vertrag change_suborder() Teil 2} 
+    \begin{description}
+        \item[Für Lasercut:]
+        \item[\hspace{\insetContract} minutes:] Integer mit neuen Minuten der Lasercut-Teilbestellung
+        \item[Für 3D-Druck:]
+        \item[\hspace{\insetContract} amount:]  Integer $[$ 0 $<$ amount $<$ 100 $]$
+        \item[\hspace{\insetContract} variation_id:] Neue Variation des Filaments der 3D-Druckbestellung
+        \item[Switches:]
+        \item[\hspace{\insetContract} get_price:] Der Preis der Teilbestellung soll Teil der Rückgabe sein ['price']
+        \item[\hspace{\insetContract} get_price_str:] Der Preistext der Teilbestellung soll Teil der Rückgabe sein ['price_str']
+        \item[\hspace{\insetContract} get_order_price:] Der Preis der Bestellung soll Teil der Rückgabe sein ['order_price']
+        \item[\hspace{\insetContract} get_order_price_str:] Der Preistext der Bestellung soll Teil der Rückgabe sein ['order_price_str']
+    \end{description}
+    \textbf{Return:} dict[str, Any]
+\end{contract}
+\hspace{\insetMethodDescription{}}
+Ändert die Teilbestellung mit der ID 'id' und gibt ein Dictionary mit verschiedenen Preiswerten zurück, wenn die passenden Switches auf 'True' gesetzt sind.
+Wird keine Bestellung über 'order_id' spezifiziert, wird die aktive Bestellung des/der anfragenden User*in verwendet. \\
+Je nach Typ, können verschiede Werte der Teilbestellung geändert werden. Optionale Werte, die nicht angegeben werden, behalten ihren Wert.
+
+
+\subsection{remove_suborder()}
+\begin{contract}{Vertrag}
+    \textbf{Parameter:} HttpRequest request mit folgenden Body-Parametern:
+    \begin{description}
+        \item[\hspace{\insetContract} type:] Typ der Teilbestellung, die gelöscht werden soll.
+        \item[\hspace{\insetContract} id:] ID der Teilbestellung, die gelöscht werden soll
+        \item[Optional:] 
+        \item[\hspace{\insetContract} order_id:] ID der Bestellung, deren Teilbestellung gelöscht werden soll (Wenn nicht angegeben, wird die aktive Bestellung der/des anfragenden User*in verwendet)
+    \end{description}
+    \textbf{Return:} JsonResponse(
+        \{"last_material","last_lasercut","last_3dprint","delete_order"\})
+\end{contract}
+\hspace{\insetMethodDescription{}}
+Löscht eine Teilbestellung des spezifizierten Typs und der ID 'id' und gibt ein Dictionary zurück, das angibt welcher Typ von Teilbestellung noch in der Bestellung enthalten ist.
+Wird keine Bestellung über 'order_id' spezifiziert, wird die aktive Bestellung des/der anfragenden User*in verwendet.
+Wird die letzte Teilbestellung einer Bestellung gelöscht, wird auch die Bestellung gelöscht.
+
+
+\subsection{submit_order()}
+\begin{contract}{Vertrag}
+    \textbf{Parameter:}  HttpRequest request \\
+    \textbf{Return:} JsonResponse(\{\})
+\end{contract}
+\hspace{\insetMethodDescription{}}
+Setzt eine vorläufige Bestellung auf 'abgesendet' (\attribute{state} \texttt{=} \orderState{SUBMITTED}).
+Mit dieser Methode wird die Bestellung im Warenkorb aufgegeben.
+
+
+\subsection{controlling_delete_billing()}
+\begin{contract}{Vertrag}
+    \textbf{Parameter:} HttpRequest request mit folgenden Body-Parametern:
+    \begin{description}
+        \item[\hspace{\insetContract} billingIdToDelete:] ID der Rechnung, die gelöscht werden soll
+    \end{description}
+    \textbf{Return:} JsonResponse(\{\})
+\end{contract}
+\hspace{\insetMethodDescription{}}
+Macht das Abrechnen einer Bestellung rückgängig und setzt den Zustand der Bestellung auf 'abgeschlossen' (\attribute{state} \texttt{=} \orderState{FINISHED}).
+Setzt außerdem das 'price_billed' Attribut auf 'None'.
+
+
+\subsection{controlling_create_new_billing()}
+\begin{contract}{Vertrag}
+    \textbf{Parameter:} HttpRequest request mit folgenden Body-Parametern:
+    \begin{description}
+    \item[\hspace{\insetContract} orderIdsToBill:] String von IDs von Bestellungen, die abgerechnet werden sollen. Getrennt durch Semikolons.
+    \end{description}
+    \textbf{Return:} JsonResponse(\{\})
+\end{contract}
+\hspace{\insetMethodDescription{}}
+Erstellt eine Abrechnung mit allen Bestellungen und verknüpft die Rechnung mit den Bestellungen in der BillingOrder Tabelle.
+Setzt außerdem das 'price_billed' Attribut auf den Preis der Bestellung.
+
+
+\subsection{change_state_of_order()}
+\begin{contract}{Vertrag}
+    \textbf{Parameter:} HttpRequest request mit folgenden Body-Parametern:
+    \begin{description}
+        \item[\hspace{\insetContract} orderId:] ID der Bestellung, deren Status geändert werden soll
+        \item[\hspace{\insetContract} newState:] Neuer Zustand der Bestellung
+        \item[\hspace{\insetContract} setToInProgressIfSubmitted:] Switch. Wenn definiert, wird die Bestellung auf 'in Arbeit' (\attribute{state} \texttt{=} \orderState{IN_PROGRESS}) gesetzt, falls sie vorher 'aufgegeben' (\attribute{state} \texttt{=} \orderState{SUBMITTED}) war
+    \end{description}
+    \textbf{Return:} JsonResponse(\{\})
+\end{contract}
+\hspace{\insetMethodDescription{}}
+Ändert den Status der Bestellung mit der ID 'orderId' auf den Zustand 'state' und gibt im Erfolgsfall ein leeres JsonObjekt zurück.
+Wird der Switch 'setToInProgressIfSubmitted' definiert, wird die Bestellung auf 'in Arbeit' (\attribute{state} \texttt{=} \orderState{IN_PROGRESS}) gesetzt, wenn sie 'aufgegeben' (\attribute{state} \texttt{=} \orderState{SUBMITTED}) ist.
+
+
+\subsection{save_staff_comment()}
+\begin{contract}{Vertrag}
+    \textbf{Parameter:} HttpRequest request mit folgenden Body-Parametern:
+    \begin{description}
+        \item[\hspace{\insetContract} orderId:] ID der Bestellung, deren Mitarbeiter*innenkommentar geändert werden soll
+        \item[\hspace{\insetContract} staffComment:] String. Neuer Mitarbeiter*innenkommentar
+    \end{description}
+    \textbf{Return:} JsonResponse(\{\})
+\end{contract}
+\hspace{\insetMethodDescription{}}
+Setzt den Mitarbeiter*innenkommentar der Bestellung mit der ID 'orderId' und gibt im Erfolgsfall ein leeres JsonObjekt zurück.
+
+
+\subsection{save_message()}
+\begin{contract}{Vertrag}
+    \textbf{Parameter:} HttpRequest request mit folgenden Body-Parametern:
+    \begin{description}
+        \item[\hspace{\insetContract} orderId:] ID der Bestellung, zu der eine Nachicht geschrieben wurde
+        \item[\hspace{\insetContract} message:] String. Neue Nachicht
+    \end{description}
+    \textbf{Return:} JsonResponse(\{\})
+\end{contract}
+\hspace{\insetMethodDescription{}}
+Hängt eine neue Nachicht an den Nachichtenverlauf der Bestellung mit der ID 'orderId' an und gibt im Erfolgsfall ein leeres JsonObjekt zurück.
+
+
+\subsection{generate_preview()}
+\begin{contract}{Vertrag}
+    \textbf{Parameter:} HttpRequest request mit Parameter MultiValueDict[str "upload-file", uploadedfile.UploadedFile] FILES
+    \textbf{Return:} FilerResponse() 
+\end{contract}
+\hspace{\insetMethodDescription{}}
+Streamed die Datei 'upload-file' für die Browser-Preview.
+
+
+
+
+
+\end{document}

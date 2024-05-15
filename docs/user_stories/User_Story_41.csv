@@ -1,0 +1,10 @@
+ID;041  
+Name; 041_Abrechnung-Screen_Automatische-Abrechnung  
+Beschreibung; Als Mitarbeiter*in/Administrator*in möchte ich die Möglichkeit haben mir eine automatische Abrechnung erstellen zu lassen.
+Hierbei gebe ich ein Startdatum und eine maximale Summe an. Daraufhin werden nach Betätigung des zugehörigen Buttons die noch nicht abgerechneten Bestellungen beginnend mit diesem Datum aufsummiert. Die Tage werden aufsteigend hinzuaddiert. Der erste Tag dessen Bestellungen akkumuliert mit den vorherigen Tagen die maximale Summe überschreiten, wird nicht mehr in die Abrechnung mit aufgenommen. Der/die Nutzer*in erhält eine Rückmeldung über die Summe, die Anzahl an Bestellungen und den Zeitraum. Die in der automatischen Abrechnung enthaltenen Bestellungen werden daraufhin im Frontend selektiert und können durch den Nutzenden abgerechnet werden.  
+Geschätzter Aufwand (Story Points); 3    
+Entwickler\*in; Jonas Milkovits  
+Fertiggestellt in Iteration; 4  
+Tatsächlicher Aufwand (h); 2.5h    
+Velocity (Story Points/h); 1.2  
+Bemerkungen;

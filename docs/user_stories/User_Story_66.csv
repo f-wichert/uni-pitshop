@@ -1,0 +1,10 @@
+ID;066  
+Name; 066_Laserschnitt_Preview_Formate  
+Beschreibung; Neben dem schon unterstützten .dxf Format sollen Nutzer*innen auch .3dm Dateien mit der Vorschau-Funktion verwenden können, wobei hier die vorhandenen Komponenten transparent erweitert werden sollen.  
+Akzeptanzkriterium; Alle zuvor unterstützten Formate sowie die neuen Formate werden ohne Weiteres von der Vorschau-Funktion unterstützt und sind intuitiv zu verwenden. Andere Dateiformate können nicht hochgeladen werden.  
+Geschätzter Aufwand (Story Points);8  
+Entwickler*in;Simon Jungherz  
+Fertiggestellt in Iteration;6  
+Tatsächlicher Aufwand (h);15h  
+Velocity (Story Points/h);0.53  
+Bemerkungen;

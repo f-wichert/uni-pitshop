@@ -1,0 +1,10 @@
+ID;020   
+Name;020_Worker_Aufträge_Bearbeitbarkeit  
+Beschreibung; Als Mitarbeiter*in möchte ich die Möglichkeit haben einen bereits bestehenden Auftrag noch zu bearbeiten. Diese Möglichkeit erhalte ich in der Auftragsübersicht.   
+Akzeptanzkriterium; Abhängig vom Typ des Unterauftrages kann der/die Mitarbeiter*in hier Informationen editieren, wie z.B. den Preis einer Bestellung überschreiben, die Laserschnittminuten setzen oder auch die Zuschnittsgröße anpassen. Weiterhin können hier zur Materialliste eines Laserschnittauftrages auch weitere Materialien hinzugefügt werden.    
+Geschätzter Aufwand (Story Points); 13    
+Entwickler*in; Jonas Milkovits, Laurenz Kammeyer    
+Fertiggestellt in Iteration; 6    
+Tatsächlicher Aufwand (h); 25h  
+Velocity (Story Points/h); 0.52  
+Bemerkungen;

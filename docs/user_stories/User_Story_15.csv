@@ -1,0 +1,10 @@
+ID;015  
+Name; 015_Worker_Auftraege_Sortieren  
+Beschreibung; Als Mitarbeiter*in möchte ich in der Lage sein alle Aufträge in der Auftragsübersicht zu sortieren.  
+Akzeptanzkriterium; In der Auftragsübersicht werden alle gefilterten Aufträge untereinander angezeigt. Die Sortierung kann über der Liste eingestellt werden. Es kann nach Abgabedatum auf- und absteigend, Name und der Bestellnummer sortiert werden. Standardmäßig wird nach absteigender Bestellnummer sortiert.  
+Geschätzter Aufwand (Story Points); 8    
+Entwickler*in; Laurenz Kammeyer, Jonas Milkovits  
+Fertiggestellt in Iteration; 6    
+Tatsächlicher Aufwand (h); 16.5h      
+Velocity (Story Points/h);  0.48 
+Bemerkungen;

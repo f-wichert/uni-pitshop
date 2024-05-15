@@ -1,0 +1,10 @@
+ID;048  
+Name;048_Einheitliche_Interaktion  
+Beschreibung;Der Nutzende soll auf allen Screens eine einheitliche Interaktion erfahren. Dabei sollen sich Designelemente wiederholen und die Interaktion mit diesen. 
+Akzeptanzkriterium;Die verschiedenen Screens dürfen sich lediglich in Funktionialität unterscheiden.    
+Geschätzter Aufwand (Story Points);8  
+Entwickler*in;Frederick Wichert, Jonas Milkovits, Jannik Schmidt
+Fertiggestellt in Iteration;6  
+Tatsächlicher Aufwand (h);16h 
+Velocity (Story Points/h); 0.5    
+Bemerkungen;

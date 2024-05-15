@@ -1,0 +1,36 @@
+<div class="card mb-3">
+    <div class="card-header d-flex align-items-center">
+        <span class="lc-header-title"></span>
+        <button type="button" class="btn-close btn-sm sub-job-close ms-auto"></button>
+    </div>
+    <div class="card-body">
+        <div class="input-group input-group-sm">
+            <label class="input-group-text" for="lc-material">Material</label>
+            <select class="form-select lc-material" required>
+                <option value="" selected>-</option>
+                {% for material, price_str in materials %}
+                    <option value="{{material.id}}" data-variations="{{ material.variations_html_data }}">
+                        {{material.name}} ({{ price_str }}ct/mm²{% if material.material_tooltip %}; {{material.material_tooltip}}{% endif %})
+                    </option>
+                {% endfor %}
+                <option value="-1">[eigenes Material]</option>
+            </select>
+        </div>
+
+        <div class="input-group input-group-sm mt-2">
+            <label class="input-group-text" for="lc-variation">H x L x B</label>
+            <select class="form-select lc-variation" name="lc-variation" required disabled></select>
+        </div>
+
+        <div class="input-group input-group-sm lc-cut-group mt-2 d-none">
+            <label class="input-group-text">Zuschnitt (LxB)</label>
+            <input type="number" class="form-control input-no-spin lc-cut lc-cut-length" name="lc-cut-length" value="1" min="1" required />
+            <input type="number" class="form-control input-no-spin lc-cut lc-cut-width" name="lc-cut-width" value="1" min="1" required />
+        </div>
+
+        <div class="input-group input-group-sm mt-2">
+            <label class="input-group-text" for="lc-count">Anzahl</label>
+            <input type="number" class="form-control lc-count" name="lc-count" value="1" min="1" required />
+        </div>
+    </div>
+</div>

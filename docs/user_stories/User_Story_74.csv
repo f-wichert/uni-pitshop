@@ -1,0 +1,10 @@
+ID; 074
+Name; 074_3DDruck_Parameter_Angeben
+Beschreibung; Als Nutzer*in, auf der 3D-Druck Produktauswahl Seite, möchte ich einige relevante Parameter für den 3D-Druck Auftrag (Filament, Anzahl) einstellen können.
+Akzeptanzkriterium; Auf der 3D-Druck Produktauswahl Seite gibt es Eigabemöglichkeiten für das gewünschte Filament mit einer Auswahl aus verfügbaren Filamenten und die Anzahl, wie oft die Datei gedruckt werden soll.
+Geschätzter Aufwand (Story Points); 3
+Entwickler*in; Jannik Schmidt
+Fertiggestellt in Iteration; 7
+Tatsächlicher Aufwand (h); 2h
+Velocity (Story Points/h); 1.5
+Bemerkungen;

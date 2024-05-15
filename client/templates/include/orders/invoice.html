@@ -1,0 +1,111 @@
+{% load static%}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-9"></div>
+        <div class="col-3">
+            <img src="{%static 'global_img/tud_logo.png' %}" class="img-fluid">
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-9 pe-4">
+            <div class="row" style="font-size: 60%;">
+                <div>FB {{wsinfo.Fachbereich}} | {{wsinfo.WerkstattName}} | {{wsinfo.Straße}}</div>
+            </div>
+            <div class="row ps-0">
+                <div>{{invoiceInfo.invoiceAdress | linebreaks}}</div>
+            </div>
+            <div class="row text-end">
+                <div><strong>Rechnungs-Nr. {{invoiceInfo.invoiceNr}}</strong></div>
+            </div>
+            <div class="row mt-4">
+                {{invoiceInfo.invoiceIntro | linebreaks}}
+            </div>
+            <table class="table table-sm table-borderless">
+                <thead>
+                    <th scope="col" class="col-6 text-start">Beschreibung</th>
+                    <th scope="col" class="col-2 text-center">Menge</th>
+                    <th scope="col" class="col-2 text-center">Preis</th>
+                    <th scope="col" class="col-2 text-center">Gesamt</th>
+                </thead>
+                <tbody>
+                    {% for service in services %}
+                    <tr>
+                        <td class="text-start">{{ forloop.counter }}. {{service.descr}}</td>
+                        <td>{{service.amount}}</td>
+                        <td>{{service.price}}€</td>
+                        <td>{{service.total_price}}€</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <table class="table table-sm table-borderless">
+                <thead>
+                    <th scope="col" class="col-10 text-start"></th>
+                    <th scope="col" class="col-2 text-center"></th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="text-start">Nettosumme</td>
+                        <td>{{totalAmount}}€</td>
+                    </tr>
+                    <tr>
+                        <td class="text-start">MwSt. {{wsinfo.MwSt}}%</td>
+                        <td>{{taxes}}€</td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-borderless">
+                <thead>
+                    <th scope="col" class="col-10 text-start"></th>
+                    <th scope="col" class="col-2 text-center"></th>
+                </thead>
+                <tbody style="font-size:105%">
+                    <tr>
+                        <td class="text-start"><strong>Überweisungsbetrag</strong></td>
+                        <td>{{totalAmountGross}}€</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="row" style="font-size: 90%;">
+                <div>USt-Id.Nr. TU Darmstadt {{wsinfo.UStID}}</div>
+            </div>
+            <div class="row">
+                <div>
+                    Den Gesamtrechnungsbetrag überweisen Sie bitte ohne Abzug unter Angabe der Kostenstelle <strong>{{wsinfo.Kostenstelle}}</strong> Projektnummer <strong>{{wsinfo.Projektnummer}}</strong>
+                    auf das Konto der TU Darmstadt Nr. {{wsinfo.KontoNummer}} bei der {{wsinfo.Bank}} (BLZ {{wsinfo.BLZ}}).
+                </div>
+            </div>
+            <div class="row">
+                <div>Für Auslandsüberweisungen:</div>
+            </div>
+            <div class="row">
+                <div>IBAN: {{wsinfo.IBAN}}</div>
+            </div>
+            <div class="row">
+                <div><strong>Zahlungsziel innerhalb von {{wsinfo.ZahlungszielTage}} Tagen.</strong></div>
+            </div>
+            <div class="row mt-2">
+                <div>Vielen Dank!</div>
+            </div>
+            <div class="row">
+                <div>Mit freundlichen Grüßen</div>
+            </div>
+            <div class="row mt-4">
+                <div>{{wsinfo.Verantwortlicher}}</div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="row">Fachbereich {{wsinfo.Fachbereich}}</div>
+            <div class="row">{{wsinfo.WerkstattName}}</div>
+            <div class="row">{{wsinfo.Verantwortlicher}}</div>
+            <div class="row mt-2" style="font-size: 70%;">{{wsinfo.Straße}}</div>
+            <div class="row" style="font-size: 70%;">{{wsinfo.Ort}}</div>
+            <div class="row mt-2" style="font-size: 70%;">Tel. {{wsinfo.Telefon}}</div>
+            <div class="row" style="font-size: 70%;">Fax  {{wsinfo.Fax}}</div>
+            <div class="row" style="font-size: 70%;">{{wsinfo.Kontakt}}</div>
+            <div class="row mt-4">Datum: {{invoiceInfo.invoiceDate}}</div>
+        </div>
+    </div>
+
+    
+</div>

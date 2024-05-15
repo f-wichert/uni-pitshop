@@ -1,0 +1,79 @@
+{% load static %}
+{% for order in orders %}
+<tr id="order_{{order.id}}_row">
+    <td>
+        <button class="expand-button" data-bs-toggle="collapse" data-bs-target=".order_{{order.id}}_collapse">
+            <img class="icon rotate" src="{% static 'global_svg/icon_collapse.svg' %}"
+                onclick="this.classList.toggle('rotate-180');">
+        </button>
+    </td>
+    <td id="order_{{order.id}}_id"><a href="/my-orders/{{order.id}}" class="link-dark">{{order.id}}</a></td>
+    <td id="order_{{order.id}}_name">{{order.user.first_name}} {{order.user.last_name}}</td>
+    <td id="order_{{order.id}}_date">{{order.date_ordered | date:'d.m.Y - H:i'}} Uhr</td>
+    <td id="order_{{order.id}}_status">
+        <div class="input-group">
+            <select class="form-select" id="order_{{order.id}}_status_selector"
+                onchange="selectNewOrderStatus({{order.id}}, this.options[this.selectedIndex].value);" 
+                {% if order.state is 5 %} disabled {% endif %}>
+                <option value="0" 
+                {% if order.state is 0 %} selected {% endif %}>{{orderStates.0}}</option>
+                <option value="1" 
+                {% if order.state is 1 %} selected {% endif %}>{{orderStates.1}}</option>
+                <option value="2" 
+                {% if order.state is 2 %} selected {% endif %}>{{orderStates.2}}</option>
+                <option value="3" class="onlyIfCompletedState" 
+                {% if order.state is 3 %} selected {% endif %} 
+                {% if not order.are_all_suborders_completed %} disabled {% endif %}>{{orderStates.3}}</option>
+                <option value="4" class="onlyIfCompletedState" 
+                {% if order.state is 4 %} selected {% endif %} 
+                {% if not order.are_all_suborders_completed %} disabled {% endif %}>{{orderStates.4}}</option>
+                <option value="5" 
+                {% if order.state is 5 %} selected {% endif %} disabled>{{orderStates.5}}</option>
+            </select>
+            <button class="btn btn-sm
+                {% if order.state is 0 %} btn-success {% endif %}
+                {% if order.state is 1 %} btn-warning {% endif %}
+                {% if order.state is 2 %} btn-primary {% endif %}
+                {% if order.state is 3 %} btn-info {% endif %}
+                {% if order.state is 4 %} btn-secondary {% endif %}
+                {% if order.state is 5 %} btn-danger {% endif %}" 
+                type="button" {% if order.state is 5 %} disabled {% endif %} id="order_{{order.id}}_status_button"
+                onclick="cycleStates({{order.id}});">
+                    <img src="{%static 'global_svg/arrow-right.svg' %}" class="img-fluid icon" alt="NextState">
+            </button>
+        </div>
+    </td>
+    <td id="order_{{order.id}}_comment">
+        <textarea class="form-control" rows="1"
+            onfocus="this.rows = '3';" 
+            onblur="this.rows = '1';"
+            onchange="saveStaffComment({{order.id}}, this.value);"
+            >{{order.staff_comment}}</textarea>
+    </td>
+    <td id="order_{{order.id}}_message">
+        <img class="icon" alt="Nachricht" src="{% static 'global_svg/envelope.svg' %}"
+            onclick="setUpMessageModalStaffSide({{order.id}}, '{{order.user.first_name}} {{order.user.last_name}}', this);">
+    </td>
+    <td id="order_{{order.id}}_payment">
+        <span class="pe-2" id="order_{{order.id}}_price">{{order.price_str}} €</span> 
+        <img class="icon" src="{% static 'global_svg/receipt.svg' %}" alt="Bezahlung" 
+            onclick="setUpPaymentModalStaffSide({{order.id}}, '{{order.user.first_name}} {{order.user.last_name}}');">
+    </td>
+</tr>
+{% if order.has_lasercut_suborder %}
+<tr class="collapse order_{{order.id}}_collapse">
+    <td colspan="8" class="pb-0 border-bottom-0 border">
+        {% include './suborder_row_lasercut.html' with order=order is_staff=is_staff %}
+    </td>
+</tr>
+{% endif %}
+
+{% if order.has_material_suborder %}
+<tr class="collapse order_{{order.id}}_collapse">
+    <td colspan="8" class="pt-0 border-top-0 border">
+        {% include './suborder_row_material.html' with order=order is_staff=is_staff %}
+    </td>
+</tr>
+{% endif %}
+
+{% endfor %}

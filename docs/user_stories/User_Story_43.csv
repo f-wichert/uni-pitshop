@@ -1,0 +1,10 @@
+ID;043    
+Name;043_Orders_Quittung-Erstellen  
+Beschreibung; Als Mitarbeiter*in möchte ich für eine Bestellung eine Quittung erstellen, damit ich diese dann weiterverwenden kann.    
+Akzeptanzkriterium; Der/die Mitarbeiter*in befindet sich auf der Auftragsübersicht und kann bei einer bestehenden Bestellung über den Button mit einem Quittungsicon eine Quittung erstellen. Dabei öffnet sich der Print-Dialog des Browsers, der dann die Quittung mit allen relevanten Daten (Name, Datum, Preis) und zusätzliche Informationen der Werkstatt enthält. Die Quittung kann nun über den Print-Dialog direkt gedruckt oder abgespeichert werden.    
+Geschätzter Aufwand (Story Points); 3    
+Entwickler*in; Jonas Milkovits    
+Fertiggestellt in Iteration; 5      
+Tatsächlicher Aufwand (h); 4h    
+Velocity (Story Points/h);  0.75    
+Bemerkungen;

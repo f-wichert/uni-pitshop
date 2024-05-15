@@ -1,0 +1,10 @@
+ID;018  
+Name;018_Worker_Aufträge_Fertigstellung_von_Unteraufträgen  
+Beschreibung; Als Mitarbeiter*in kann ich in der Auftragsübersicht einzelne Unteraufträge mithilfe einer Checkbox abhaken, um den Fortschritt dieser Bestellung festzuhalten. 
+Akzeptanzkriterium; Falls ein Unterauftrag abgehakt wird und der Status der Bestellung noch 'Neu' ist, wird der Status auf 'In Bearbeitung' gesetzt. Der Status einer Bestellung kann nur auf 'Abholbereit' oder 'Abgeschlossen' gesetzt werden, falls alle Unteraufträge abgehakt wurden.  
+Geschätzter Aufwand (Story Points); 8 
+Entwickler*in; Jonas Milkovits, Laurenz Kammeyer    
+Fertiggestellt in Iteration; 6    
+Tatsächlicher Aufwand (h); 27h    
+Velocity (Story Points/h); 0.3  
+Bemerkungen;

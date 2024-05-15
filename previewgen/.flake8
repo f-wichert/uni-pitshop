@@ -1,0 +1,6 @@
+[flake8]
+max-line-length = 100
+extend-exclude = .venv,migrations
+per-file-ignores =
+    scripts/create_testdata.py: E402
+    __init__.py:F401

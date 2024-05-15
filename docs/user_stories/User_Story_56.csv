@@ -1,0 +1,10 @@
+ID;056    
+Name; 056_Produktauswahl_3D-Druck  
+Beschreibung; Als Nutzer*in möchte ich die Möglichkeit haben einen 3D-Druck Unterauftrag abzugeben.  
+Akzeptanzkriterium; Über die Produktauswahl kann man mithilfe einer neuen Kachel für den 3D-Druck zum Screen für das Aufgeben eines 3D-Druck-Auftrags gelangen. Es ist außerdem ein Bild hinterlegt, um die Navigation zu erleichtern.      
+Geschätzter Aufwand (Story Points); 1    
+Entwickler*in; Jannik Schmidt, Frederick Wichert, Jonas Milkovits  
+Fertiggestellt in Iteration; 7    
+Tatsächlicher Aufwand (h); 1.5h      
+Velocity (Story Points/h); 0.66      
+Bemerkungen;

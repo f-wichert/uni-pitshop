@@ -1,0 +1,10 @@
+ID;009
+Name; 009_Administration-Nutzerübersicht-anzeigen
+Beschreibung; Als Administrator*in möchte ich bei der Administration eine Übersicht aller bestehenden Nutzenden als Tabelle sehen, um dort überprüfen zu können, welche Nutzende Mitarbeiter*innen sind und ob noch neue Accounts für manche Nutzende angelegt werden müssen.
+Akzeptanzkriterium; Bei Besuch der Administration wird dieser Screen als Erstes angezeigt. Der Screen zeigt eine Tabelle mit allen in der Datenbank hinterlegten Nutzenden des Systems an. Hierbei werden für den Nutzenden relevante Informationen auf den ersten Blick angezeigt. Detailinformationen findet man, sobald man den Nutzenden anklickt.
+Geschätzter Aufwand (Story Points); 1
+Entwickler*in; Jonas Milkovits
+Fertiggestellt in Iteration; 7
+Tatsächlicher Aufwand (h); 1h
+Velocity (Story Points/h); 1
+Bemerkungen;

@@ -1,0 +1,277 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% include '../include/generic/header_import.html' %}
+    <link rel="stylesheet" href="{% static 'orders/OrdersOverview.css' %}">
+    <title>Auftragsübersicht</title>
+</head>
+
+<body class="d-flex flex-column h-100">
+    {% include '../include/generic/navbar.html' %}
+
+    <div class="container-fluid nonPrintArea">
+        <div class="card">
+            <div class="card-header">
+                <h3>Auftragsübersicht</h3>
+            </div>
+            <div class="card-body main-body">
+                <div class="scroll" id="scroll-area">
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <!-- Refresh Button -->
+                                    <th scope="col" class="pe-0 ps-0">
+                                        <span class="btn btn-info btn-sm" id="refresh-button"
+                                            onclick="updateListOfOrders();">
+                                            <img src="{% static 'global_svg/arrow-reload.svg' %}" alt="Refresh Button"
+                                                class="icon img-fluid">
+                                        </span>
+                                    </th>
+                                    <!-- Id Input -->
+                                    <th scope="col" class="col-1">
+                                        <div class="input-group">
+                                            <span class="input-group-text"><b>ID</b></span>
+                                            <input type="number" class="form-control filter-value" id="id-field" oninput="onFinishTyping();">
+                                            <span class="input-group-text" id="sort-id" onclick="handleSortStates(event.target, 'id');">
+                                                <img src="{%static 'global_svg/sort_desc.svg' %}" alt="sort_desc"
+                                                    class="img-fluid inactiveFilter">
+                                                <img src="{%static 'global_svg/sort_asc.svg' %}" alt="sort_asc"
+                                                    class="img-fluid inactiveFilter">
+                                            </span>
+                                        </div>
+                                    </th>
+                                    <!-- Name input -->
+                                    <th scope="col" class="col-2">
+                                        <div class="input-group">
+                                            <span class="input-group-text"><b>Name</b></span>
+                                            <input type="text" class="form-control filter-value" id="name-field" oninput="onFinishTyping();">
+                                            <span class="input-group-text" id="sort-name" onclick="handleSortStates(event.target, 'name');">
+                                                <img src="{%static 'global_svg/sort_desc.svg' %}" alt="sort_desc"
+                                                    class="img-fluid inactiveFilter">
+                                                <img src="{%static 'global_svg/sort_asc.svg' %}" alt="sort_asc"
+                                                    class="img-fluid inactiveFilter">
+                                            </span>
+                                        </div>
+                                    </th>
+                                    <!-- Datum input -->
+                                    <th scope="col" class="col-3">
+                                        <div class="input-group">
+                                            <span class="input-group-text"><b>Datum</b></span>
+                                            <input type="date" class="form-control relevantFilter"
+                                                placeholder="Datum von" id="date-field-1" oninput="updateListOfOrders();">
+                                            <input type="date" class="form-control relevantFilter"
+                                                placeholder="Datum bis" id="date-field-2" oninput="updateListOfOrders();">
+                                            <span class="input-group-text sort-span" id="sort-date" onclick="handleSortStates(event.target, 'date');">
+                                                <img src="{%static 'global_svg/sort_desc.svg' %}" alt="sort_desc"
+                                                    class="img-fluid inactiveFilter">
+                                                <img src="{%static 'global_svg/sort_asc.svg' %}" alt="sort_asc"
+                                                    class="img-fluid inactiveFilter">
+                                            </span>
+                                        </div>
+                                    </th>
+                                    <!-- Status input -->
+                                    <th scope="col" class="col-2">
+                                        <div class="dropdown w-100" id="stateFilterDropdown">
+                                            <button class="btn dropdown-toggle w-100" type="button" id="dropdownMenu"
+                                                data-bs-toggle="dropdown" aria-expanded="false">
+                                                <b>Status filtern</b>
+                                            </button>
+                                            <ul class="dropdown-menu p-0 w-100">
+                                                <li><button value="0" class="fs-5 stateFilterDropdownItem dropdown-item keep-open selected"
+                                                        type="button"
+                                                        onclick="toggleStateFilter(event)">{{orderStates.0}}</button>
+                                                </li>
+                                                <li><button value="1" class="fs-5 stateFilterDropdownItem dropdown-item keep-open selected"
+                                                        type="button"
+                                                        onclick="toggleStateFilter(event)">{{orderStates.1}}</button>
+                                                </li>
+                                                <li><button value="2" class="fs-5 stateFilterDropdownItem dropdown-item keep-open selected"
+                                                        type="button"
+                                                        onclick="toggleStateFilter(event)">{{orderStates.2}}</button>
+                                                </li>
+                                                <li><button value="3" class="fs-5 stateFilterDropdownItem dropdown-item keep-open selected"
+                                                        type="button"
+                                                        onclick="toggleStateFilter(event)">{{orderStates.3}}</button>
+                                                </li>
+                                                <li><button value="4" class="fs-5 stateFilterDropdownItem dropdown-item keep-open "
+                                                        type="button"
+                                                        onclick="toggleStateFilter(event)">{{orderStates.4}}</button>
+                                                </li>
+                                                <li><button value="5" class="fs-5 stateFilterDropdownItem dropdown-item keep-open "
+                                                        type="button"
+                                                        onclick="toggleStateFilter(event)">{{orderStates.5}}</button>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </th>
+                                    <!-- Staff comment Label -->
+                                    <th scope="col" class="col-2">
+                                        <div class="table_header_like_input">
+                                            <b>Mitarbeiter
+                                                Kommentar</b>
+                                        </div>
+                                    </th>
+                                    <!-- Comment input -->
+                                    <th scope="col" class="col-1">
+                                        <div class="table_header_like_input">
+                                            <b>Nachrichten</b>
+                                        </div>
+                                    </th>
+                                    <!-- Payment Label -->
+                                    <th scope="col" class="col-1">
+                                        <div class="table_header_like_input">
+                                            <b>Preis/Bezahlung</b>
+                                        </div>
+                                    </th>
+                                    <!-- Delete
+                                                <th scope="col" class="col-1">
+                                                    <div class="input-group-text"><b>Löschen</b></div>
+                                                </th> -->
+                                </tr>
+                            </thead>
+                            <tbody id="orders_table_body">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Message Modal -->
+    <div class="modal fade" id="messageModal" tabindex="-1" aria-labelledby="messageModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="messageModalLabel"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body messageModalBody">
+                    <table class="table table-borderless" id="messageModalTable">
+                        <tbody id="messageModalTableBody">
+                        </tbody>
+                    </table>
+                    <div class="row" id="messageModalTextAreaRow">
+                        <div class="col-10 align-self-center text-center">
+                            <textarea class="form-control" rows=4 placeholder="Nachricht"
+                                id="sendMessageTextField"></textarea>
+                        </div>
+                        <div class="col-2 align-self-center text-center">
+                            <button type="button" class="btn btn-outline-primary"
+                                id="messageModalSendButton">Senden</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Payment Modal -->
+    <div class="modal fade nonPrintArea" id="paymentModal" tabindex="-1" aria-labelledby="paymentModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="paymentModalLabel"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body paymentModalBody">
+                    <nav>
+                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                            <button class="nav-link active" id="nav-quittung-tab" data-bs-toggle="tab"
+                                data-bs-target="#nav-quittung" type="button" role="tab" aria-controls="nav-quittung"
+                                aria-selected="true">Quittung</button>
+                            <button class="nav-link" id="nav-rechnung-tab" data-bs-toggle="tab"
+                                data-bs-target="#nav-rechnung" type="button" role="tab" aria-controls="nav-rechnung"
+                                aria-selected="false">Rechnung</button>
+                        </div>
+                    </nav>
+                    <div class="tab-content mt-2" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="nav-quittung" role="tabpanel"
+                            aria-labelledby="nav-quittung-tab">
+                        </div>
+                        <div class="tab-pane fade" id="nav-rechnung" role="tabpanel" aria-labelledby="nav-rechnung-tab">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Material List Modal -->
+    <div class="modal fade" id="materialListModal" tabindex="-1" aria-labelledby="materialListModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="materialListModalHeader"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="materialListModalBody">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid printArea" id="paymentPrintDiv">
+    </div>
+
+
+    {% include '../include/generic/footer.html' %}
+
+    <script>
+        const MESSAGE_ICON = "{% static 'global_svg/envelope.svg' %}";
+        const CONFIRM_DELETE = "{%static 'global_svg/confirm_delete.svg' %}";
+    </script>
+    <script src="{% static 'orders/OrdersOverview.js' %}"></script>
+    <script src="{% static 'orders/order_edit.js' %}"></script>
+    <script src="{% static 'orders/add_new_material_row.js' %}"></script>
+    <script src="{% static 'orders/lasercut_edit.js' %}"></script>
+    <script src="{% static 'orders/material_edit.js' %}"></script>
+    <script src="{% static 'orders/message.js' %}"></script>
+    <script src="{% static 'orders/payment.js' %}"></script>
+    <script> 
+        const updatePriceFunctionObject = {
+            'lasercut': updateLasercutPrice,
+            'material': updateMaterialPrice,
+            // '3dprint': update3dprintPrice,
+        }
+
+        const stateColorsArray = [
+            'btn-success',
+            'btn-warning',
+            'btn-primary',
+            'btn-info',
+            'btn-secondary',
+            'btn-danger',
+        ]
+
+        const stateColors = {
+            0: stateColorsArray[0],
+            1: stateColorsArray[1],
+            2: stateColorsArray[2],
+            3: stateColorsArray[3],
+            4: stateColorsArray[4],
+            5: stateColorsArray[5],
+        }
+
+        const finishedStates = [
+            '3',
+            '4',
+            '6',
+        ]
+
+        const materialAmountMax = 99;
+        const materialAmountMin = 1;
+        updateListOfOrders(); 
+    </script>
+</body>

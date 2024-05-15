@@ -1,0 +1,19 @@
+                        {% load static %}
+                        {% for billing in billings %}
+                            <tr>
+                                <td class="text-center align-middle" id="billing_{{billing.id}}">{{billing.id}}</th>
+                                <td class="text-center align-middle" id="billing_{{billing.id}}_date">{{billing.date_billed | date:'d.m.Y - H:i'}} Uhr</td>
+                                <td class="text-center align-middle" id="billing_{{billing.id}}_name">{{billing.user.last_name}}, {{billing.user.first_name}}</td>
+                                <td class="text-center align-middle" id="billing_{{billing.id}}_period">{{billing.period}}</td>
+                                <td class="text-center align-middle" id="billing_{{billing.id}}_print">
+                                    <button type="button" class="btn btn-info billingDeleteButton" onclick="printBilling(this)">
+                                        <img src="{%static 'global_svg/printer.svg' %}" alt="printer_svg" class="img-fluid">
+                                    </button>
+                                </td>
+                                <td class="text-center align-middle" id="billing_{{billing.id}}_delete">
+                                    <button type="button" class="btn btn-warning billingDeleteButton" onclick="deleteBilling(this)">
+                                        <img src="{%static 'global_svg/trash_can.svg' %}" alt="trashcan_svg" class="img-fluid">
+                                    </button>
+                                </td>
+                            </tr>
+                        {% endfor %}

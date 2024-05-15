@@ -1,0 +1,10 @@
+ID;061  
+Name; 061_Laserschnitt_Preview_Backend  
+Beschreibung; Auf Anfrage wird in einem separaten Prozess aus einer hochgeladenen CAD-Datei ein Vorschaubild generiert und zurückgesendet.  
+Akzeptanzkriterium; Falls das Dateiformat unterstützt ist, wird ein .png als Vorschaubild von diesem separaten Prozess/Service erstellt und als Antwort auf die Anfrage gesendet. Dabei sollen auch mehrere Anfragen gleichzeitig/parallel ohne größere Wartezeiten bearbeitet werden können.  
+Geschätzter Aufwand (Story Points);21  
+Entwickler*in;Simon Jungherz  
+Fertiggestellt in Iteration;4  
+Tatsächlicher Aufwand (h);28h  
+Velocity (Story Points/h);0.75  
+Bemerkungen;

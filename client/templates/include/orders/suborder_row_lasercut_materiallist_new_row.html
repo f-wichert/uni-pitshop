@@ -1,0 +1,67 @@
+        {% load static %}
+                <tr id="newMaterialListRow">
+                    <!-- Edit Button -->
+                    <td id="order_{{order.id}}_material_suborder_new_material_list_row_edit_field">
+                        <button class="btn btn-sm btn-light" 
+                            type="button"
+                            id="order_{{order.id}}_material_suborder_new_material_list_row_add"
+                            onclick="addNewMaterialListRow({{order.id}}, {{lasercut_suborder.id}}, false);"
+                            {% if order.is_finished %} disabled {% endif %}>
+                            <img class="icon" src="{%static 'global_svg/plus_square.svg' %}" class="img-fluid">
+                        </button>
+                        <button class="btn btn-sm btn-success d-none" 
+                            type="button"
+                            id="order_{{order.id}}_material_suborder_new_material_list_row_save"
+                            onclick="addNewMaterialListRow({{order.id}}, {{lasercut_suborder.id}}, true);">
+                            <img class="icon" src="{%static 'global_svg/save.svg' %}" class="img-fluid">
+                        </button>
+                    </td>
+                    <!-- Material Name-->
+                    <td id="order_{{order.id}}_material_suborder_new_material_list_row_materialname">
+                        <select class="form-select newRowInput" 
+                            id="order_{{order.id}}_material_suborder_new_material_list_row_material_select" disabled
+                            onchange="updateNewMaterialListRow({{order.id}}, false, this.options[this.selectedIndex].value);">
+                        </select>
+                    </td>
+                    <!-- Material Amount -->
+                    <td id="order_{{order.id}}_material_suborder_new_material_list_row_amount">
+                        <div class="input-group">
+                            <input class="form-control text-center newRowInput" 
+                                type="number" step="1" max="99"
+                                disabled
+                                id="order_{{order.id}}_material_suborder_new_material_list_row_amount_input"
+                                onchange="validateMaterialInput(this);updatePriceNewMaterialListRow({{order.id}});">
+                        </div>
+                    </td>
+                    <!-- Material Variation -->
+                    <td id="order_{{order.id}}_material_suborder_new_material_list_row_variation">
+                        <div class="input-group">
+                            <select class="form-select text-center newRowInput"
+                                id="order_{{order.id}}_material_suborder_new_material_list_row_variation_select" disabled
+                                onchange="changeMaterialVariationNewMaterialListRow({{order.id}}, this.options[this.selectedIndex].value);">
+                            </select>
+                        </div>
+                    </td>
+                    <!-- Material cut -->
+                    <td id="order_{{order.id}}_material_suborder_new_material_list_row_cut">
+                        <div class="input-group">
+                            {% if not material_suborder.material.is_fixed %}
+                            <input class="form-control text-center newRowInputCut" type="number"
+                                max="{{material_suborder.material.length}}"
+                                value="{{material_suborder.length}}" disabled
+                                id="order_{{order.id}}_material_suborder_new_material_list_row_length_input"
+                                onchange="validateMaterialInput(this);updatePriceNewMaterialListRow({{order.id}});">
+                            <input class="form-control text-center newRowInputCut" type="number"
+                                max="{{material_suborder.material.width}}"
+                                value="{{material_suborder.width}}" disabled
+                                id="order_{{order.id}}_material_suborder_new_material_list_row_width_input"
+                                onchange="validateMaterialInput(this);updatePriceNewMaterialListRow({{order.id}});">
+                            {% endif %}
+                        </div>
+                    </td>
+                    <!-- Price -->
+                    <td id="order_{{order.id}}_material_suborder_new_material_list_row_price">
+                    </td>
+                    <td>
+                    </td>
+                </tr>

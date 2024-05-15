@@ -1,0 +1,54 @@
+ID; 069  
+Name; 069_Major_Model_Refactoring
+Beschreibung; Als Nutzer*in möchte ich, dass alle Dienstleistungen der Werkstatt korrekt und intuitiv auf der Website  abgebildet werden.  
+Akzeptanzkriterium; Das Model wurde nach den folgenden Kriterien angepasst und der gesamte Code wurde an das neue Model angepasst.  
+ExtendedUser:  
+    - ExtendedUserRole Tabelle mit drei Rollen (Interner Student, Externer Student, Externer Kunde)  
+    - ExtendedUser mit Feld für diese Rolle  
+    - Nutzen bei Login nun User.is_active => Es sollen keine User gelöscht werden!  
+
+Suborder:  
+    - price_override: Überschreiben des Preises durch Mitarbeiter  
+    - price_billed: speichert momentanen Preis zum Zeitpunkt der Abrechnungsdurchführung, damit  
+        bereits abgerechente Bestellungen durch Preisänderungen nicht beeinflusst werden  
+
+SubOrderLaserCut:  
+    - Tabelle für ExtendedUserRole mit Zuordnung zu Preis (LasercutMinutePrice)  
+    - upload_date: Speichern des Uploaddatums (für Logik später mit Filedelete)  
+    - minutes: Hier werden Laserschnittminuten zur Preisberechnung gespeichert  
+    - price-property: Berechnet Preis für Laserschnitt  
+
+SubOrderMaterial:  
+    - Remove LaserCutPart  
+    - Lasermaterialien sind jetzt Material Suborders WEIL wir hier auch dieselben Maßbeschränkungen etc. beachten müssen  
+        => Dafür gibt es jetzt ein Fremdschlüssel (nullable) in SubOrderMaterial auf SubOrderLaserCut  
+        => falls FK == null -> Materialkauf  
+        => falls FK != null -> Materialkauf für Laserschnitt (taucht in Materialliste auf)  
+
+Wie funktioniert price_override bei Laserschnitt?  
+    - price_override in Auftragsübersicht-Collapse überschreibt price_override von SubOrderLaserCut  
+        => nur Preis für Laserschnittminuten!  
+    - price_override für Laserschnittmaterialen findet in 'Materialliste' separat statt!  
+
+MaterialVariation:  
+    - Name, Thickness sind die wichtigsten Spalten  
+    - jedes Name, Thickness Paar hat einen bestimmten Quadratmeterpreis  
+    - zusätzlich wird hier festgelegt ob diese Variation im Laserschnitt beachtet werden soll  
+    - außerdem gibt es ein Feld ob diese Variation verfügbar sein soll (Deaktivieren für gewisse Zeit z.B. durch Mitarbeiter)  
+        => hier auch noch Masterfeld in Material, dass alle Varianten inaktiv schaltet => property: is_available  
+    - non_default_width & non_default_length:  
+        => pro Thickness kann eine separate Länge & Breite festgelegt werden, wird z.B. bei Graupappe 3mm benötigt  
+    - Der Standardwert für Länge und Breite wird auf Materialebene hinterlegt (default_width & default_length)  
+        => Hier gibt es auch auf Variationsebene zwei Properties die das korrekt zurückliefern  
+    
+Material:  
+    - is_fixed_size: Falls dieses Boolean Feld gesetzt ist, können Variatonen nur die gesetzten Werte verwenden und nicht angepasst werden  
+        => ist dieses Feld false, können alle Werte bis zu den gespeicherten Werten verwendet werden  
+    - needs_comment: Boolean, if true, render textarea required as comment in frontend  
+    - material_tooltip: TextField, if set, render tooltip for certain material in frontend  
+Geschätzter Aufwand (Story Points); 13  
+Entwickler\*in; Jannik Schmidt, Frederick Wichert  
+Fertiggestellt in Iteration; 5  
+Tatsächlicher Aufwand (h); 25h  
+Velocity (Story Points/h); 0.52
+Bemerkungen;

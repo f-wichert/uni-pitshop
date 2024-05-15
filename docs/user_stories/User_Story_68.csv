@@ -1,0 +1,10 @@
+ID;068
+Name; 068_E-Mail_Benachrichtigung_Nachrichtempfang  
+Beschreibung; Als Nutzer*in möchte ich Nachrichten, welche mir über das Nachrichtensystem der Website zugestell wurden als E-Mail erhalten, um sicherzustellen, dass ich diese nicht verpasse.  
+Akzeptanzkriterium; Wird einem/einer Nutzer*in eine Nachricht vom Pitshop Team geschrieben, muss eine E-Mail mit der Nachricht als Inhalt an die hinterlegte E-Mail Addresse des Nutzers/der Nutzerin geschickt werden.
+Geschätzter Aufwand (Story Points);3  
+Entwickler*in;Frederick Wichert  
+Fertiggestellt in Iteration;7  
+Tatsächlicher Aufwand (h);3h  
+Velocity (Story Points/h);1  
+Bemerkungen;

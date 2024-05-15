@@ -1,0 +1,10 @@
+ID;038  
+Name;038_Footer_Anzeige  
+Beschreibung; Als Nutzer*in möchte ich Zugriff auf verschiedene Informationen bezüglich der Website haben, wie z.B. die Datenschutzerklärung, die AGB und das Impressum.  
+Akzeptanzkriterium; Der Footer befindet sich auf jeder Seite. Der Footer enthält Buttons zur Weiterleitung auf die Datenschutzerklärung, die AGB und das Impressum. Sobald der/die Nutzer*in auf einen der Buttons klicken, werden sie erfolgreich auf die jeweilige Seite weitergeleitet.   
+Geschätzter Aufwand (Story Points); 1  
+Entwickler*in; Jonas Milkovits  
+Fertiggestellt in Iteration; 1  
+Tatsächlicher Aufwand (h); 1h  
+Velocity (Story Points/h); 1  
+Bemerkungen;

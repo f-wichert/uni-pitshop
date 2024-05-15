@@ -1,0 +1,10 @@
+ID; 034  
+Name; 034_Material-Einkauf 
+Beschreibung;Der/die Nutzer*in befindet sich auf der Auftragsseite des Materialeinkaufes und kann hier erfolgreich seine Parameter zum Materialkauf auswählen.   
+Akzeptanzkriterium;Die Parameter können erfolgreich ausgewählt werden. Das HTML für jedes Material wird jedes mal dynamisch aus dem Backend heraus generiert. Auf der Übersicht für die Materialien sind alle Materialien sichtbar.  Es ist ein Template verfügbar, dem nur gewisse Parameter zu übergeben sind die dann das genaue Material bestimmen, das macht hinzufügen von Materialien sehr einfach, sogar automatisierbar.
+Geschätzter Aufwand (Story Points);13  
+Entwickler*in; Frederick Wichert
+Fertiggestellt in Iteration;6  
+Tatsächlicher Aufwand (h); 25h 
+Velocity (Story Points/h); 0.52 
+Bemerkungen;

@@ -1,0 +1,57 @@
+{% load static %}
+
+<div class="row">
+    <div class="col-5 d-flex align-items-end" style="font-size: 90%;">
+        Fachbereich {{wsinfo.Fachbereich}} <br>{{wsinfo.WerkstattName}}, {{wsinfo.Verantwortlicher}} <br>{{wsinfo.Straße}}, {{wsinfo.Ort}}
+    </div>
+    <div class="col-3 d-flex align-items-end text-end" style="font-size: 60%;">
+        <span>Tel. {{wsinfo.Telefon}} <br>Fax. {{wsinfo.Fax}} <br>{{wsinfo.Kontakt}}</span>
+    </div>
+    <div class="col-4">
+        <img src="{%static 'global_img/tud_logo.png' %}" class="img-fluid">
+    </div>
+</div>
+<div class="row mt-4 text-center">
+    <h2 class="mt-2">Abrechnung</h2>
+</div>
+<div class="row mt-4">
+    <table class="table table-borderless">
+        <thead>
+            <th scope="col" class="col-4 text-center">Abgerechnet am</th>
+            <th scope="col" class="col-4 text-center">Abrechnungszeitraum</th>
+            <th scope="col" class="col-2 text-center">Anzahl</th>
+            <th scope="col" class="col-2 text-center">Summe</th>
+        </thead>
+        <tbody  id="printInfoTableBody">
+        </tbody>
+    </table>
+</div>
+<div class="row mt-4 mb-4">
+    <table class="table">
+        <thead>
+            <th scope="col" class="col-1 text-center">ID</th>
+            <th scope="col" class="col-4 text-center">Name</th>
+            <th scope="col" class="col-4 text-center">Auftragsdatum</th>
+            <th scope="col" class="col-3 text-center">Betrag</th>
+        </thead>
+        <tbody class="table-striped" id="printTableBody">
+            {% for order in orders %}
+            <tr>
+                <td class="text-center align-middle" id="orderAutoBilling_{{order.id}}">{{order.id}}</th>
+                <td class="text-center align-middle" id="orderAutoBilling_{{order.id}}_name"> {{order.user.last_name}}, {{order.user.first_name}}</td>
+                <td class="text-center align-middle" id="orderAutoBilling_{{order.id}}_date_ordered">{{order.date_ordered | date:'d.m.Y - H:i'}} Uhr</td>
+                <td class="text-center align-middle" id="orderAutoBilling_{{order.id}}_price">{{order.price_str}} €</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td class="text-center"><b><span id="printAmountOfOrders"></span></b></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"><b><span id="printSumOfOrders"></span></b></td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+

@@ -1,0 +1,4 @@
+*
+!previewgen/
+!Pipfile*
+!pyproject.toml

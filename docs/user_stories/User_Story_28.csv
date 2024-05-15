@@ -1,0 +1,10 @@
+ID; 028
+Name; 028_Warenkorb_Datei_Download
+Beschreibung; Als Nutzer*in möchte ich im Warenkorb meine für Laserschnitt Bestellungen hochgeladenen Dateien herunterladen können.
+Akzeptanzkriterium; Im Warenkorb gibt es für jede Laserschnitt Suborder einen Button, welcher nach Betätigung die mit der Suborder assoziierte Datei herunterlädt.
+Geschätzter Aufwand (Story Points); 3
+Entwickler*in; Jannik Schmidt
+Fertiggestellt in Iteration; 5
+Tatsächlicher Aufwand (h); 4.5h
+Velocity (Story Points/h); 0.67
+Bemerkungen;

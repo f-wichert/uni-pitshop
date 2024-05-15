@@ -1,0 +1,35 @@
+.inactiveFilter {
+    opacity: 0.3;
+}
+
+.printArea {
+    display: none;
+}
+@media print {
+   .nonPrintArea {
+       display: none !important;
+    }
+    #navBar {
+        display: none !important;
+    }
+    #footerMain {
+        display: none !important;
+    }
+    .printArea {
+        display: block !important;
+    }
+    .modal-backdrop {
+        opacity: 1 !important;
+    }
+}
+
+#messageModalTable {
+    border-collapse: separate;
+    border-spacing: 0 20px;
+}
+
+.messageRow {
+    white-space: pre-wrap; 
+    background-color: rgb(246, 246, 246) !important; 
+    border-radius: 10px;
+}

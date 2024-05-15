@@ -1,0 +1,10 @@
+ID;070  
+Name;070_Backend_Bugfixes_und_Cleanup  
+Beschreibung; Als Nutzer*in der Website erwarte ich, dass alle Aktionen die ich durchführe,   
+Akzeptanzkriterium; Alle während der Entwicklung gefundenen Fehler im Backend wurden behoben, alle Anfragen an den Server werden korrekt validiert und unbenutzter Code wurde entfernt.  
+Geschätzter Aufwand (Story Points); 3  
+Entwickler*in; Jannik Schmidt  
+Fertiggestellt in Iteration; 7  
+Tatsächlicher Aufwand (h); 8.78h 
+Velocity (Story Points/h); 0.34
+Bemerkungen;

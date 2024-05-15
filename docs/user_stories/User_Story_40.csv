@@ -1,0 +1,10 @@
+ID;040  
+Name;040_Navbar_Funktionalität  
+Beschreibung; Jede/r Nutzer*in soll zu jeder Zeit die Website mittels der Navbar navigieren können.  
+Akzeptanzkriterium; Die Navbar ist jederzeit sichtbar und die Seiten sind erreichbar. Bei nicht berechtigten Zugriffsversuchen wird auf die Loginseite weitergeleitet.  
+Geschätzter Aufwand (Story Points);3  
+Entwickler*in; Frederick Wichert, Jannik Schmidt, Jonas Milkovits  
+Fertiggestellt in Iteration;1    
+Tatsächlicher Aufwand (h);4h   
+Velocity (Story Points/h);0.75    
+Bemerkungen;

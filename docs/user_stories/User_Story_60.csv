@@ -1,0 +1,10 @@
+ID;060  
+Name; 060_Laserschnitt_Preview_UI  
+Beschreibung; Als Nutzer*in möchte ich eine CAD-Datei hochladen können und eine Vorschau der hochgeladenen Datei ansehen können, bevor ich die Order absende.  
+Akzeptanzkriterium; Eine separate Komponente zum Generieren eines Vorschaubildes ist gegeben und zeigt auf Anfrage eine Vorschau der hochgeladenen Datei an (nur UI, kein Backend), vorausgesetzt das Dateiformat wird unterstützt.  
+Geschätzter Aufwand (Story Points);8  
+Entwickler*in;Simon Jungherz  
+Fertiggestellt in Iteration;5  
+Tatsächlicher Aufwand (h);10h  
+Velocity (Story Points/h);0.8  
+Bemerkungen;

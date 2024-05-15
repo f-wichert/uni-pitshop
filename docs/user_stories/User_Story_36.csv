@@ -1,0 +1,10 @@
+ID; 036  
+Name; 036_Material-Einkauf_Kostenapproximation  
+Beschreibung; Ich befinde mich auf der Eingabeseite einer Materialbestellung. Nach erfolgreichem Eingeben und vor der finalen Abgabe wird dem/der Nutzer*in eine Kostenapproximation anhand der gegebenen Informationen angezeigt.  
+Akzeptanzkriterium; Alle benötigten Eingaben wurden verarbeitet, um die Kostenapproximation zu erstellen. Nach jeder Eingabe wird geguckt ob die Kostenapproximation durchgeführt werden kann. Ist dies der Fall wird diese nach den gegebenen Regeln durchgeführt und angezeigt. Dies wird mit einem visuellen Feedback begleitet. 
+Geschätzter Aufwand (Story Points);3  
+Entwickler*in;Frederick Wichert, Jonas Milkovits  
+Fertiggestellt in Iteration;7  
+Tatsächlicher Aufwand (h);5h  
+Velocity (Story Points/h);0.6  
+Bemerkungen;

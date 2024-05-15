@@ -1,0 +1,10 @@
+ID; 027
+Name; 027_Warenkorb_Suborder_bearbeiten
+Beschreibung; Als Nutzer*in, der/die die Warenkorb Ansicht geöffnet hat möchte ich für jede im Warenkorb enthaltenen Suborder relevante Eigenschaften (Dimension, Anzahl, Zuschnitt) einsehen und verändern können.  
+Akzeptanzkriterium; In der Warenkorbübersicht eines Nutzers/einer Nutzerin gibt es für jeden Suborder Eintrag eine Eingabgemöglichkeit für jede veränderbare Eigenschaft der Suborder mit dem aktuellen Wert als Standardwert. Der Wert kann durch Eingabe eines neuen Wertes verändert werden. Wird ein ungültiger Wert eingegeben, wird der Input saturierend auf einen gültgen Wert zurückgesetzt.  
+Geschätzter Aufwand (Story Points); 8  
+Entwickler\*in; Jannik Schmidt  
+Fertiggestellt in Iteration; 4  
+Tatsächlicher Aufwand (h); 11.25h 
+Velocity (Story Points/h); 0.71
+Bemerkungen;

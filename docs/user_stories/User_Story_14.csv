@@ -1,0 +1,10 @@
+ID;014    
+Name;014_Login-Screen-Externer-Login  
+Beschreibung; Als externe/r Kunde*in möchte ich mich direkt auf dem Login-Screen einloggen können, um die Website zu nutzen.
+Akzeptanzkriterium; Der Login-Screen enthält eine Eingabe für den Benutzer*innennamen und das Passwort der/des Nutzers*in. Zusätzlich ist ein 'Login'-Button vorhanden, der die Daten an das Backend weiterleitet, diese überprüft und bei richtiger Eingabe den/die Nutzer*in auf die Startseite weiterleitet. Diese/r ist nun eingeloggt. Falls die Daten inkorrekt sind, wird dies dem/der Nutzer*in mit einer Fehlermeldung mitgeteilt und diese/r kann seine Daten erneut eingeben.    
+Geschätzter Aufwand (Story Points); 8  
+Entwickler*in; Frederick Wichert, Jannik Schmidt  
+Fertiggestellt in Iteration; 2  
+Tatsächlicher Aufwand (h); 9h   
+Velocity (Story Points/h); 0.88  
+Bemerkungen;

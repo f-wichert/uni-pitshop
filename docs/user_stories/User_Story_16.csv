@@ -1,0 +1,10 @@
+ID;016  
+Name;016_Worker_Aufträge_Detailansicht   
+Beschreibung; Als Mitarbeiter*in habe ich die Möglichkeit über die Auftragsübersicht die Detailansicht eines bestimmten Auftrages zu öffnen.  
+Akzeptanzkriterium; Innerhalb der Zeile, in der ein Auftrag angezeigt wird, befindet sich eine Lupe, mit der die Detailansicht geöffnet werden kann. Daraufhin öffnet sich die Detailansicht für den/die Mitarbeiter*in.  
+Geschätzter Aufwand (Story Points); 1      
+Entwickler*in; Jonas Milkovits, Laurenz Kammeyer   
+Fertiggestellt in Iteration; 6  
+Tatsächlicher Aufwand (h); 2h    
+Velocity (Story Points/h); 0.5    
+Bemerkungen;

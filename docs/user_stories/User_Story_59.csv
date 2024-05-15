@@ -1,0 +1,10 @@
+ID; 059
+Name; 059_Warenkorb_Bugfixes
+Beschreibung; Als Nutzer*in erwarte ich, dass der Warenkorb fehlerfrei und intuitiv funktionert.
+Akzeptanzkriterium; Während der Entwicklung gefundene Fehler wurde behoben und unintuitives Verhalten der Software wurde angepasst. Zudem sollte der Code refactored werden, um Fehlertoleranz, Geschwindigkeit und Erweiterbarkeit zu verbessern.
+Geschätzter Aufwand (Story Points); 5
+Entwickler*in; Jannik Schmidt
+Fertiggestellt in Iteration; 6
+Tatsächlicher Aufwand (h); 10h
+Velocity (Story Points/h); 0.5
+Bemerkungen;

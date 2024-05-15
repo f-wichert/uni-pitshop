@@ -1,0 +1,10 @@
+ID; 035  
+Name; 035_Material-Einkauf_Auftrag_bestätigen  
+Beschreibung; Nachdem ein Auftrag eingegeben wurde, d.h. die Parameter wurden passend gewählt, möchte ich als Nutzer*in nun den Auftrag zum Warenkorb hinzufügen. Dies bestätige ich durch einen Abgabebutton.  
+Akzeptanzkriterium; Der Auftrag wird auf eventuelle Fehler geprüft. Ist die Prüfung erfolgreich, so wird der Auftrag zum Warenkorb hinzugefügt. Diese Änderung wird erfolgreich an den Server übermittelt. Gleichzeitig zeigt sich diese Änderung auch durch das Warenkorbicon, dies wird durch die Erhöhung einer Zahl neben dem Icon dargestellt.
+Geschätzter Aufwand (Story Points);8  
+Entwickler*in;Frederick Wichert  
+Fertiggestellt in Iteration;3  
+Tatsächlicher Aufwand (h);10h  
+Velocity (Story Points/h); 0.8 
+Bemerkungen;

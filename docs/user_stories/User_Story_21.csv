@@ -1,0 +1,10 @@
+ID;021
+Name;021_User-Orders_Aufträge-anzeigen
+Beschreibung;Als Nutzer*in möchte ich eine Liste meiner Aufträge angezeigt bekommen können.
+Akzeptanzkriterium;In einer dedizierten Ansicht werden alle eigenen Aufträge angezeigt, jeweils mit dem aktuellen Status sowie weiteren auftragsrelevanten Details wie dem Erstellungsdatum. Aufträge anderer User werden nicht angezeigt, und können auch nicht auf andere Weise erhalten werden. Die Liste ist standardmäßig absteigend nach Erstellungsdatum der Aufträge sortiert.
+Geschätzter Aufwand (Story Points); 3
+Entwickler*in; Jonas Milkovits, Frederick Wichert
+Fertiggestellt in Iteration; 6
+Tatsächlicher Aufwand (h); 4.5h
+Velocity (Story Points/h); 0.67
+Bemerkungen;

@@ -1,0 +1,121 @@
+        {% load static %}
+        <table class="table bg-light mb-0"  id="order_{{order.id}}_material_suborder_table">
+            <thead>
+                {% if is_editable %}
+                <th scope="col">
+                    <div>
+                        <img src="{%static 'icons/material_icon.png' %}" style="width:32px; height:32px;">
+                    </div>
+                </th>
+                {% endif %}
+                {% if is_staff %}
+                <th scope="col" class="col-1">Fertigstellung</th>
+                {% endif %}
+                <th scope="col" class="col-2">Material</th>
+                <th scope="col" class="col-1">Anzahl</th>
+                <th scope="col" class="col-2">Basisdimension</th>
+                <th scope="col" class="col-2">Zuschnitt (LxB)</th>
+                <th scope="col" class="col-1">Preis (€)</th>
+                <th scope="col" {% if is_editable %}class="col-3"{% else %} class="col-2"{% endif %} >Kommmentar</th>
+            </thead>
+            <tbody>
+                {% for material_suborder in order.suborders_materials %}
+                {% if material_suborder.associated_lasercut is None %}
+                <tr class="order_{{order.id}}_suborder_row order_{{order.id}}_material_suborder_row"
+                    id="order_{{order.id}}_material_suborder_{{material_suborder.id}}">
+                    <!-- Edit Button -->
+                    {% if is_editable %}
+                    <td id="order_{{order.id}}_material_suborder_{{material_suborder.id}}_edit_field">
+                        <button class="btn btn-sm btn-light order_{{order.id}}_suborder_edit_button" 
+                            type="button"
+                            id="order_{{order.id}}_material_suborder_{{material_suborder.id}}_edit_button"
+                            onclick="editSuborder('material',{{order.id}},{{material_suborder.id}}, true);"
+                            {% if order.is_finished %} disabled {% endif %}>
+                            <img class="icon" src="{%static 'global_svg/pencil_edit.svg' %}" class="img-fluid">
+                        </button>
+                        <button class="btn btn-sm btn-warning order_{{order.id}}_suborder_edit_button d-none" 
+                            type="button"
+                            id="order_{{order.id}}_material_suborder_{{material_suborder.id}}_edit_disable_button"
+                            onclick="editSuborder('material',{{order.id}},{{material_suborder.id}}, false);">
+                            <img class="icon" src="{%static 'global_svg/pencil_edit.svg' %}" class="img-fluid">
+                        </button>
+                    </td>
+                    {% endif %}
+                    <!-- Checkbox -->
+                    {% if is_staff %}
+                    <td id="order_{{order.id}}_material_suborder_{{material_suborder.id}}_checkbox">
+                        <input
+                            class="form-check-input order_{{order.id}}_suborder_checkbox" type="checkbox" 
+                            {% if material_suborder.is_completed %} checked {% endif %}
+                            {% if order.is_finished %} disabled {% endif %}
+                            onclick="changeSuborderStatus({{order.id}}, {{material_suborder.id}}, 'material', this.checked);"></td>
+                    {% endif %}
+                    <!-- Material Name-->
+                    <td id="order_{{order.id}}_material_suborder_{{material_suborder.id}}_materialname">{{material_suborder.material.name}}</td>
+                    <!-- Material Amount -->
+                    <td id="order_{{order.id}}_material_suborder_{{material_suborder.id}}_amount">
+                        <div class="input-group">
+                            <input class="form-control text-center editInput" 
+                                type="number" step="1" max="99"
+                                placeholder="Anzahl" value="{{material_suborder.amount}}" disabled
+                                onchange="setMaterialAmount({{order.id}}, {{material_suborder.id}}, this.value, this);">
+                        </div>
+                    </td>
+                    <!-- Material Variation -->
+                    <td id="order_{{order.id}}_material_suborder_{{material_suborder.id}}_variation">
+                        <div class="input-group">
+                            <select class="form-select text-center editInput"
+                                id="order_{{order.id}}_material_suborder_{{material_suborder.id}}_variation_select" disabled
+                                onchange="changeMaterialVariation({{order.id}}, {{material_suborder.id}}, 
+                                    {{material_suborder.material.base.id}}, this.options[this.selectedIndex].value);">
+                                {% for variation in material_suborder.material.base.variations.all %}
+                                <option value="{{variation.id}}"
+                                {% if variation.id == material_suborder.material.id %} selected {% endif %}
+                                >{{variation.thickness}} x {{variation.length}} x {{variation.width}}</option> </option> 
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </td>
+                    <!-- Material cut -->
+                    <td id="order_{{order.id}}_material_suborder_{{material_suborder.id}}_cut">
+                        <div class="input-group">
+                            {% if not material_suborder.material.is_fixed %}
+                            <input class="form-control text-center editInput" type="number"
+                                max="{{material_suborder.material.length}}"
+                                placeholder="Länge in mm" value="{{material_suborder.length}}" disabled
+                                id="order_{{order.id}}_material_suborder_{{material_suborder.id}}_length_input"
+                                onchange="changeMaterialDimension({{order.id}}, {{material_suborder.id}},'length', this);">
+                            <input class="form-control text-center editInput" type="number"
+                                max="{{material_suborder.material.width}}"
+                                placeholder="Breite in mm" value="{{material_suborder.width}}" disabled
+                                id="order_{{order.id}}_material_suborder_{{material_suborder.id}}_width_input"
+                                onchange="changeMaterialDimension({{order.id}}, {{material_suborder.id}},'width', this);">
+                            {% endif %}
+                        </div>
+                    </td>
+                    <!-- Price -->
+                    <td id="order_{{order.id}}_material_suborder_{{material_suborder.id}}_price">
+                        <div class="input-group">
+                            <input class="form-control text-center editInput" type="number"
+                                id="order_{{order.id}}_material_suborder_{{material_suborder.id}}_price_input"
+                                placeholder="Preis"
+                                value="{{material_suborder.price_valuestr}}" disabled
+                                onchange="overrideSuborderPrice({{order.id}}, {{material_suborder.id}}, 'material', this.value);"> 
+                            <button class="btn btn-sm d-none btn-reset-price" 
+                                type="button"
+                                id="order_{{order.id}}_material_suborder_{{material_suborder.id}}_price_reset_button"
+                                onclick="resetPriceOverride({{order.id}}, {{material_suborder.id}}, 'material');"
+                                {% if material_suborder.price_override is None %} disabled {% endif %}>
+                                <img class="icon" src="{%static 'global_svg/arrow_reset.svg' %}" class="img-fluid">
+                            </button>
+                        </div>
+                    </td>
+                    <!-- Suborder Comment -->
+                    <td id="order_{{order.id}}_material_suborder_{{material_suborder.id}}_comment">
+                        {{material_suborder.customer_comment}}
+                    </td>
+                </tr>
+                {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>

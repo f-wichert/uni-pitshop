@@ -1,0 +1,65 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'produktauswahl/main_page/style.css' %}">
+    {% include '../include/generic/header_import.html' %}
+    <title>Produktauswahl</title>
+</head>
+
+
+<body class="d-flex flex-column h-100">
+
+    {% include '../include/generic/navbar.html' %}
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Produktauswahl</h3>
+                    </div>
+
+                    <div class="card-body main-body d-flex justify-content-center align-items-top">
+                        <div class="col-lg-4 p-4">
+                            <div class="card">
+                                <img class="card-img-top" src="{% static 'global_img/lasercut_banner.jpg' %}"
+                                    alt="Laserschnitt Bild">
+                                <div class="card-body text-center">
+                                    <a href="{% url 'client:laserschnitt' %}"
+                                        class="card-title btn btn-outline-danger w-100 h-100 p-2 m-0">
+                                        <h4>Laserschnitt</h2>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 p-4">
+                            <div class="card">
+                                <img class="card-img-top" src="{% static 'global_img/warehouse_banner.jpg' %}"
+                                    alt="Warenhaus Bild">
+                                <div class="card-body text-center">
+                                    <a href="{% url 'client:materialkauf' %}"
+                                        class="card-title btn btn-outline-secondary w-100 h-100 p-2 m-0">
+                                        <h4>Materialkauf</h2>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    {% include '../include/generic/footer.html' %}
+
+    <script src="{% static 'produktauswahl/main_page/app.js' %}"></script>
+</body>
+
+</html>

@@ -1,0 +1,10 @@
+ID;058  
+Name;058_E-Mail_Benachrichtigung_Fertigstellung  
+Beschreibung; Wenn eine Auftrag zur Abholung bereit ist, dann bekommt der/die Nutzer*in eine Benachrichtigung per E-Mail.  
+Akzeptanzkriterium; Die E-Mail wird erfolgreich versendet und enthält alle benötigten Informationen.  
+Geschätzter Aufwand (Story Points);8  
+Entwickler*in;Frederick Wichert, Simon Jungherz  
+Fertiggestellt in Iteration;7  
+Tatsächlicher Aufwand (h);8h  
+Velocity (Story Points/h);1  
+Bemerkungen;

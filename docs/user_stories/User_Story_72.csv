@@ -1,0 +1,10 @@
+ID; 072
+Name; 072_3DDruck_Preview
+Beschreibung; Als Nutzer*in der/die soeben eine 3D-Datei hochgeladen hat möchte ich eine 3D-Vorschau der Datei anfordern können.
+Akzeptanzkriterium; Auf der 3D-Druck Produktauswahl Seite gibt es nach angeben einer 3D-Datei einen Button, welcher nach Betätigung eine 3D-Vorschau der Datei auf derselben Seite anzeigt.
+Geschätzter Aufwand (Story Points); 3
+Entwickler*in; Jannik Schmidt
+Fertiggestellt in Iteration; 7
+Tatsächlicher Aufwand (h); 2.5h
+Velocity (Story Points/h); 1.2
+Bemerkungen;

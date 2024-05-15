@@ -1,0 +1,10 @@
+ID;054    
+Name;054_Laserschnitt_Preise_je_Rolle  
+Beschreibung; Als Mitarbeiter*in kann ich die Rolle einer*s Studenten*in über die Administration festlegen. Diese Rolle ist relevant für den Preis einer Laserschnittminute eines Laserschnittauftrages.  
+Akzeptanzkriterium; Als Mitarbeiter*in kann ich die Rolle einer*s Studenten*in in der Administration einsehen und festlegen. In der Auftragsübersicht sehe ich zusätzlich den Preis je Laserschnittminute, der auf der Rolle der/des Studenten*in basiert. In der Administration lassen sich außerdem die Preise je Laserschnittminute einsehen und anpassen.    
+Geschätzter Aufwand (Story Points); 5      
+Entwickler*in; Jonas Milkovits, Frederick Wichert, Jannik Schmidt  
+Fertiggestellt in Iteration; 6    
+Tatsächlicher Aufwand (h); 5h      
+Velocity (Story Points/h); 1     
+Bemerkungen;

@@ -1,0 +1,10 @@
+ID;004
+Name;004_Abrechnung-Screen-Sortierung
+Beschreibung; Als Mitarbeiter*in/Administrator*in, der/die sich auf dem Abrechnungsscreen befindet, möchte ich die Möglichkeit haben die Tabelle nach dem Datum, dem Namen oder dem Betrag zu sortieren um mir Abrechnungstätigkeiten zu erleichtern.
+Akzeptanzkriterium;  Als Nutzender hat man die Möglichkeit neben jeder Spalte die Spalte sowohl aufsteigend als auch absteigend zu sortieren. Nach dem ersten Klick werden die Werte absteigend sortiert angezeigt, nach dem zweiten Klick werden die Werte aufsteigend sortiert angezeigt und nach dem dritten Klick setzt sich das Sortieren wieder auf die Standardsortierung zurück. Sortieren nach mehreren Spalten wird nicht unterstützt. Die Übersichtstabelle passt sich jeweils automatisch ohne weitere Interaktion des Nutzers an.
+Geschätzter Aufwand (Story Points);  2
+Entwickler*in; Jonas Milkovits
+Fertiggestellt in Iteration; 4
+Tatsächlicher Aufwand (h); 3h
+Velocity (Story Points/h); 0.66
+Bemerkungen;

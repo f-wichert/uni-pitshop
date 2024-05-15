@@ -1,0 +1,10 @@
+ID;044  
+Name;044_Orders-Quittung-Alternatives-Datum  
+Beschreibung; Als Mitarbeiter*in möchte ich beim Erstellen einer Quittung ein alternatives Auftragsdatum wählen können.    
+Akzeptanzkriterium; Vor der Erstellung einer Quittung kann ich ein alternatives Auftragsdatum auswählen. Dieses taucht dann statt dem standardmäßigen aktuellen Tag automatisch an der korrekten Stelle in der Quittung auf.    
+Geschätzter Aufwand (Story Points); 1    
+Entwickler*in;  Jonas Milkovits  
+Fertiggestellt in Iteration;  5  
+Tatsächlicher Aufwand (h); 1h    
+Velocity (Story Points/h); 1    
+Bemerkungen;

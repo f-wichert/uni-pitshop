@@ -1,0 +1,10 @@
+ID; 024  
+Name; 024_Warenkorb_Suborders_anzeigen  
+Beschreibung; Als Nutzer\*in, der/die soeben den Warenkorb aufgerufen hat, möchte ich eine Übersicht meiner aktuellen Bestellung sehen.  
+Akzeptanzkriterium; Die Übersicht ist eine Tabelle, welche alle Suborders der nicht abgegebenen Bestellung des Nutzers/der Nutzerin enthält und den Namen, einige relevante Eigenschaften und ggf. den Preis und die Anzahl jeder Suborder anzeigt.  
+Geschätzter Aufwand (Story Points); 5  
+Entwickler\*in; Jannik Schmidt  
+Fertiggestellt in Iteration; 4  
+Tatsächlicher Aufwand (h); 10h  
+Velocity (Story Points/h); 0.5  
+Bemerkungen;

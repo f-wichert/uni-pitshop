@@ -1,0 +1,43 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'login/app.css' %}">
+    {% include '../include/generic/header_import.html' %}
+    <title>Login</title>
+</head>
+<body class="h-100" id="loginBody">
+    <div class="container-fluid fadeInDown h-100 d-flex align-items-center justify-content-center">
+
+        <div id="formContent">
+            <!-- Icon -->
+            <div class="fadeIn first">
+              <img src="{% static 'global_svg/user_icon.svg' %}" width="30" height="30" alt="User Icon">
+            </div>
+  
+            <!-- Login Form -->
+            <div> {% csrf_token %}
+              <input type="text" id="usernameField" class="fadeIn second form-control" name="username" placeholder="Nutzername">
+              <input type="password" id="passwordField" class="fadeIn third form-control" name="password" placeholder="Passwort">
+              <input type="submit" id="loginButton" class="fadeIn fourth" value="Log In">
+              <button class="fadeIn fourth hrz-login">HRZ</button>
+            </div>
+  
+            <!-- Remind Passowrd -->
+            <!-- <div id="formFooter">
+              <a class="underlineHover" href="#">Forgot Password?</a>
+            </div> -->
+  
+          </div>
+        </div>
+
+    </div>
+
+    {% include '../include/generic/footer.html' %}
+    <script src="{% static 'login/app.js' %}"></script>
+</body>
+</html>

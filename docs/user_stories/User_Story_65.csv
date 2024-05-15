@@ -1,0 +1,10 @@
+ID;065  
+Name; 065_Backend_Verbesserungen  
+Beschreibung; Verschiedene Komponenten des Backends sollen vereinheitlicht/verbessert werden, bspw. das Handling von relativen URLs und Authentifizierung der verschiedenen Rollen. Zudem sollen Materialinformationen zentral eingebunden werden, anstatt in den verschiedenen Komponenten separat angefordert zu werden.  
+Akzeptanzkriterium; Die genannten Änderungen/Verbesserungen wurden durchgeführt, an der Erfahrung des/der Benutzer*innen hat sich nichts geändert.  
+Geschätzter Aufwand (Story Points);5  
+Entwickler*in;Simon Jungherz  
+Fertiggestellt in Iteration;6  
+Tatsächlicher Aufwand (h);6.5h  
+Velocity (Story Points/h);0.77  
+Bemerkungen;

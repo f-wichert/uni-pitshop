@@ -1,0 +1,17 @@
+                            <!-- Not billed yet: Red -->
+                            <!-- Already billed: Green -->
+                        {% for order in orders %}
+                            {% if order.billed_date == "Noch nicht abgerechnet" %}
+                            <tr class="table-danger">
+                                <td id="order_{{order.id}}_checkbox"><input class="form-check-input" type="checkbox"></td>
+                            {% else %}
+                            <tr class="table-success">
+                                <td id="order_{{order.id}}_checkbox"><input class="form-check-input" type="checkbox" disabled></td>
+                            {% endif %}
+                                <td class="text-center align-middle" id="order_{{order.id}}"><a href="/my-orders/{{order.id}}" class="link-dark">{{order.id}}</a></th>
+                                <td class="text-center align-middle" id="order_{{order.id}}_name"> {{order.user.last_name}}, {{order.user.first_name}}</td>
+                                <td class="text-center align-middle" id="order_{{order.id}}_date_ordered">{{order.date_ordered | date:'d.m.Y - H:i'}} Uhr</td>
+                                <td class="text-center align-middle" id="order_{{order.id}}_price">{{order.price_str}} €</td>
+                                <td class="text-center align-middle" id="order_{{order.id}}_date_billed">{{order.billed_date}}</td>
+                            </tr>
+                        {% endfor %}

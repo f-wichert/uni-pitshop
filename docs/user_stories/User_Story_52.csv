@@ -1,0 +1,10 @@
+ID;052  
+Name;052_Footer_Weiterleitungen   
+Beschreibung; Als Nutzer*in möchte ich über die Fußleiste die Möglichkeit haben, verschiedene relevante Weiterleitungen in der Fußleiste zu finden.  
+Akzeptanzkriterium; Innerhalb der Fußleiste befinden sich einige Buttons, die eine Weiterleitung zur jeweiligen Seite ermöglichen. Darunter eine Weiterleitung zum Laserhandbuch, zu den AGB, der Datenschutzerklärung und dem Impressum. Das Laserhandbuch und die Datenschutzerklärung werden extern gehostet, die AGB und das Impressum werden bei Pitshop angelegt.    
+Geschätzter Aufwand (Story Points); 3    
+Entwickler*in; Jonas Milkovits    
+Fertiggestellt in Iteration; 7    
+Tatsächlicher Aufwand (h); 3h    
+Velocity (Story Points/h); 1      
+Bemerkungen;

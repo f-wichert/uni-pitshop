@@ -1,0 +1,10 @@
+ID;037
+Name;037_Login-Screen-HRZ-SSO
+Beschreibung; Als Student*in oder Mitarbeiter*in der Universität möchte ich mich über den HRZ SSO einloggen, um alle Funktionalitäten der Website zu nutzen.
+Akzeptanzkriterium; Nach einem Klick auf 'HRZ Login' auf dem Login-Screen öffnet sich der Login des HRZ. Wenn die nutzende Person diesen erfolgreich absolviert hat, wird sie auf die Startseite der Website weitergeleitet.
+Geschätzter Aufwand (Story Points); 8
+Entwickler*in; Jannik Schmidt
+Fertiggestellt in Iteration; 7
+Tatsächlicher Aufwand (h); 5.5h
+Velocity (Story Points/h); 1.45
+Bemerkungen;

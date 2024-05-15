@@ -1,0 +1,10 @@
+ID; 025  
+Name; 025_Warenkorb_Suborder_entfernen
+Beschreibung; Als Nutzer*in, der/die die Warenkorb Ansicht geöffnet hat möchte ich Suborders aus meinem aktuellen Warenkorb entfernen, indem ich auf einen Button neben der Suborder klicke und anschließend die Löschung bestätige.  
+Akzeptanzkriterium; In der Warenkorbübersicht eines Nutzers/einer Nutzerin gibt es für jeden Suborder Eintrag eine Schaltfläche, welche bei Betätigung und anschließender Bestätigung die jeweilige Suborder aus dem Warenkorb des Nutzers/der Nutzerin entfernt und anschließend die Ansicht aktualisiert um die Änderung zu reflektieren.  
+Geschätzter Aufwand (Story Points); 5  
+Entwickler\*in; Jannik Schmidt  
+Fertiggestellt in Iteration; 4 
+Tatsächlicher Aufwand (h); 4.5h 
+Velocity (Story Points/h); 1.11
+Bemerkungen;

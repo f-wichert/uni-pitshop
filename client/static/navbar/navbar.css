@@ -1,0 +1,98 @@
+.nb-cart-login-icons {
+    z-index: 1050;
+}
+
+.navbar {
+    height: 20vh;
+}
+
+#confirmOrderModal {
+    z-index: 3000;
+}
+
+#navBar {
+    background-color: rgb(245, 245, 245) !important;
+    height: 20vh;
+}
+
+#cartCanvas {
+    width: 1000px;
+    /* top: 60px; */
+}
+
+#cartCanvasLabel {
+    font-size: 3.2rem
+}
+
+#cartDiv {
+    font-size: 1.2rem;
+}
+
+#footerMain {
+    background-color: rgb(245, 245, 245) !important;
+}
+
+/* .footerText {
+    color: #D6D2CB important;
+} */
+
+body {
+    background-color: rgb(245, 245, 245) !important;
+}
+
+.nav-link:hover {
+    text-decoration: underline !important;
+}
+
+.nav-link .active {
+    font-weight: 700;
+}
+
+.card-header {
+    background-color: white !important;
+    border-bottom: 1px solid black !important;
+}
+
+.card {
+    border: 1px solid black !important;
+}
+
+.main-body {
+    height: 79.15vh
+}
+
+div.scroll, #scroll-area {
+    /* background-color: #fed9ff; */
+    width: 100%;
+    /* height: 46.4rem; */
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align: center;
+    padding: 20px;
+    scrollbar-width: 5px;
+}
+
+::-webkit-scrollbar {
+    /* Remove scrollbar space */
+    width: 6px;
+    /* Optional: just make scrollbar invisible */
+    background: transparent;
+}
+  
+/* Optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+    background: #bbbbbb;
+    border-radius: 10px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}

@@ -1,0 +1,10 @@
+ID; 026  
+Name; 026_Warenkorb_Abgabe
+Beschreibung; Als Nutzer*in kann ich im Warenkorb auf einen Button klicken und anschließend bestätigen, um meinen aktuellen Warenkorb abzugeben, falls dieser nicht leer ist und ich keine unbezahlten Bestellung habe.  
+Akzeptanzkriterium; Ist der Warenkorb des Nutzers/der Nutzerin leer, ist kein Button vorhanden. Hat der/die Nutzer*in noch eine unfertige Bestellung, existiert der Button, ist jedoch deaktiviert und zeigt eine erklärende Fehlermeldung. Sonst gibt es einen leicht erkennbaren Button, welcher nach Betätigung (und ggf. Bestätigung) den aktuellen Warenkorb als Bestellung abgibt.  
+Geschätzter Aufwand (Story Points); 2  
+Entwickler*in; Jannik Schmidt  
+Fertiggestellt in Iteration; 4 
+Tatsächlicher Aufwand (h); 2.5h 
+Velocity (Story Points/h); 0.8
+Bemerkungen; Hier könnte die Überprüfung stattfinden, dass jede*r Nutzer*in immer nur einen Auftrag in Bearbeitung hat.

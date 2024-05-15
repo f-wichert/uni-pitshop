@@ -1,0 +1,10 @@
+ID;063  
+Name;063_Laserschnitt_Bugfixes  
+Beschreibung; Die Nutzungserfahrung der Nutzer*innen sollte intuitiv sein und keine Fehler aufzeigen. Zudem soll diese Komponente an Änderungen in der restlichen Anwendung angepasst werden.  
+Akzeptanzkriterium; Fehler wurden behoben und die Funktion ist einwandfrei verwendbar.  
+Geschätzter Aufwand (Story Points);5  
+Entwickler*in;Simon Jungherz  
+Fertiggestellt in Iteration;5  
+Tatsächlicher Aufwand (h);6.5h  
+Velocity (Story Points/h);0.77  
+Bemerkungen;

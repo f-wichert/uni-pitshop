@@ -1,0 +1,25 @@
+{% load static %}
+
+<div class="container-fluid text-end mt-3">
+    <div class="row">
+        {% if order.is_rechnung %}
+        <div class="row">
+            <div class="col-12 text-center">
+                <button class="btn btn-outline-danger" id="btnSwitchStateToQuittung" onclick="setStateToQuittung(event.target)">Diese Bestellung zu <strong>Barzahlung (Quittung)</strong> umschalten</button>
+            </div>
+        </div>
+        {% else %}
+        <div class="col-6"></div>
+        <div class="col-6">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">Alternatives Quittungsdatum:</span>
+                </div>
+                <input placeholder="Alternatives Quittungsdatum" class="textbox-n form-control" type="date" id="receiptAlternateDate"/>
+            </div>
+            <button class="btn btn-outline-primary mt-3" id="btnCreateReceipt" onclick="printQuittung()">Quittung erstellen</button>
+        </div>
+        {% endif %}
+    </div>
+</div>
+

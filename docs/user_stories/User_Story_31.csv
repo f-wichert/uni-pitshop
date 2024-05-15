@@ -1,0 +1,10 @@
+ID; 031  
+Name; 031_Laserschnitt_Upload  
+Beschreibung; Ich befinde mich auf der Seite des Laserschnittes. Hier gibt es eine dedizierte Möglichkeit eine Datei anzugeben. Als Nutzer*in möchte ich nun eine Datei hochladen können, die den Laserschnitt spezifiziert.  
+Akzeptanzkriterium; Eine Datei wurde erfolgreich hochgeladen, sprich an den Server geschickt und vorerst gespeichert. Diese Datei wurde auf gewisse Rahmenbedingungen geprüft. Ist diese Prüfung erfolgreich, wird dem\der Nutzer*in eine Bestätigung angezeigt.   
+Geschätzter Aufwand (Story Points);3  
+Entwickler*in;Simon Jungherz  
+Fertiggestellt in Iteration;1  
+Tatsächlicher Aufwand (h);4h  
+Velocity (Story Points/h);0.75  
+Bemerkungen;

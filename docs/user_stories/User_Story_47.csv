@@ -1,0 +1,10 @@
+ID;047    
+Name;047_Orders-Erstellen-von-Rechnungen  
+Beschreibung; Als Mitarbeiter*in möchte ich die Möglichkeit haben externe Kunden*innen, die nicht bar bezahlen, per Rechnung abzurechnen.     
+Akzeptanzkriterium; Hierfür habe ich über den Bezahlungstab der Auftragsübersicht die Möglichkeit eine Rechnungserstellung anzustoßen. Hierfür gebe ich weitere benötigte Informationen, wie die Rechnungsnummer oder weitere Posten, für die Rechnung ein.  Bestehende Posten des Auftrags werden der Rechnung automatisch beigefügt. Daraufhin wird automatisch eine Rechnung erstellt, die im Folgenden gedruckt oder gespeichert werden kann.  
+Geschätzter Aufwand (Story Points); 5    
+Entwickler*in; Jonas Milkovits    
+Fertiggestellt in Iteration; 5     
+Tatsächlicher Aufwand (h); 6h    
+Velocity (Story Points/h); 0.8    
+Bemerkungen;

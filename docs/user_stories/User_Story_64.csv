@@ -1,0 +1,10 @@
+ID;064  
+Name;064_Testdaten_Updates  
+Beschreibung; Die zuvor erstellten Testdaten sollen neuen Funktionalitäten angepasst werden und neue Kombinationen an Konfigurationen abbilden. Zudem sollen die Daten für die Nutzungsstudie vorbereitet werden.  
+Akzeptanzkriterium; Die Testdaten sind aktualisiert und lassen sich weiterhin per Skript automatisch in die Datenbank eintragen.  
+Geschätzter Aufwand (Story Points);3  
+Entwickler*in;Simon Jungherz, Laurenz Kammeyer  
+Fertiggestellt in Iteration;5  
+Tatsächlicher Aufwand (h);7h
+Velocity (Story Points/h); 0.43
+Bemerkungen;

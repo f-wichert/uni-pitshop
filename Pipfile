@@ -1,0 +1,27 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+django = "~=4.0"
+django-stubs-ext = "~=0.3.1"
+django-nested-inlines = "~=0.1"
+pillow = "~=9.0.1"
+requests = "~=2.27.1"
+
+[dev-packages]
+pre-commit = "~=2.15"
+flake8 = "~=4.0.1"
+black = "~=21.11b1"
+isort = "~=5.10.1"
+mypy = "~=0.920"
+django-stubs = "~=1.9.0"
+pytest-django = "~=4.5.1"
+pytest-cov = "~=3.0.0"
+coverage = {extras = ["toml"], version = "~=6.2"}
+django-extensions = "~=3.1.5"
+pydot = "~=1.4.2"  # for django-extensions graph_models
+
+[requires]
+python_version = "3.9"

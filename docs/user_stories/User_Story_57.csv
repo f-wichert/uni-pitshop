@@ -1,0 +1,10 @@
+ID;057  
+Name; 057_Testdaten  
+Beschreibung; Zur Unterstüzung der Entwicklung sollte die Anwendung eine Möglichkeit haben, automatisch Beispiel-Testdaten in der Datenbank anzulegen.  
+Akzeptanzkriterium; Mithhilfe eines separaten Scripts oder einer lokalen Funktion der Anwendung werden Testdaten (z.B. Benutzer*innen und Orders) angelegt, die möglichst viele Funktionen der Anwendung abdecken.  
+Geschätzter Aufwand (Story Points); 2  
+Entwickler*in;Simon Jungherz, Jannik Schmidt, Laurenz Kammeyer  
+Fertiggestellt in Iteration; 3  
+Tatsächlicher Aufwand (h); 4.5h
+Velocity (Story Points/h); 0.44
+Bemerkungen;

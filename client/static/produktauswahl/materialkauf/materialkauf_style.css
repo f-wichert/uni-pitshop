@@ -1,0 +1,115 @@
+.material-card {
+  width: 22rem; 
+  /* height: 20rem; */
+  /* background-color: #eee; */
+
+  /* display: inline; */
+
+  /* padding: 10px; */
+  margin: 20px 70px;
+}
+
+.col {
+  align-items: center;
+  margin: 2px;
+}
+
+.material-preview {
+  width: 22rem;
+  height: 11rem;
+  background-color: rgba(138, 113, 113, 0.466);
+  border-radius: 10px;
+}
+
+.material-name {
+  margin: 8px 0px;
+}
+
+.thickness-select,
+.dimension-select,
+.height-input,
+.width-input,
+.amount-input,
+.add-to-order-button {
+  /* height: 80%; */
+  border: 1px solid black;
+  font-size: 10px;
+  /* border-radius: 30%; */
+}
+
+.height-input,
+.width-input {
+  /* height: 80%; */
+  /* width: 80%; */
+}
+
+.add-to-order-button {
+  width: 100%;
+}
+
+.material-name {
+  font-style: bold;
+}
+
+.thickness-select {
+  border-radius: 8%;
+}
+
+.thickness-select,
+.amount-input {
+  width: 80%;
+}
+
+.dimension-select {
+  width: 30%;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.alert-not-active {
+  display: none;
+}
+
+.alert-active {
+  display: block;
+  position: absolute;
+  left: 1rem;
+  top: 3rem;
+  width: 20rem;
+}
+
+div.scroll, #scroll-area {
+  /* background-color: #fed9ff; */
+  width: 100%;
+  height: 46rem;
+  overflow-x: hidden;
+  overflow-y: auto;
+  text-align: center;
+  padding: 20px;
+  scrollbar-width: 5px;
+}
+
+::-webkit-scrollbar {
+  /* Remove scrollbar space */
+  width: 6px;
+  /* Optional: just make scrollbar invisible */
+  background: transparent;
+}
+
+/* Optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+  background: #bbbbbb;
+  border-radius: 10px;
+}
+
+textarea {
+  -webkit-box-sizing: border-box;
+}

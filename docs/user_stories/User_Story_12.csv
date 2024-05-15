@@ -1,0 +1,10 @@
+ID; 012
+Name; 012_Abrechnung-Screen-Auftrag-anzeigen
+Beschreibung; Als Mitarbeiter*in/Administrator*in möchte ich im Abrechnungsscreen die Möglichkeit haben mir den Auftrag zu dem jeweiligen Eintrag in der Tabelle anzeigen zu lassen, um weitere Informationen zu erhalten.
+Akzeptanzkriterium; Die Funktionalität wird über eine weitere Spalte in der Tabelle zur Verfügung gestellt, die die Auftragsnummer anzeigt. Über einen Klick auf die Lupe in der Zeile öffnet sich eine Übersicht über den Auftrag mit einer Anzeige aller Subaufträge (wie in der Auftragsübersicht).
+Geschätzter Aufwand (Story Points); 1
+Entwickler*in; Jonas Milkovits
+Fertiggestellt in Iteration; 4
+Tatsächlicher Aufwand (h); 0.5h
+Velocity (Story Points/h); 2
+Bemerkungen;

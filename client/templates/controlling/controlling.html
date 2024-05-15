@@ -1,0 +1,202 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'controlling/controlling_styles.css' %}">
+    {% include '../include/generic/header_import.html' %}
+    <title>Controlling</title>
+</head>
+<body class="d-flex flex-column h-100">
+    {% include '../include/generic/navbar.html' %}
+
+    <div class="container-fluid nonPrintArea">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-8">
+                                <h3>Controlling</h3>
+                            </div>
+                            <div class="col-4 text-end">
+                                <button type="button" class="btn btn-danger" id="billNowButton">Auswahl abrechnen</button>
+                                <button type="button" class="btn btn-success" id="alreadyBilledButton" data-bs-toggle="modal" data-bs-target="#alreadyBilledModal">Bisherige Abrechnungen</button>
+                                <button type="button" class="btn btn-primary" id="btnAutoBilling" data-bs-toggle="modal" data-bs-target="#automaticBillingModal">Automatische Abrechnung</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body main-body">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-12">
+                                    <table class="table table-hover">
+                                        <thead id="entryHeader">
+                                            <tr>
+                                                <th scope="col"><input type="checkbox" id="headCheckbox" class="form-check-input"></th>
+                                                <th scope="col" class="col-1">
+                                                    <div class="input-group">
+                                                        <span class="input-group-text"><b>ID</b></span>
+                                                        <input type="number" class="form-control relevantFilter" id="idInput">
+                                                        <span class="input-group-text sort-span" id="sort-id">
+                                                            <img src="{%static 'global_svg/sort_desc.svg' %}" alt="sort_desc" class="img-fluid inactiveFilter">
+                                                            <img src="{%static 'global_svg/sort_asc.svg' %}" alt="sort_asc" class="img-fluid inactiveFilter">
+                                                        </span>
+                                                      </div>
+                                                </th>
+                                                <th scope="col" class="col-3">
+                                                    <div class="input-group">
+                                                        <span class="input-group-text"><b>Name</b></span>
+                                                        <input type="text" class="form-control relevantFilter" id="nameInput">
+                                                        <span class="input-group-text sort-span" id="sort-user__last_name">
+                                                            <img src="{%static 'global_svg/sort_desc.svg' %}" alt="sort_desc" class="img-fluid inactiveFilter">
+                                                            <img src="{%static 'global_svg/sort_asc.svg' %}" alt="sort_asc" class="img-fluid inactiveFilter">
+                                                        </span>
+                                                      </div>
+                                                </th>
+                                                <th scope="col" class="col-3">
+                                                    <div class="input-group">
+                                                        <span class="input-group-text"><b>Datum</b></span>
+                                                        <input type="date" class="form-control relevantFilter" placeholder="Datum von" id="dateOrderedFromInput">
+                                                        <input type="date" class="form-control relevantFilter" placeholder="Datum bis" id="dateOrderedUntilInput">
+                                                        <span class="input-group-text sort-span" id="sort-date_ordered">
+                                                            <img src="{%static 'global_svg/sort_desc.svg' %}" alt="sort_desc" class="img-fluid inactiveFilter">
+                                                            <img src="{%static 'global_svg/sort_asc.svg' %}" alt="sort_asc" class="img-fluid inactiveFilter">
+                                                        </span>
+                                                      </div>
+                                                </th>
+                                                <th scope="col" class="col-2">
+                                                    <div class="input-group">
+                                                        <span class="input-group-text"><b>Betrag</b></span>
+                                                        <input type="number" class="form-control relevantFilter" placeholder="Betrag von" id="amountFromInput">
+                                                        <input type="number" class="form-control relevantFilter" placeholder="Betrag bis" id="amountUntilInput">
+                                                        <span class="input-group-text sort-span" id="sort-amount">
+                                                            <img src="{%static 'global_svg/sort_desc.svg' %}" alt="sort_desc" class="img-fluid inactiveFilter">
+                                                            <img src="{%static 'global_svg/sort_asc.svg' %}" alt="sort_asc" class="img-fluid inactiveFilter">
+                                                        </span>
+                                                    </div>
+                                                </th>
+                                                <th scope="col" class="col-3">
+                                                    <div class="input-group">
+                                                        <span class="input-group-text"><b>Abrechnung</b></span>
+                                                        <!-- <input placeholder="Datum von" class="textbox-n form-control" type="text" onfocus="(this.type='date')" onblur="(this.type='text')"/> -->
+                                                        <!-- <input placeholder="Datum bis" class="textbox-n form-control" type="text" onfocus="(this.type='date')" onblur="(this.type='text')"/> -->
+                                                        <select name="billing-filter" class="form-select relevantFilter" id="billedInput">
+                                                            <option value="not-billed" selected>Noch nicht abgerechnet</option>
+                                                            <option value="billed">Bereits abgerechnet</option>
+                                                            <option value="all">Alle</option>
+                                                        </select>
+                                                    </div>
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="entryBody">
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Already Billed Modal -->
+    <div class="modal fade nonPrintArea" id="alreadyBilledModal" tabindex="-1" aria-labelledby="alreadyBilledModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="alreadyBilledModalLabel">Bisherige Abrechnungen</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-hover">
+                        <thead id="modalTableHeader">
+                            <th scope="col" class="col-1 text-center">ID</th>
+                            <th scope="col" class="col-3 text-center">Abgerechnet am</th>
+                            <th scope="col" class="col-3 text-center">Abgerechnet von</th>
+                            <th scope="col" class="col-3 text-center">Abrechnungszeitraum</th>
+                            <th scope="col" class="col-1 text-center"></th>
+                            <th scope="col" class="col-1 text-center"></th>
+                        </thead>
+                        <tbody id="modalTableBody">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Automatic Biling -->
+    <div class="modal fade nonPrintArea" id="automaticBillingModal" tabindex="-1" aria-labelledby="automaticBillingModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="automaticBillingModalLabel">Automatische Abrechnung</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row mt-2">
+                            <div class="input-group">
+                                <input type="number" class="form-control" id="maxAmountInputAutoBilling" placeholder="Obergrenze (z.B. 1200)" min="0">
+                                <input placeholder="Startdatum auswählen:" class="textbox-n form-control" type="text" id="dateInputAutoBilling" onfocus="(this.type='date')" onblur="(this.type='text')"/>
+                                <!-- <input placeholder="Startdatum auswählen:" class="textbox-n form-control" type="date" id="dateInputAutoBilling"/> -->
+                                <button class="btn btn-primary" id="modalBtnAutoBillingSearch">Suche</button>
+                            </div>
+                        </div>
+                        <div class="row text-center mt-4 d-none" id="automaticBillingModalSumRow">
+                            <div class="col-6">
+                                <h5>
+                                    <span><b>Gesamtbetrag: </b></span>
+                                    <span id="automaticBillingModalSumAmount"></span>
+                                </h5>
+                            </div>
+                            <div class="col-6">
+                                <h5>
+                                    <span><b>Anzahl Bestellungen: </b></span>
+                                    <span id="automaticBillingModalSumOrders"></span>
+                                </h5>
+                            </div>
+                        </div>
+                        <div class="row mt-4 mb-2 d-none" id="automaticBillingModalTableRow">
+                            <table class="table table-hover">
+                                <thead id="automaticBillingModalTableHeader">
+                                    <th scope="col" class="col-1 text-center">ID</th>
+                                    <th scope="col" class="col-4 text-center">Name</th>
+                                    <th scope="col" class="col-5 text-center">Auftragsdatum</th>
+                                    <th scope="col" class="col-2 text-center">Betrag</th>
+                                </thead>
+                                <tbody id="automaticBillingModalTableBody">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="container-fluid text-center d-none mt-4" id="noOrdersFoundError">
+                        <h4> Es wurden keine bereits abgeschlossenen Bestellungen gefunden, die dem Filter entsprechen. </h4>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <!-- <button type="button" class="btn btn-danger" id="modalBtnAutoBillingConfirm" disabled  data-bs-toggle="modal" data-bs-target="#automaticBillingModal">Abrechnung bestätigen</button> -->
+                    <button type="button" class="btn btn-danger" id="modalBtnAutoBillingConfirm" disabled>Abrechnung bestätigen</button>
+                </div>
+            </div>
+        </div>
+    </div> 
+
+    <div id="imgConfirmDelete" class="d-none">
+        <img src="{%static 'global_svg/confirm_delete.svg' %}" alt="confirm_delete" class="img-fluid">
+    </div>
+
+    <div class="printArea container-fluid" id="controllingPrintBilling">
+    </div>
+
+    {% include '../include/generic/footer.html' %}
+
+    <script src="{%static 'controlling/controlling.js' %}"></script>
+</body>
+</html>

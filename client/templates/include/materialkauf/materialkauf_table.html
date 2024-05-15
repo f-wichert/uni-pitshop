@@ -1,0 +1,122 @@
+{% load static %}
+
+{% if render_table_head %}
+<thead id="entryHeader">
+    <tr>
+        <th scope="col" class="col-1">
+            <div>
+                <img src="{%static 'icons/material_icon.png' %}" style="width:32px; height:32px;">
+            </div>
+        </th>
+        <th scope="col" class="col-1">
+            Material
+        </th>
+        <th scope="col" class="col-1">
+            Anzahl
+        </th>
+        <th scope="col" class="col-1">
+            Dicke
+        </th>
+        <th scope="col" class="col-1">
+            Abmessungen (mm)
+        </th>
+        <th scope="col" class="col-1">
+            Preisschätzung
+        </th>
+        <th scope="col" class="col-1">
+            Kommentar
+        </th>
+        <th scope="col" class="col-1">
+            Status
+        </th>
+    </tr>
+</thead>
+{% endif %}
+
+{% if render_table_head %}
+<tbody id="material-table-body">
+{% endif %}
+
+{% for order in material_orders %}
+<tr class="suborder_{{order.id}} material_suborder_{{material_suborder.id}}">
+    <td id="material_suborder_{{material_suborder.id}}_edit">
+        <button class="btn btn-sm btn-light suborder_{{order.id}}_edit_button" type="button"
+            onclick="editSuborder('material',{{lasercut_suborder.id}}, this);">
+            <img class="icon" src="{%static 'global_svg/pencil_edit.svg' %}" class="img-fluid">
+        </button>
+    </td>
+    <td id="material_suborder_{{material_suborder.id}}_checkbox"><input
+            class="form-check-input suborder_{{order.id}}_checkbox" type="checkbox" 
+            {% if material_suborder.is_completed %} checked {% endif %}
+            {% if order.is_finished %} disabled {% endif %}
+            onclick="changeSuborderStatus({{order.id}}, {{material_suborder.id}}, 'material', this.checked);"></td>
+    <td id="material_suborder_{{material_suborder.id}}_materialname">{{material_suborder.material.name}}
+    </td>
+    <td id="material_suborder_{{material_suborder.id}}_amount">
+        <div class="input-group">
+            <input class="form-control text-center" type="number" step="1"
+                placeholder="Preis" value="{{material_suborder.amount}}" disabled>
+            <button class="btn btn-sm btn-grey" type="button">
+                <img class="icon" src="{%static 'global_svg/pencil_edit.svg' %}" class="img-fluid">
+            </button>
+        </div>
+    </td>
+    <td id="material_suborder_{{material_suborder.id}}_thickness">
+        <div class="input-group">
+            <select class="form-select text-center" name="variation_thickness"
+                id="material_suborder_{{material_suborder.id}}_thickness_select" disabled>
+                {% for variation in material_suborder.material.thickness_variations %}
+                <option value="{{variation.thickness}}">{{variation.thickness}}mm</option>
+                {% endfor %}
+            </select>
+            <button class="btn btn-sm btn-grey" type="button">
+                <img class="icon" src="{%static 'global_svg/pencil_edit.svg' %}" class="img-fluid">
+            </button>
+        </div>
+    </td>
+    <td id="material_suborder_{{material_suborder.id}}_dimensions">
+        <div class="input-group">
+            <input class="form-control text-center" type="number"
+                placeholder="Länge in mm" value="{{material_suborder.length}}" disabled>
+            <input class="form-control text-center" type="number"
+                placeholder="Breite in mm" value="{{material_suborder.width}}" disabled>
+            {% if not material_suborder.material.is_fixed %}
+            <button class="btn btn-sm btn-grey" type="button">
+                <img class="icon" src="{%static 'global_svg/pencil_edit.svg' %}" class="img-fluid">
+            </button>
+            {% else %}
+            <button class="btn btn-sm btn-grey" type="button" disabled>
+                <img class="icon" src="{%static 'global_svg/pin-angle-fill.svg' %}" class="img-fluid">
+            </button>
+            {% endif %}
+        </div>
+    </td>
+    <td id="material_suborder_{{material_suborder.id}}_price">
+        <div class="input-group">
+            <input class="form-control text-center" type="text"
+                pattern="^[0-9]{1,3}(?:[.,][0-9]{0,2})?$" placeholder="Preis"
+                value="{{material_suborder.price_str}}" disabled>
+            <button class="btn btn-sm btn-grey" type="button">
+                <img class="icon" src="{%static 'global_svg/pencil_edit.svg' %}" class="img-fluid">
+            </button>
+            <button class="btn btn-sm btn-grey" type="button">
+                <img class="icon" src="{%static 'global_svg/arrow_reset.svg' %}" class="img-fluid">
+            </button>
+        </div>
+    </td>
+    <td id="material_suborder_{{material_suborder.id}}_comment">
+        {{material_suborder.customer_comment}}
+    </td>
+</tr>
+{% endfor %}
+
+{% if render_table_head %}
+</tbody>
+{% endif %}
+
+
+{% if order.hasUnreadMessage %}
+    <td class="text-center align-middle" onclick="event.stopPropagation(); setUpMessageModalUserSide(event.target);"><img class="icon messageIcon" alt="Nachricht" src="{% static 'global_svg/envelope_exclamation.svg' %}"></td>
+{% else %}
+    <td class="text-center align-middle" onclick="event.stopPropagation(); setUpMessageModalUserSide(event.target);"><img class="icon messageIcon" alt="Nachricht" src="{% static 'global_svg/envelope.svg' %}"></td>
+{% endif %}

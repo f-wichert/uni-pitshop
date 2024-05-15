@@ -1,0 +1,10 @@
+ID; 013  
+Name; 013_Login-Screen-Anzeige  
+Beschreibung; Als nicht eingeloggte/r Nutzer*in der Website, werde ich beim Aufruf der Seite mit beliebiger Route auf den Login-Screen weitergeleitet, damit ich mich dort einloggen kann, um die Website dann im vollen Umfang meiner Rechte zu nutzen.    
+Akzeptanzkriterium; Wenn ein/e Nutzer*in nicht eingeloggt ist, wird er/sie unabhängig von der eingegebenen Route auf den Login-Screen umgeleitet. Dieser wird korrekt angezeigt und bietet direkt die Möglichkeit eines externen Logins und einen Button zur Weiterleitung auf den SSO des HRZ.    
+Geschätzter Aufwand (Story Points);3   
+Entwickler*in;Frederick Wichert  
+Fertiggestellt in Iteration;1  
+Tatsächlicher Aufwand (h);2h  
+Velocity (Story Points/h);1.5  
+Bemerkungen;

@@ -1,0 +1,76 @@
+{% load static %}
+{% with class_name=material.spaceless_name %}
+
+<div class="material-card card-{{ class_name }}">
+    <div style="position: relative; width: 0; height: 0">
+        <div class="alert alert-danger alert-display alert-not-active" id="order-error-message" role="alert">
+            There was an error, please check your input
+        </div>
+    </div>
+    <div class="material-preview d-flex align-items-center justify-content-center">
+        {% if not material.previewImage %}
+        NO IMAGE!
+        {% else %}
+        <img src="{{ material.previewImage.url }}" width="100%" height="100%" style="border-radius: 10px;" />
+        {% endif %}
+    </div>
+    <div class="material-name align-items-center justify-content-center font-weight-bold text-center">
+        <h4>
+            {{ material.name }}
+        </h4>
+    </div>
+    <div class="container">
+        <form onsubmit="return false">
+            <div class="row">
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text" id="basic-addon1">H×L×B</span>
+                    <select class="form-select form-select-sm dimension-select text-center" id="{{ class_name }}-dimension">
+                        {% for variation in material.variations.all %}
+                        <option value="{{ variation.id }}">{{ variation.thickness }} x {{ variation.length }} x {{ variation.width }}</option>
+                        {% endfor %}
+                    </select>
+                  </div>
+            </div>
+            {% if not material.is_fixed_size %}
+            <div class="row">
+                <div class="col-12 d-flex justify-content-center align-items-center">
+                    <div class="input-group input-group-sm mb-3 input-sm">
+                        <span class="input-group-text" id="basic-addon1">Zuschnitt</span>
+                        <input type="number" max="{{ material.variation.length }}" class="form-control length-input text-center"
+                            id="{{ class_name }}-length" placeholder="Länge" aria-label="Recipient's username"
+                            aria-describedby="basic-addon2" required>
+                        <input type="number" max="{{ material.variation.width }}" class="form-control width-input text-center"
+                            id="{{ class_name }}-width" placeholder="Breite" aria-label="Recipient's username"
+                            aria-describedby="basic-addon2" required>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            <div class="row">
+                <div class="col-6 d-flex justify-content-center align-items-center">
+                    <div class="input-group input-group-sm mb-3">
+                        <span class="input-group-text" id="basic-addon1">Anzahl</span>
+                        <input type="number" max="" class="form-control amount-input text-center"
+                            id="{{ class_name }}-amount" placeholder="Anzahl" aria-label="Recipient's username"
+                            aria-describedby="basic-addon2" required>
+                    </div>
+                </div>
+                <div class="col-6 d-flex justify-content-center align-items-center">
+                    <div class="input-group input-group-sm mb-3">
+                        <button type="submit"
+                            class="btn btn-outline-secondary add-to-order-button d-flex justify-content-center align-items-center"
+                            id="{{ class_name }}-submit" type="button">Hinzufügen</button>
+                    </div>
+                </div>
+            </div>
+            {% if material.needs_comment %}
+            <div class="row">
+                <div class="col-12">
+                    <textarea class="form-control box-sizing" name="" id="" rows="1" required></textarea>
+                </div>
+            </div>
+            {% endif %}
+        </form>
+    </div>
+</div>
+{% endwith %}

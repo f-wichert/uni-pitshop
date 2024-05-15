@@ -1,0 +1,10 @@
+ID;003
+Name;003_Abrechnung-Screen-Filterung
+Beschreibung; Als Mitarbeiter*in/Administrator*in auf dem Abrechnungsscreen möchte ich die Übersichtstabelle nach einem Nutzernamen, einem gewissen Zeitraum oder einem gewissen Betrag filtern, um für Abrechnungszwecke einzelne Informationen zu extrahieren.
+Akzeptanzkriterium; Die Übersichtstabelle wird sowohl nach als auch vor der Filterung korrekt angezeigt. Es existieren drei Eingabefelder für die jeweiligen Filter, die bei Eingabe die Tabelle automatisch aktualisieren und die Anzeige anpassen. Der Nutzer kann den Filter durch Entfernen der Eingabefelder zurücksetzen.
+Geschätzter Aufwand (Story Points); 5
+Entwickler*in; Jonas Milkovits
+Fertiggestellt in Iteration; 4
+Tatsächlicher Aufwand (h); 6.25h
+Velocity (Story Points/h); 0.8
+Bemerkungen;

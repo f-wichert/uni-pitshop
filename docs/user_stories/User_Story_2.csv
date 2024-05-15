@@ -1,0 +1,10 @@
+ID;002
+Name;002_Abrechnung-Screen-Übersicht
+Beschreibung; Als Mitarbeiter*in/Administrator*in, der/die gerade den Abrechnungsscreen geöffnet hat, möchte ich direkt eine Übersicht über alle abgeschlossenen Bestellungen über einen gewissen Zeitraum haben.
+Akzeptanzkriterium; Die Übersichtstabelle enthält den jeweiligen Namen der Person, sowie den Betrag der Rechnung/Quittung. Die Übersichtstabelle wird automatisch bei Seitenaufruf geladen und zeigt alle Bestellungen an, die noch nicht abgerechnet wurden.
+Geschätzter Aufwand (Story Points); 3
+Entwickler*in; Jonas Milkovits
+Fertiggestellt in Iteration; 3
+Tatsächlicher Aufwand (h); 4h
+Velocity (Story Points/h);  0.75
+Bemerkungen;

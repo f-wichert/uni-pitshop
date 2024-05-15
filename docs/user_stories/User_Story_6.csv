@@ -1,0 +1,10 @@
+ID;006
+Name;006_Administration-Accounts-Anlegen
+Beschreibung; Als Administrator*in möchte ich die Möglichkeit haben für externe Nutzende (Unternehmen, Studierende anderer Universitäten) Accounts anzulegen, damit diese die Dienstleistung auch in Anspruch nehmen können.
+Akzeptanzkriterium; Als Administrator*in habe ich in der Administration die Möglichkeit neue Nutzende zu erstellen, die damit einen eigenen Account haben. Der Admin ist dort verpflichtet den Namen der Person/des Unternehmens abzuspeichern und eine E-Mail Adresse zu hinterlegen. Das Passwort kann hier durch den/die Administrator*in angelegt werden.
+Geschätzter Aufwand (Story Points); 1
+Entwickler*in; Jonas Milkovits
+Fertiggestellt in Iteration; 7
+Tatsächlicher Aufwand (h); 1h
+Velocity (Story Points/h); 1
+Bemerkungen;

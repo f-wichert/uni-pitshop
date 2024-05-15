@@ -1,0 +1,131 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% include '../include/generic/header_import.html' %}
+    <title>Produktauswahl</title>
+    <style>
+        form .card label {
+            min-width: 5em;
+        }
+
+        #sub-jobs {
+            counter-reset: lasercut-job;
+        }
+        #lc-preview-img {
+            width: 400px;
+            height: 400px;
+            object-fit: contain;
+        }
+        .lc-header-title:after {
+            counter-increment: lasercut-job;
+            content: "Material " counter(lasercut-job);
+        }
+
+        /* TODO */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: unset;
+            margin: unset;
+        }
+        .input-no-spin::-webkit-outer-spin-button,
+        .input-no-spin::-webkit-inner-spin-button {
+            -webkit-appearance: none !important;
+            margin: 0 !important;
+        }
+
+        /* Firefox */
+        input[type=number] {
+            -moz-appearance: unset;
+        }
+        .input-no-spin {
+            -moz-appearance: textfield !important;
+        }
+
+        /* don't show border below md breakpoint */
+        @media (max-width: 767px) {
+            .border-md {
+                border-width: 0 !important;
+            }
+        }
+    </style>
+</head>
+<body class="d-flex flex-column h-100">
+
+    {% include '../include/generic/navbar.html' %}
+
+    <!-- to be duplicated later -->
+    <script type="text/template" data-template="lc-card">
+        {% include '../include/laserschnitt/card.html' with materials=materials %}
+    </script>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Laserschnitt</h3>
+                    </div>
+                    <div class="card-body main-body">
+                        <div class="scroll" id="scroll-area">
+                        <div class="container-fluid">
+                            <div class="row px-3 py-4 px-md-4">
+                                <div class="col-md-6 px-3 border-end border-md d-flex justify-content-center">
+                                    <div class="mt-4">
+                                        <img src="{% static 'global_img/lasercut_preview.png' %}" class="figure-img img-thumbnail" id="lc-preview-img">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 px-3 px-md-5">
+                                    <form id="main-form" method="POST" target="{% url 'api:add_suborder' %}" enctype="multipart/form-data">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="type" value="lasercut" />
+
+                                        <div class="mt-4">
+                                            <div>
+                                                <label class="form-label" for="upload-file">Datei</label>
+                                                <div class="input-group">
+                                                    <input type="file" class="form-control" name="upload-file" id="upload-file" accept=".dxf,.dwg,.3dm" required />
+                                                    <button type="button" class="btn btn-outline-secondary" id="lc-preview" data-url="{% url 'api:generate_preview' %}">Vorschau <sup>(wip)</sup></button>
+                                                </div>
+                                                <div class="progress mt-2">
+                                                    <div class="progress-bar progress-bar-striped" id="upload-progress" style="width: 0%;"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="mt-3">
+                                                <label class="form-label">Materialliste</label>
+                                                <div id="sub-jobs"></div>
+                                            </div>
+
+                                            <div class="d-flex justify-content-end mx-3">
+                                                <button type="button" class="btn btn-outline-success" id="add-sub-job">+</button>
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <label for="comment" class="form-label">Kommentar</label>
+                                            <textarea class="form-control" name="comment" id="comment" style="font-size: .875rem;"></textarea>
+                                        </div>
+
+                                        <div class="d-flex justify-content-center my-4">
+                                            <input type="submit" class="btn btn-primary" value="Hinzufügen" id="lc-submit"/>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% include '../include/generic/footer.html' %}
+
+    <script src="{% static 'produktauswahl/laserschnitt/app.js' %}"></script>
+</body>
+</html>

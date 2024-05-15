@@ -1,0 +1,16 @@
+
+            {% for message in messages %}
+                {% if not message.recipient %}
+                    <tr class="m-2">
+                        <td scope="col" class="col-5 text-start messageRow"><span class="fs-6 fw-light fst-italic">{{message.sender.first_name}} {{message.sender.last_name}} {{message.date_sent | date:'d.m.Y - H:i'}}</span><br><span>{{message.text}}</span></td>
+                        <td scope="col" class="col-2"></td>
+                        <td scope="col" class="col-5"></td>
+                    </tr>
+                {% else %}
+                <tr class="m-2">
+                    <td scope="col" class="col-5"></td>
+                    <td scope="col" class="col-2"></td>
+                    <td scope="col" class="col-5 text-start messageRow"><span class="fs-6 fw-light fst-italic">{{message.sender.first_name}} {{message.sender.last_name}} {{message.date_sent | date:'d.m.Y - H:i'}}</span><br><span>{{message.text}}</span></td>
+                </tr>
+                {% endif %}
+            {% endfor %}

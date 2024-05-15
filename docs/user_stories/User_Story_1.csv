@@ -1,0 +1,10 @@
+ID; 001
+Name; 001_Abrechnung-Screen-Zugang
+Beschreibung; Als Mitarbeiter*in oder Administrator*in möchte ich auf jeder Seite der Webanwendung die Möglichkeit haben den Abrechnungsscreen aufzurufen, um dort bar bezahlte Bestellungen abzurechnen.
+Akzeptanzkriterium; Als Mitarbeiter*in/Administrator*in habe ich über einen Button 'Abrechnung' in der Navigationsleiste die Möglichkeit den Abrechnungsscreen aufzurufen. Der Button ist zu jedem Zeitpunkt in der Anwendung verfügbar. Der Button ist nur sichtbar für Mitarbeiterinnen/Administratoren, nicht für normale Nutzende. Der Button leitet den Nutzer erfolgreich im selben Tab auf den Abrechnungsscreen weiter.
+Geschätzter Aufwand (Story Points); 1
+Entwickler*in; Jonas Milkovits
+Fertiggestellt in Iteration; 1
+Tatsächlicher Aufwand (h); 1h
+Velocity (Story Points/h); 1
+Bemerkungen;

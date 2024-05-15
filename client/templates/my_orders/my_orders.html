@@ -1,0 +1,148 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="{%static 'bootstrap.min.css' %}"> -->
+    <!-- <link rel="stylesheet" href="{%static 'controlling/style.css' %}"> -->
+    {% include '../include/generic/header_import.html' %}
+    <link rel="stylesheet" href="{%static 'my_orders/order_overview.css' %}">
+    <title>Controlling</title>
+</head>
+<body class="h-100 d-flex flex-column">
+    {% include '../include/generic/navbar.html' %}
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Meine Aufträge</h3>
+                    </div>
+                    <div class="card-body main-body">
+                        <div class="container-fluid nonPrintArea">
+                            <div class="row d-flex justify-content-center">
+                                <div class="col-12">
+                                    <table class="table table-hover">
+                                        <thead id="entryHeader">
+                                            <tr>
+                                                <!-- <th scope="col"><input type="checkbox" id="headCheckbox"></th> -->
+                                                <th scope="col" class="col-1">
+                                                    <div class="input-group d-flex justify-content-center">
+                                                        <span class="input-group-text"><b>ID</b></span>
+                                                        <!-- <input type="number" class="form-control relevantFilter" id="idInput">
+                                                        <span class="input-group-text sort-span" id="sort-id">
+                                                            <img src="{%static 'controlling/sort_desc.svg' %}" alt="sort_desc" class="img-fluid inactiveFilter">
+                                                            <img src="{%static 'controlling/sort_asc.svg' %}" alt="sort_asc" class="img-fluid inactiveFilter">
+                                                        </span> -->
+                                                      </div>
+                                                </th>
+                    
+                                                <!-- <th scope="col" class="col-3">
+                                                    <div class="input-group">
+                                                        <span class="input-group-text"><b>Name</b></span>
+                                                        <input type="text" class="form-control relevantFilter" id="nameInput">
+                                                        <span class="input-group-text sort-span" id="sort-user__last_name">
+                                                            <img src="{%static 'controlling/sort_desc.svg' %}" alt="sort_desc" class="img-fluid inactiveFilter">
+                                                            <img src="{%static 'controlling/sort_asc.svg' %}" alt="sort_asc" class="img-fluid inactiveFilter">
+                                                        </span>
+                                                      </div>
+                                                </th> -->
+                                                
+                                                <th scope="col" class="col-1">
+                                                    <div class="input-group d-flex justify-content-center">
+                                                        <span class="input-group-text"><b>Auftragsdatum</b></span>
+                                                        <!-- <input type="date" class="form-control relevantFilter" placeholder="Datum von" id="dateOrderedFromInput">
+                                                        <input type="date" class="form-control relevantFilter" placeholder="Datum bis" id="dateOrderedUntilInput">
+                                                        <span class="input-group-text sort-span" id="sort-date_ordered">
+                                                            <img src="{%static 'controlling/sort_desc.svg' %}" alt="sort_desc" class="img-fluid inactiveFilter">
+                                                            <img src="{%static 'controlling/sort_asc.svg' %}" alt="sort_asc" class="img-fluid inactiveFilter">
+                                                        </span> -->
+                                                      </div>
+                                                </th>
+                    
+                                                <th scope="col" class="col-1">
+                                                    <div class="input-group d-flex justify-content-center">
+                                                        <span class="input-group-text"><b>Betrag</b></span>
+                                                        <!-- <input type="number" class="form-control relevantFilter" placeholder="Betrag von" id="amountFromInput">
+                                                        <input type="number" class="form-control relevantFilter" placeholder="Betrag bis" id="amountUntilInput">
+                                                        <span class="input-group-text sort-span" id="sort-amount">
+                                                            <img src="{%static 'controlling/sort_desc.svg' %}" alt="sort_desc" class="img-fluid inactiveFilter">
+                                                            <img src="{%static 'controlling/sort_asc.svg' %}" alt="sort_asc" class="img-fluid inactiveFilter">
+                                                        </span> -->
+                                                    </div>
+                                                </th>
+                    
+                                                <th scope="col" class="col-1">
+                                                    <div class="input-group d-flex justify-content-center">
+                                                        <span class="input-group-text"><b>Status</b></span>
+                                                        <!-- <input placeholder="Datum von" class="textbox-n form-control" type="text" onfocus="(this.type='date')" onblur="(this.type='text')"/> -->
+                                                        <!-- <input placeholder="Datum bis" class="textbox-n form-control" type="text" onfocus="(this.type='date')" onblur="(this.type='text')"/> -->
+                                                        <!-- <select name="billing-filter" class="form-select relevantFilter" id="billedInput">
+                                                            <option value="not-billed" selected>Noch nicht abgerechnet</option>
+                                                            <option value="billed">Bereits abgerechnet</option>
+                                                            <option value="all">Alle</option>
+                                                        </select> -->
+                                                    </div>
+                                                </th>
+                    
+                                                <th scope="col" class="col-1">
+                                                    <div class="input-group d-flex justify-content-center">
+                                                        <span class="input-group-text"><b>Kontakt</b></span>
+                                                    </div>
+                                                </th>
+                    
+                                            </tr>
+                                        </thead>
+                                        <tbody id="entryBody">
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <!-- Message Modal -->
+    <div class="modal fade" id="messageModal" tabindex="-1" aria-labelledby="messageModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="messageModalLabel"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-borderless" id="messageModalTable">
+                        <tbody id="messageModalTableBody">
+                        </tbody>
+                    </table>
+                    <div class="row messageModalTextAreaRow" id="messageModalTextAreaRow">
+                        <div class="col-10 align-self-center text-center">
+                            <textarea class="form-control" rows=4 placeholder="Nachricht" id="sendMessageTextField"></textarea>
+                        </div>
+                        <div class="col-2 align-self-center text-center">
+                            <button type="button" class="btn btn-outline-primary" id="messageModalSendButton">Senden</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    {% include '../include/generic/footer.html' %}
+    <script>
+        const MESSAGE_ICON = "{% static 'global_svg/envelope.svg' %}";
+        const NEW_MESSAGE_ICON = "{% static 'global_svg/envelope_exclamation.svg' %}";
+    </script>
+    <script src="{%static 'my_orders/order_overview.js' %}"></script>
+</body>
+</html>

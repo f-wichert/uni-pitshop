@@ -1,0 +1,10 @@
+ID;071  
+Name; 071_Warenkorb_3DDruck    
+Beschreibung; Als Nutzer*in möchte im Warenkorb neben meinen Material und Laserschnitt Aufträgen auch 3D-Druck Aufträge sehen und beabeiten können.  
+Akzeptanzkriterium; Im Warenkorb werden nun auch die aktuelle 3D-Druck Aufträge des/der Nutzer\*in angezeigt. Dabei soll es möglich sein die Anzahl und das gewünschte Filament zu verändern und die zugehörige Fertigungsdatei herunterzuladen.  
+Geschätzter Aufwand (Story Points); 2  
+Entwickler*in; Jannik Schmidt  
+Fertiggestellt in Iteration; 7  
+Tatsächlicher Aufwand (h); 2.5h 
+Velocity (Story Points/h); 0.8
+Bemerkungen;

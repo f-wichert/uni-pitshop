@@ -1,0 +1,110 @@
+{% load static %}
+
+{% if order %}
+
+<div class="container-xxl">
+    <div class="row" id="cartTableContainer">
+        <div class="container-xxl">
+
+            {% if lasercuts %}
+
+            <div class="row">
+                <h2><strong>Laserschnitte</strong></h2>
+            </div>
+            <div class="row">
+                <table class="table table-hover table-borderless table-sm align-middle cart-table">
+                    <thead class="cart-table-head">
+                        <th scope="col" class="col-3"></th>
+                        <th scope="col" class="col-1">Datei</th>
+                        <th scope="col" class="col-6">Kommentar</th>
+                        <th scope="col" class="col-1">Preis</th>
+                        <th scope="col" class="col-1"></th>
+                    </thead>
+                    <tbody>
+
+                        {% for lasercut in lasercuts %}
+
+                        {% include './cart_row_lasercut.html' with lasercut=lasercut %}
+
+                        {% endfor %}
+
+                    </tbody>
+                </table>
+            </div>
+
+            {% endif %}
+
+
+            {% if materials %}
+
+            <div class="row">
+                <h2><strong>Materialien</strong></h2>
+            </div>
+            <div class="row">
+                <table class="table table-hover table-borderless table-sm align-middle cart-table">
+                    <thead class="cart-table-head">
+                        <th scope="col" class="col-2">Material</th>
+                        {% comment %} <th scope="col" class="col-2">Kommentar</th> {% endcomment %}
+                        <th scope="col" class="col-3">Basisdimension</th>
+                        <th scope="col" class="col-3">Zuschnitt</th>
+                        <th scope="col" class="col-1">Anzahl</th>
+                        <th scope="col" class="col-1">Preis</th>
+                        <th scope="col" class="col-1"></th>
+                    </thead>
+                    <tbody>
+
+                        {% for material in materials %}
+
+                        {% if not material.associated_lasercut %}
+                        {% include './cart_row_material.html' with material=material deletable=True %}
+                        {% endif %}
+
+                        {% endfor %}
+
+                    </tbody>
+                </table>
+            </div>
+
+            {% endif %}
+
+        </div>
+    </div>
+
+    <div class="row" style="height:5px">
+        <hr id="cartTableFooterSeparator">
+    </div>
+
+    <div class="row">
+        <div class="d-flex align-items-center justify-content-between" id="cartFooterContainer">
+            <div></div>
+
+            <h1 class="cart-footer-text"><b>Summe</b></h1>
+
+            <div></div>
+            <div></div>
+
+            <h1 class="cart-footer-text"><b><span id="cartFinalPrice">{{order.price_str}}</span>&nbsp;€</b></h1>
+
+            {% if user.has_unfinished_order %}
+            <span tabindex="0" data-bs-toggle="tooltip"
+                title="Sie haben noch eine unbezahlte Bestellung! Um weitere Bestellungen aufgeben zu können, holen sie ihre letzte Bestellung in der Modellbauwerkstatt ab.">
+                <button class="btn btn-lg btn-success" disabled>
+                    <h2>Bestellen</h2>
+                </button>
+            </span>
+            {% else %}
+            <button class="btn btn-lg btn-success" id="cartConfirmOrderButton" data-bs-toggle="modal"
+                data-bs-target="#confirmOrderModal">
+                <h2>Bestellen</h2>
+            </button>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+
+{% else %}
+
+<h4>Ihr Warenkorb ist leer.</h4>
+
+{% endif %}

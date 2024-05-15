@@ -1,0 +1,10 @@
+ID;005
+Name;005_Abrechnung-Screen-Ausdruck
+Beschreibung; Als Mitarbeiter*in/Administrator*in möchte ich die Möglichkeit haben mir die erzeugte Abrechnung als PDF zu generieren, damit ich diese im Nachgang drucken kann und an das Sekretariat für buchhalterische Zwecke weitergeben kann.
+Akzeptanzkriterium; Dem Nutzenden steht die Funktion über einen Knopf mit einem Drucksymbol zur Verfügung. Dieser hebt sich von der restlichen Seite ab, da er eine der Hauptfunktionalitäten des Abrechnungsscreens darstellt. Die erzeugte PDF Datei enthält die jeweilige Abrechnung.
+Geschätzter Aufwand (Story Points); 5
+Entwickler*in; Jonas Milkovits
+Fertiggestellt in Iteration; 4
+Tatsächlicher Aufwand (h); 5.5h
+Velocity (Story Points/h); 0.91
+Bemerkungen;

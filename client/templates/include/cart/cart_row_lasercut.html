@@ -1,0 +1,61 @@
+{% load static %}
+<tr id="cartRowlasercut{{lasercut.id}}">
+    <td>
+        <a class="btn btn-sm p-0" type="button" data-bs-toggle="collapse"
+            data-bs-target="#lasercutCollapse{{lasercut.id}}" aria-expanded="false"
+            aria-controls="lasercutCollapse{{lasercut.id}}">
+            <img src="{% static 'global_svg/icon_collapse.svg' %}" alt="collapse_svg" class="img-fluid">
+        </a>&nbsp;<span data-bs-toggle="tooltip" title="{{lasercut.filename}}">{{lasercut.filename_short}}</span>
+    </td>
+    <td>
+        <a href="{% url 'client:get_lasercut_file' lasercut_id=lasercut.id %}">
+            <img src="{% static 'global_svg/file_down.svg' %}" alt="trashcan_svg" class="img-fluid"
+                style="width:32px;height:32px;">
+        </a>
+    </td>
+    <td>
+        <textarea class="form-control comment-area" id="lasercutCommentTextarea{{lasercut.id}}" rows="1"
+            maxlength="10000" onfocus="this.setAttribute('rows', '3')"
+            onfocusout="this.setAttribute('rows', '1');this.setAttribute('style', 'height:auto')"
+            onchange="cartChangeSuborder(this, {{lasercut.id}}, 'lasercut', 'comment')">{{lasercut.customer_comment}}</textarea>
+    </td>
+    <td class="text-center">
+        <span tabindex="0" data-bs-toggle="tooltip"
+            title="Für Laserschnitt Aufträge kann leider keine Kostenschätzung gegeben werden. Ein Mitarbeiter wird nach Bearbeitung einen Preis bestimmen, den sie dann in 'Meine Aufträge' einsehen können.">
+            <a href="#">?</a>
+        </span>
+    </td>
+    <td class="text-end">
+        <button type="button" class="btn" onclick="cartRemove({{lasercut.id}}, 'lasercut')">
+            <img class="filter-danger" src="{% static 'global_svg/trash_can.svg' %}" alt="trashcan_svg"
+                class="img-fluid" style="width:32px;height:32px;">
+        </button>
+    </td>
+</tr>
+
+<tr class="collapse" id="lasercutCollapse{{lasercut.id}}">
+    <td colspan="5">
+        <table class="table table-hover table-borderless table-sm">
+            <td colspan="5">
+                <thead>
+                    <th scope="col" class="col-2">Material</th>
+                    <th scope="col" class="col-3">Basisdimension</th>
+                    <th scope="col" class="col-3">Zuschnitt</th>
+                    <th scope="col" class="col-1">Anzahl</th>
+                    <th scope="col" class="col-1">Preis</th>
+                    <th scope="col" class="col-1"></th>
+                </thead>
+
+                <tbody>
+
+                    {% for part in lasercut.parts.all %}
+
+                    {% include './cart_row_material.html' with material=part deletable=False %}
+
+                    {% endfor %}
+
+                </tbody>
+            </td>
+        </table>
+    </td>
+</tr>

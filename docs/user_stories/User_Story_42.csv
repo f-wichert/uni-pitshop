@@ -1,0 +1,10 @@
+ID;042   
+Name;042_Worker_Orders_Chat-Feature
+Beschreibung; Als Mitarbeiter*in möchte ich die Möglichkeit haben mit dem/der Kunden*in Kontakt aufzunehmen.  
+Akzeptanzkriterium; Dafür klicke ich in der Übersichtstabelle auf das Nachrichtensymbol und gelange zu einer Ansicht in der ich bisherige Nachrichten sehen kann, sowie neue Nachrichten verfassen kann. Bisherige Nachrichten sind mit dem/der Sender*in und einem Zeitstempel versehen. Als Mitarbeiter*in sehe ich außerdem alle Nachrichten anderer Mitarbeitender.      
+Geschätzter Aufwand (Story Points);  5    
+Entwickler*in;  Jonas Milkovits  
+Fertiggestellt in Iteration; 4    
+Tatsächlicher Aufwand (h);  4h  
+Velocity (Story Points/h);  1.2    
+Bemerkungen;

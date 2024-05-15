@@ -1,0 +1,10 @@
+ID; 010
+Name;010_Administration-Filterung
+Beschreibung; Als Administrator*in möchte ich in der Administration nach gewissen Spalten filtern, um gewisse Informationen schnell zu extrahieren (z.B. besteht Nutzer bereits?).
+Akzeptanzkriterium; Als Administrator*in werden mir gewisse Filtermöglichkeiten über den Spalten angezeigt. Die Tabelle lässt sich nach allen angezeigten Spalten filtern (Vorname, Nachname, E-Mail, ist_mitarbeiter). Die Tabelle aktualisiert sich automatisch beim Ändern eines Filters. Der Filter wird durch das Entfernen der Werte in den Filtern zurückgesetzt.
+Geschätzter Aufwand (Story Points); 1
+Entwickler*in; Jonas Milkovits
+Fertiggestellt in Iteration; 7
+Tatsächlicher Aufwand (h); 0.5h
+Velocity (Story Points/h); 2
+Bemerkungen;

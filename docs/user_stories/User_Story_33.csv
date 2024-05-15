@@ -1,0 +1,10 @@
+ID; 033  
+Name; 033_Laserschnitt_Kostenapproximation  
+Beschreibung;Ich befinde mich auf der Eingabeseite eines Laserschnittauftrages. Nach erfolgreichem Eingeben und vor der finalen Abgabe wird dem/der Nutzer*in eine Kostenapproximation anhand der gegebenen Informationen und der Laserschnittdatei angezeigt.  
+Akzeptanzkriterium;Alle benötigten Eingaben wurden verarbeitet um die Kostenapproximation zu erstellen. Nach jeder Eingabe wird geguckt ob die Kostenapproximation durchgeführt werden kann. Ist dies der Fall wird diese nach den gegebenen Regeln durchgeführt und angezeigt. Dies wird mit einem visuellen Feedback begleitet.   
+Geschätzter Aufwand (Story Points);6  
+Entwickler*in;-  
+Fertiggestellt in Iteration;-  
+Tatsächlicher Aufwand (h);-  
+Velocity (Story Points/h);-  
+Bemerkungen; Diese User Story wurde in Rücksprache mit dem Arbeitgeber nicht umgesetzt. Der Aufwand und die Komplexität standen hier in keinem Verhältnis zum Nutzen. Dies hätte außerdem weitere Abhängigkeiten zum Projekt hinzugefügt, das war vom Arbeitgeber nicht gewünscht.

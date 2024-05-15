@@ -1,0 +1,10 @@
+ID;046  
+Name;046_Hinterlegung-von-Informationen  
+Beschreibung; Als Administrator*in möchte ich die Möglichkeit haben Informationen, die die Website betreffen, wie z.B. die Telefonnummer der Werkstatt, ändern können.    
+Akzeptanzkriterium; Über die Verwaltung habe ich als Administrator*in die Möglichkeit die bestehende Tabelle, die alle relevanten Informationen speichert, anzupassen. Dadurch ändern sich auch automatisch alle Funktionen, die Zugriff auf diese Tabelle haben und verwenden fortan die aktualisierten Daten.  
+Geschätzter Aufwand (Story Points); 5 
+Entwickler*in;  Jonas Milkovits, Simon Jungherz
+Fertiggestellt in Iteration; 5    
+Tatsächlicher Aufwand (h); 7h    
+Velocity (Story Points/h); 0.71     
+Bemerkungen;

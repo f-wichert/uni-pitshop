@@ -1,0 +1,28 @@
+/* Print Area Stuff */
+
+.inactiveFilter {
+    opacity: 0.3;
+}
+
+.printArea {
+    display: none;
+}
+
+@media print {
+   .nonPrintArea {
+       display: none !important;
+    }
+    #navBar {
+        display: none !important;
+    }
+    #footerMain {
+        display: none !important;
+    }
+    .printArea {
+        display: block !important;
+    }
+    .modal-backdrop {
+        opacity: 0 !important;
+    }
+}
+

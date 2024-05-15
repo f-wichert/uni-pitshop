@@ -1,0 +1,10 @@
+ID; 073
+Name; 073_3DDruck_Upload
+Beschreibung; Als Nutzer*in, auf der 3D-Druck Produktauswahl Seite, möchte ich meine 3D-Datei für eine neue Bestellung hochladen können.
+Akzeptanzkriterium; Auf der 3D-Produktauswahl muss ein verpflichtendes Feld existieren, welches es erlaubt 3D-Dateien hochzuladen.
+Geschätzter Aufwand (Story Points); 3
+Entwickler*in; Jannik Schmidt
+Fertiggestellt in Iteration; 7
+Tatsächlicher Aufwand (h); 2h
+Velocity (Story Points/h); 1.5
+Bemerkungen;

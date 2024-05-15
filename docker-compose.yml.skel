@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  web:
+    image: pitshop
+    build: .
+    restart: unless-stopped
+    environment:
+      DEBUG: 0
+      SECURE_COOKIE: 1
+      SECRET_KEY: ""
+      ALLOWED_HOSTS: ""
+      # SECURE_PROXY_HEADER: "X_FORWARDED_PROTO"
+    ports:
+      - '127.0.0.1:8080:80'

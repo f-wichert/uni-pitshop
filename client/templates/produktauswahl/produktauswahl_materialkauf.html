@@ -1,0 +1,41 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'produktauswahl/materialkauf/materialkauf_style.css' %}">
+    {% include '../include/generic/header_import.html' %}
+    <title>Produktauswahl</title>
+</head>
+<body class="h-100 d-flex flex-column">
+
+    {% include '../include/generic/navbar.html' %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Materialkauf</h3>
+                    </div>
+                    <div class="card-body main-body">
+                        <div class="scroll" id="scroll-area">
+                            <div class="container-fluid d-flex flex-row flex-wrap justify-content-center align-items-center" {# style="margin-top: 5rem;" #}>
+                                {% for material in materials %}
+                                {% include '../include/materialkauf/material_card.html' with material=material %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% include '../include/generic/footer.html' %}
+
+    <script src="{%static 'produktauswahl/materialkauf/materialkauf.js' %}"></script>
+</body>
+</html>

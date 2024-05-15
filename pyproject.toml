@@ -1,0 +1,52 @@
+[tool.black]
+line-length = 100
+target-version = ['py39']
+force-exclude = "migrations"
+
+
+[tool.isort]
+profile = "black"
+py_version = 39
+line_length = 100
+extend_skip = ["migrations"]
+
+
+[tool.mypy]
+strict = true
+namespace_packages = true
+python_version = "3.9"
+
+show_error_context = true
+show_column_numbers = true
+show_error_codes = true
+pretty = true
+
+warn_unreachable = true
+warn_unused_configs = true
+
+plugins = ["mypy_django_plugin.main"]
+
+
+[tool.django-stubs]
+django_settings_module = "pitshop.settings"
+
+
+[tool.pytest.ini_options]
+addopts = "--strict-markers --cov --cov-report=xml:coverage.xml --cov-report=term"
+python_files = "tests.py test_*.py *_tests.py"
+DJANGO_SETTINGS_MODULE = "pitshop.settings"
+FAIL_INVALID_TEMPLATE_VARS = true
+
+
+[tool.coverage.run]
+branch = true
+source = ["."]
+omit = [
+    "manage.py",
+    "*/migrations/*",
+    "*/asgi.py",
+    "*/wsgi.py",
+]
+
+[tool.coverage.report]
+precision = 2

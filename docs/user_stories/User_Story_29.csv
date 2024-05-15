@@ -1,0 +1,10 @@
+ID;029
+Name;029_User-Orders_Nachricht  
+Beschreibung; Als Nutzer*in möchte ich in der Auftragsliste Feedback von Mitarbeiter*innen zu dem entsprechenden Auftrag einsehen können und dieses auch beantworten können.
+Akzeptanzkriterium; In den Auftragsdetails wird ein Nachrichtensymbol angezeigt. Dieses zeigt klar an, dass eine neue Nachricht vorhanden ist. Mit einem Klick darauf kann der/die Nutzer*in das Feedback lesen und auch beantworten.
+Geschätzter Aufwand (Story Points); 2    
+Entwickler*in; Jonas Milkovits    
+Fertiggestellt in Iteration; 7    
+Tatsächlicher Aufwand (h); 1h    
+Velocity (Story Points/h); 2    
+Bemerkungen;

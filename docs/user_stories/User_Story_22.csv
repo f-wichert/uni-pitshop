@@ -1,0 +1,10 @@
+ID;022  
+Name;022_User-Orders_Auftrag-Einzelansicht  
+Beschreibung;Als Nutzer*in möchte ich die Details eines einzelnen Auftrags durch Auswahl in der Auftragsliste einsehen können.    
+Akzeptanzkriterium;Eine eigene Ansicht zeigt alle (für den User) öffentlichen Details eines ausgewählten Auftrags an. Nur die eigenen Aufträge können eingesehen werden, Aufträge anderer User können nicht eingesehen werden, auch nicht durch gezielte Änderungen bspw. in der URL. Ausgehend von dieser Einzelansicht ist es möglich zur Liste zurückzukehren.  
+Geschätzter Aufwand (Story Points);3  
+Entwickler*in; Jonas Milkovits, Frederick Wichert  
+Fertiggestellt in Iteration; 6    
+Tatsächlicher Aufwand (h); 5h    
+Velocity (Story Points/h); 0.6    
+Bemerkungen;

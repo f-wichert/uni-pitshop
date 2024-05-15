@@ -1,0 +1,10 @@
+ID;067  
+Name;067_Deployment_Final  
+Beschreibung; Für das finale Deployment sollen alle Komponenten des Projekts auf Produktions-Ebene funktionieren, hierzu gehört entsprechende Skalierbarkeit der Anwendung (gunicorn), Anbindung einer externen Datenbank (Postgres), und Verwendung eines entsprechenden Webservers (caddy/nginx).  
+Akzeptanzkriterium; Die zuvor genannten Anforderungen werden alle erfüllt, und benötigte Daten sind auch über Container-Neustarts/-Resets persistent.Alle Komponenten sollen in separaten Docker-Containern laufen, um Portabilität zu verbessern.  
+Geschätzter Aufwand (Story Points);8  
+Entwickler*in;Simon Jungherz  
+Fertiggestellt in Iteration;7 
+Tatsächlicher Aufwand (h);10h  
+Velocity (Story Points/h);0.8  
+Bemerkungen;

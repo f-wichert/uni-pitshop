@@ -1,0 +1,10 @@
+ID;049  
+Name;049_Hinzufuegen_von_Materialbildern  
+Beschreibung; Als Administrator*in der Website kann man Bilder für verschiedene Materialien hochladen. Diese werden daraufhin bei einem Materialkauf als Preview für dieses Material angezeigt.  
+Akzeptanzkriterium; Das Hochladen ist ohne Probleme möglich, anschließend werden Bilder korrekt weiter verwendet.  
+Geschätzter Aufwand (Story Points);3  
+Entwickler*in;Frederick Wichert  
+Fertiggestellt in Iteration; 3  
+Tatsächlicher Aufwand (h); 4h  
+Velocity (Story Points/h); 0.75   
+Bemerkungen;

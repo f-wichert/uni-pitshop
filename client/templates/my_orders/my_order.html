@@ -1,0 +1,101 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html class="h-100" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'my_orders/my_order_detail.css' %}?{% now 'U'%}">
+    <link rel="stylesheet" href="{% static 'produktauswahl/materialkauf/materialkauf_table.css' %}?{% now 'U'%}">
+    {% include '../include/generic/header_import.html' %}
+    <title>Meine Aufträge</title>
+</head>
+
+<body class="h-100 d-flex flex-column">
+    {% include '../include/generic/navbar.html' %}
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between">
+                        <h3>Mein Auftrag: {{ ID }}</h3>
+                        <div class="d-flex justify-content-center align-items-center">
+                            {% if order.hasUnreadMessage %}
+                            <td class="text-center align-middle" onclick="event.stopPropagation(); setUpMessageModalUserSide(event.target);"><img class="icon messageIcon" alt="Nachricht" src="{% static 'global_svg/envelope_exclamation.svg' %}"></td>
+                            {% else %}
+                            <td class="text-center align-middle" onclick="event.stopPropagation(); setUpMessageModalUserSide(event.target);"><img class="icon messageIcon" alt="Nachricht" src="{% static 'global_svg/envelope.svg' %}"></td>
+                            {% endif %}
+
+                        </div>
+                    </div>
+                    <div class="card-body main-body">
+                        <div class="scroll" id="scroll-area">
+                        <div class="container-fluid">
+                            <div class="row mb-3">
+                                <div class="col-12">
+                                    <h2>Laserschnitt</h2>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    {% if order.has_lasercut_suborder %}
+                                    <tr class="collapse order_{{order.id}}_collapse">
+                                        <td colspan="8" class="pb-0 border-bottom-0 border">
+                                            {% include '../include/orders/suborder_row_lasercut.html' with order=order is_staff=is_staff %}
+                                        </td>
+                                    </tr>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="row mt-3 mb-3">
+                                <div class="col-12">
+                                    <h2>Materialien</h2>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    {% if order.has_material_suborder %}
+                                    <tr class="collapse order_{{order.id}}_collapse">
+                                        <td colspan="8" class="pt-0 border-top-0 border">
+                                            {% include '../include/orders/suborder_row_material.html' with order=order is_staff=is_staff %}
+                                        </td>
+                                    </tr>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   
+
+    {% include '../include/generic/footer.html' %}
+
+    <script src="{% static 'my_orders/app.js' %}"></script>
+
+    {% if is_editable %}
+    <script src="{% static 'orders/order_edit.js' %}"></script>
+    <script>
+        const updatePriceFunctionObject = {
+            'lasercut': updateLasercutPrice,
+            'material': updateMaterialPrice,
+            // '3dprint': update3dprintPrice,
+        }
+    </script>
+    <script src="{% static 'orders/material_edit.js' %}"></script>
+    <script src="{% static 'orders/lasercut_edit.js' %}"></script>
+    {% else %}
+
+    {% endif %}
+    
+    <!-- <script src="{% static 'my_orders/my_order_details_staff.js' %}"></script> -->
+</body>
+
+</html>

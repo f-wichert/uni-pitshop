@@ -1,0 +1,10 @@
+ID;053  
+Name;053_Continuous_Integration  
+Beschreibung; Die Formatierung und Type-Sicherheit der Code-Basis sollte automatisch durch "continuous integration" sichergestellt werden, bspw. per GitLab CI.  
+Akzeptanzkriterium; Ist der Code nicht korrekt formatiert oder hat statisch erkennbare Fehler, schlägt die CI-Pipeline fehl.  
+Geschätzter Aufwand (Story Points);5  
+Entwickler*in;Simon Jungherz  
+Fertiggestellt in Iteration;1  
+Tatsächlicher Aufwand (h);8h  
+Velocity (Story Points/h);0.62  
+Bemerkungen;

@@ -1,0 +1,60 @@
+{% load static %}
+<tr id="cartRowmaterial{{material.id}}">
+    <td>{{material.material.name}}</td>
+
+    {% comment %} <td>
+        <textarea class="form-control comment-area" id="materialCommentTextarea{{material.id}}" rows="1"
+            maxlength="10000" onfocus="this.setAttribute('rows', '3')"
+            onfocusout="this.setAttribute('rows', '1');this.setAttribute('style', 'height:auto')"
+            onchange="cartChange({{material.id}}, 'material', this, 'comment', 0, 10000, false)">{{material.customer_comment}}</textarea>
+    </td> {% endcomment %}
+
+    <td>
+        <select class="form-select cart-dimension-select" id="materialDimensionSelect{{material.id}}"
+            aria-label="Default select example"
+            onchange="cartChangeSuborder(this, {{material.id}}, 'material', 'variation_id')">
+
+            {% for mv in material.material.base.variations.all %}
+
+            <option {% if mv.id == material.material.id %}selected{% endif %} value={{mv.id}}>
+                {{mv.thickness}}&nbsp;x&nbsp;{{mv.length}}&nbsp;x&nbsp;{{mv.width}}
+            </option>
+
+            {% endfor %}
+
+        </select>
+    </td>
+
+    <td>
+        {% if not material.material.is_fixed %}
+        <div class="input-group">
+            <input class="form-control cart-number-input" type="number" id="materialLengthInput{{material.id}}"
+                data-bs-toggle="tooltip" title="Wertebereich: 1 - {{material.material.length}}"
+                value="{{material.length}}" onchange="cartChangeSuborder(this, {{material.id}}, 'material', 'length')">
+            <span class="input-group-text">x</span>
+            <input class="form-control cart-number-input" type="number" id="materialWidthInput{{material.id}}"
+                data-bs-toggle="tooltip" title="Wertebereich: 1 - {{material.material.width}}"
+                value="{{material.width}}" onchange="cartChangeSuborder(this, {{material.id}}, 'material', 'width')">
+        </div>
+        {% endif %}
+    </td>
+
+    <td>
+        <input class="form-control cart-number-input" type="number" id="materialAmountInput{{material.id}}"
+            data-bs-toggle="tooltip" title="Wertebereich: 1 - 99" value="{{material.amount}}"
+            onchange="cartChangeSuborder(this, {{material.id}}, 'material', 'amount')">
+    </td>
+    <td class="text-end"><span><span id="materialPrice{{material.id}}">{{material.price_str}}</span>&nbsp;€</span></td>
+
+    {% if deletable %}
+
+    <td class="text-end">
+        <button type="button" class="btn" onclick="cartRemove({{material.id}}, 'material')">
+            <img class="filter-danger" src="{%static 'global_svg/trash_can.svg' %}" alt="trashcan_svg" class="img-fluid"
+                style="width:32px;height:32px;">
+        </button>
+    </td>
+
+    {% endif %}
+
+</tr>

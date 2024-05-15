@@ -1,0 +1,10 @@
+ID;050
+Name;050_Orders_Umbuchung  
+Beschreibung; Als Mitarbeiter*in möchte ich die Möglichkeit haben interne Umbuchungen zu erstellen.    
+Akzeptanzkriterium; Innerhalb der Auftragsübersicht beim Bezahlungsmodal habe ich zusätzlich die Möglichkeit statt einer Rechnung eine Umbuchung zu erstellen. Dafür werden dieselben Informationen wie für eine Rechnung verwendet, es wird jedoch eine unterschiedliche Vorlage geladen.  
+Geschätzter Aufwand (Story Points); 3  
+Entwickler*in; Jonas Milkovits  
+Fertiggestellt in Iteration; 7    
+Tatsächlicher Aufwand (h); 3h    
+Velocity (Story Points/h); 1    
+Bemerkungen;

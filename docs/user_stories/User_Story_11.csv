@@ -1,0 +1,10 @@
+ID; 011    
+Name; 011_Nutzerverwaltung-Passwort-Zurücksetzen  
+Beschreibung; Als Administrator*in möchte ich bei externen Nutzern*innen die Möglichkeit haben das Passwort zurückzusetzen, falls diese sich melden und ihr Passwort vergessen haben.  
+Akzeptanzkriterium; In der Nutzer*innenübersichtstabelle wird mir nur für Externe ein Button angezeigt, mit dem ich das Passwort zurücksetzen kann. Daraufhin wird an die für den/die Nutzer*in hinterlegte E-Mail Adresse eine E-Mail mit einem neu generierten Passwort und dem Nutzernamen geschickt. Das neue Passwort überschreibt das alte Passwort in der Datenbank.  
+Geschätzter Aufwand (Story Points); 4   
+Entwickler*in; -    
+Fertiggestellt in Iteration; -    
+Tatsächlicher Aufwand (h); -     
+Velocity (Story Points/h); -    
+Bemerkungen; Diese User Story wurde in Absprache mit dem Auftraggeber nicht umgesetzt, da die Funktionalität recht selten benötigt wird und dementsprechend nicht im Verhältnis zum Aufwand steht. Das Passwort kann als Administrator:in über die Django Administration manuell angepasst werden.

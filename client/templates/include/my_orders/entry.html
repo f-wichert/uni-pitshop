@@ -1,0 +1,15 @@
+{% load static %}
+
+{% for order in orders %}
+    <tr>
+        <td class="text-center align-middle"><a href="/my-orders/{{order.id}}" class="link-dark">{{order.id}}</a></td>
+        <td class="text-center align-middle">{{order.date_ordered | date:'d.m.Y - H:i'}} Uhr</td>
+        <td class="text-center align-middle">{{order.price_str}} €</td>
+        <td class="text-center align-middle state-entry">{{order.stateString}}</td>
+        {% if order.hasUnreadMessage %}
+            <td class="text-center align-middle" onclick="event.stopPropagation(); setUpMessageModalUserSide(event.target);"><img class="icon messageIcon" alt="Nachricht" src="{% static 'global_svg/envelope_exclamation.svg' %}"></td>
+        {% else %}
+            <td class="text-center align-middle" onclick="event.stopPropagation(); setUpMessageModalUserSide(event.target);"><img class="icon messageIcon" alt="Nachricht" src="{% static 'global_svg/envelope.svg' %}"></td>
+        {% endif %}
+    </tr>
+{% endfor %}

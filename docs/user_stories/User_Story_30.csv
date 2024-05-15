@@ -1,0 +1,10 @@
+ID; 030  
+Name; 030_Produktauswahl  
+Beschreibung;Als Nutzer*in möchte ich eine Übersicht aller möglichen Produkttypen (Auftragstypen) sehen und zwischen diesen auswählen können.  
+Akzeptanzkriterium;Es werden alle möglichen Produkttypen angezeigt, wähle ich einen davon aus werde ich korrekt zu der jeweiligen Produktseite weitergeleitet. Hier kann ich nun meine Bestellung näher definieren.  
+Geschätzter Aufwand (Story Points); 3    
+Entwickler*in; Frederick Wichert, Jonas Milkovits, Laurenz Kammeyer    
+Fertiggestellt in Iteration; 1      
+Tatsächlicher Aufwand (h); 5.5h    
+Velocity (Story Points/h); 0.55     
+Bemerkungen;

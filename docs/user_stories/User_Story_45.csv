@@ -1,0 +1,10 @@
+ID;045    
+Name;045_Orders-Bezahlungsauswahl  
+Beschreibung; Als Mitarbeiter*in muss ich bei der Abwicklung einer Bezahlung die Möglichkeit haben zwischen einer Quittung und einer Rechnung auszuwählen.  
+Akzeptanzkriterium; Dafür klicke ich auf Bestellungsebene auf den Bezahlungsbutton und habe dann über unterschiedliche Tabs Zugriff auf die jeweiligen Funktionen.     
+Geschätzter Aufwand (Story Points);1  
+Entwickler*in; Jonas Milkovits    
+Fertiggestellt in Iteration; 5    
+Tatsächlicher Aufwand (h); 1h    
+Velocity (Story Points/h); 1 
+Bemerkungen;

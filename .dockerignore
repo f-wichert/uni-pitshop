@@ -1,0 +1,10 @@
+*
+!api/
+!client/
+!global_static/
+!model/
+!pitshop/
+!scripts/
+!manage.py
+!Pipfile*
+!pyproject.toml

@@ -1,0 +1,10 @@
+ID;017  
+Name;017_Worker_Aufträge_Übersicht  
+Beschreibung; Die Auftragsansicht zeigt alle Informationen der gefilterten Aufträge an und ermöglicht damit eine Bearbeitung der Bestellungen durch den/die Mitarbeiter*in.   
+Akzeptanzkriterium; Alle Informationen des Auftrags werden strukturiert und mit Name/Beschreibung angezeigt. Die Felder der Tabellen der Unteraufträge sind abhängig von der Art des Unterauftrags, da diese entscheidet welche Informationen relevant sind. Zusätzlich wird immer der Bearbeitungsstatus einer Bestellung angezeigt. Es gibt einen Button, um dem/der Kunden*in eine Nachricht zu schreiben.  
+Geschätzter Aufwand (Story Points); 5      
+Entwickler*in; Jonas Milkovits, Laurenz Kammeyer    
+Fertiggestellt in Iteration; 5      
+Tatsächlicher Aufwand (h); 16h     
+Velocity (Story Points/h); 0.31
+Bemerkungen;

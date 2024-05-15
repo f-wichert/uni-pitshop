@@ -1,0 +1,10 @@
+ID;062  
+Name;062_Test_Deployment  
+Beschreibung; Das komplette Projekt wird dauerhaft auf einem Server extern zugänglich gemacht, um das finale Deployment und Infrastruktur-Überlegungen (z.B. Webserver, Docker) zu testen sowie um Nutzerstudien zu ermöglichen. Alle Komponenten des Projekts sollen dabei laufend aktualisiert werden.  
+Akzeptanzkriterium; Die jeweils aktuelle Version des Projekts wird automatisch zeitnah öffentlich bereitgestellt und ist ohne große Umstände (wie z.B. VPN) erreichbar. Primäre Konfigurationsvariablen sind anpassbar, ohne Sourcecode verändern zu müssen.  
+Geschätzter Aufwand (Story Points);5  
+Entwickler*in;Simon Jungherz  
+Fertiggestellt in Iteration;4  
+Tatsächlicher Aufwand (h);8h  
+Velocity (Story Points/h);0.67  
+Bemerkungen;

@@ -1,0 +1,10 @@
+ID; 055  
+Name; 055_Produktauswahl_dynamisch_anpassbar  
+Beschreibung; Als Nutzer*in möchte ich eine Übersicht aller möglichen Produkttypen (Auftragstypen) sehen und zwischen diesen auswählen können. Diese Anzeige soll in den Servereinstellungen anpassbar sein.  
+Akzeptanzkriterium; Die Verfügbarkeit und damit auch die Anzeige von Produkten in der Produktauswahl ist abhängig von Variablen die von einer*m Administrator*in eingestellt werden können.  
+Geschätzter Aufwand (Story Points); 1  
+Entwickler\*in; Frederick Wichert  
+Fertiggestellt in Iteration; 7  
+Tatsächlicher Aufwand (h); 1h  
+Velocity (Story Points/h); 1  
+Bemerkungen;

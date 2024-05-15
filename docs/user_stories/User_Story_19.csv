@@ -1,0 +1,10 @@
+ID;019  
+Name;019_Worker_Auftraege_Filterung   
+Beschreibung; Als Mitarbeiter*in/Administrator*in auf der Auftragsübersicht, möchte ich die Übersichtstabelle nach einem Nutzernamen, einem gewissen Zeitraum oder einer Bestellnummer filtern, um für Bearbeitungszwecke einzelne Informationen zu extrahieren.  
+Akzeptanzkriterium; Die Übersichtstabelle wird sowohl nach als auch vor der Filterung korrekt angezeigt. Es existieren vier Eingabefelder für die jeweiligen Filter, die bei Eingabe die Tabelle automatisch aktualisieren und die Anzeige anpassen. Der Nutzer kann den Filter über das Entfernen der Eingabefelder zurücksetzen.
+Geschätzter Aufwand (Story Points); 6    
+Entwickler*in; Jonas Milkovits, Laurenz Kammeyer  
+Fertiggestellt in Iteration; 5    
+Tatsächlicher Aufwand (h); 17h   
+Velocity (Story Points/h); 0.29     
+Bemerkungen;

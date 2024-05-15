@@ -1,0 +1,99 @@
+{% load static %}
+
+<div class="container-fluid mt-3">
+    {% if order.is_rechnung %}
+    <form onsubmit="printRechnung(); return false;">
+        <div class="row text-center">
+            <h4>Eingabe von Rechnungsdaten</h4>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="input-group mb-3">
+                    <span class="input-group-text input-group-text-same-width">Rechnungsnummer</span>
+                    <input type="text" class="form-control" id="inputRechnungsnummer" placeholder="z.B. 30-31.10.201/9" required>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="input-group mb-3">
+                    <span class="input-group-text input-group-text-same-width">Rechnungsdatum</span>
+                    <input class="textbox-n form-control" type="date" id="inputRechnungsDatum" required/>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="input-group mb-3">
+                    <span class="input-group-text input-group-text-same-width">Adresse</span>
+                    <textarea class="form-control" id="inputRechnungsadresse" rows="3" placeholder="Name&#10;Straße&#10;Ort" required></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="input-group mb-3">
+                    <span class="input-group-text input-group-text-same-width">Anschreiben</span>
+                    <textarea class="form-control" id="inputRechnungsanschreiben" rows="3" placeholder="Anschreiben" >Sehr geehrter Damen und Herren,&#10;für ... stelle ich wie folgt in Rechnung:</textarea>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-2 text-center">
+            <h4>Eingabe von Dienstleistungen</h4>
+        </div>
+        <div class="row">
+            <table class="table table-hover">
+                <thead id="rechnungTableHeader">
+                    <th scope="col" class="col-1 text-center">Auswahl</th>
+                    <th scope="col" class="col-7 text-center">Dienstleistung</th>
+                    <th scope="col" class="col-1 text-center">Stückzahl</th>
+                    <th scope="col" class="col-1 text-center">Stückpreis</th>
+                    <th scope="col" class="col-1 text-center">Gesamtpreis</th>
+                    <th scope="col" class="col-1 text-center"></th>
+                </thead>
+                <tbody id="rechnungTableBody">
+                    {% for lasercut_suborder in order.suborders_lasercuts %}
+                        <tr>
+                            <td id="suborder_{{lasercut_suborder.id}}_checkbox"><input type="checkbox" checked></td>
+                            <td class="text-center align-middle"><input required class="textbox-n form-control" type="text" id="suborder_{{lasercut_suborder.id}}_description" value="{{lasercut_suborder}}"/></td>
+                            <td class="text-center align-middle"><input required class="textbox-n form-control" type="number" id="suborder_{{lasercut_suborder.id}}_amount" value="{{lasercut_suborder.minutes}}"/></td>
+                            <td class="text-center align-middle"><input required class="textbox-n form-control" type="number" id="suborder_{{lasercut_suborder.id}}_price" value="{{lasercut_suborder.price_per_minute_valuestr}}"/></td>
+                            <td class="text-center align-middle"><input required class="textbox-n form-control" type="number" id="suborder_{{lasercut_suborder.id}}_total_price" value="{{lasercut_suborder.price_valuestr}}"/></td>
+                            <td class="text-center align-middle"></td>
+                        </tr>
+                    {% endfor %}
+                    {% for material_suborder in order.suborders_materials %}
+                    <tr>
+                        <td id="suborder_{{material_suborder.id}}_checkbox"><input type="checkbox" checked></td>
+                        <td class="text-center align-middle"><input required class="textbox-n form-control" type="text" id="suborder_{{material_suborder.id}}_description" value="{{material_suborder}}"/></td>
+                        <td class="text-center align-middle"><input required class="textbox-n form-control" type="number" id="suborder_{{material_suborder.id}}_amount" value="{{material_suborder.amount}}"/></td>
+                        <td class="text-center align-middle"><input required class="textbox-n form-control" type="number" id="suborder_{{material_suborder.id}}_price" value="{{material_suborder.price_per_piece_valuestr}}"/></td>
+                        <td class="text-center align-middle"><input required class="textbox-n form-control" type="number" id="suborder_{{material_suborder.id}}_total_price" value="{{material_suborder.price_valuestr}}"/></td>
+                        <td class="text-center align-middle"></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="row">
+            <div class="col-1">
+                <button type="button" class="btn" onclick="rechnungAddRow(event.target)">
+                    <img src="{%static 'global_svg/plus_square.svg' %}" class="img-fluid">
+                </button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-9"></div>
+            <div class="col-3 text-end">
+                <button class="btn btn-outline-primary mt-3" id="btnCreateReceipt" type="submit">Rechnung erstellen</button>
+            </div>
+        </div>
+    </form>
+    {% else %}
+    <div class="row">
+        <div class="col-12 text-center">
+            <button class="btn btn-outline-danger" id="btnSwitchStateToInvoice" onclick="event.preventDefault(); setStateToInvoice(event.target);">Diese Bestellung zu <strong>Zahlung per Rechnung</strong> umschalten</button>
+        </div>
+    </div>
+    {% endif %}
+</div>

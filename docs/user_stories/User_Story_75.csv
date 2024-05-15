@@ -1,0 +1,10 @@
+ID; 075
+Name; 075_3DDruck_Bestellung_aufgeben
+Beschreibung; Als Nutzer*in möchte ich nach Eingabe aller relevanten Parameter und einer Datei für den 3D-Druck die Bestellung aufgeben und anschließend in meinem Warenkorb einsehen können.
+Akzeptanzkriterium; Auf der 3D-Druck Seite gibt es einen Button um die Bestellung abzugeben, welche nur betätigt werden kann, wenn alle Parameter und eine 3D Datei angegeben wurden. Nach Betätigung wird die Bestellung zum Warenkorb hinzugefügt und der Warenkorb öffnet sich.
+Geschätzter Aufwand (Story Points); 2
+Entwickler*in; Jannik Schmidt
+Fertiggestellt in Iteration; 7
+Tatsächlicher Aufwand (h); 1h
+Velocity (Story Points/h); 2
+Bemerkungen;

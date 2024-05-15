@@ -1,0 +1,10 @@
+ID;051  
+Name;051_3D-Druck-AuftragsÜbersicht  
+Beschreibung; Als Mitarbeiter*in möchte ich mir in der Auftragsübersicht aufgegebene 3D-Druck Unteraufträge anzeigen lassen können und mit diesen interagieren.  
+Akzeptanzkriterium; 3D-Druck Unteraufträge werden bei den anderen Unteraufträgen angezeigt. Als Mitarbeiter*in kann ich hier das Filament anpassen, sowie den Preis setzen. Alle angezeigten Informationen sind korrekt und entsprechen dem aktuellen Status der Datenbank. Die neuen Unteraufträge werden auch korrekt in Rechnungen und Quittungen angezeigt.  
+Geschätzter Aufwand (Story Points); 3    
+Entwickler*in; Jonas Milkovits    
+Fertiggestellt in Iteration; 7    
+Tatsächlicher Aufwand (h); 3h    
+Velocity (Story Points/h); 1    
+Bemerkungen;

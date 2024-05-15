@@ -1,0 +1,198 @@
+\documentclass[
+ngerman,
+accentcolor=2d,
+marginpar=false,
+class=report,
+fontsize=11pt,
+ruledheaders=section,
+]{tudapub}
+
+\usepackage[english, main=ngerman]{babel}
+\usepackage[babel]{csquotes}
+\usepackage{amsmath}
+\usepackage{parcolumns}
+
+\usepackage{appendix}
+\usepackage{forest}
+\usepackage{enumitem}
+\usepackage{amssymb}
+
+\newlist{checklist}{itemize}{2}
+\setlist[checklist]{label=$\square$}
+\setlength\parindent{0pt}
+
+
+\begin{document}
+
+	\title{Pitshop}
+	\subtitle{Projektdokumentation -- Gruppe 02\\}
+
+	\author{
+		Simon Jungherz <simon.jungherz@stud.tu-darmstadt.de>\\
+		Laurenz Kammeyer <laurenz.kammeyer@stud.tu-darmstadt.de>\\
+		Jonas Milkovits <jonas.milkovits@stud.tu-darmstadt.de>\\
+		Jannik Schmidt <jannik.schmidt@stud.tu-darmstadt.de>\\
+		Frederick Wichert <frederick.wichert@stud.tu-darmstadt.de>\\\\
+		Teamleitung:\\
+		Nico Weber <nico.weber@stud.tu-darmstadt.de>\\\\
+		Auftrag:\\
+		Dr.-Ing. Andreas Noback <andreas.noback@architektur.tu-darmstadt.de>\\
+		FB 15 (Architektur)\\
+	}
+	\institution{Bachelor-Praktikum Informatik\\ WiSe 2021/22\\Fachbereich Informatik}
+	\addTitleBox{Bachelorpraktikum\\
+		Wintersemester 2021/22\\
+		Fachbereich Informatik}
+
+	\maketitle
+	\tableofcontents
+
+	\chapter{Projektbeschreibung}
+
+	    \paragraph{Motivation:}
+	    Studierende des Fachbereichs Architektur benötigen für einen großen Teil ihrer Studienleistungen eine Vielzahl an kleinen Pappstücken und Bauteilen, um aufwendige Projekte fertigzustellen. Diese werden dann oft in mühsamer Handarbeit zurechtgeschnitten.
+
+	    An der TU Darmstadt haben Studierende jedoch die Möglichkeit, diese mühseligen Schnitte an einen Laser abzugeben. Hierzu bietet die Modellbauwerkstatt des Fachbereichs Architektur verschiedenste Dienstleistungen an, wie auch den Zuschnitt von Materialien mithilfe eines Lasers. Weiterhin können Studierende dort auch Materialien für die eigene Weiterverarbeitung kaufen. Früher bestand der Prozess der Auftragsaufgabe aus der Nutzung eines Rechnerterminals vor Ort. Zu Zeiten von Corona wurde dies dann mithilfe eines eigens dafür erstellten Moodle Kurses bewerkstelligt. Da die zuvor verwendete Software aufgrund diverser problematischer Abhängigkeiten zu Teilen nicht mehr funktionsfähig war und die bisherigen Prozesse auch nicht zufriedenstellten, arbeiten wir, das Team Pitshop, an einer Webplattform, in der Studierende im Self-Service verschiedene Dienstleistungsaufträge erstellen können. Wir möchten den umständlichen alten Prozess mit einer dedizierten
+	    und nutzer*innenfreundlichen Plattform ersetzen.
+
+	    \paragraph{Projektziele:}
+
+	    Um die Webplattform als wirklichen Ersatz des bisherigen Prozesses verwenden zu können, sind einige Ziele zu erfüllen. Zum einen muss der bisherige Arbeitsablauf der Mitarbeitenden der Werkstatt komplett abgebildet werden. Dies ist notwendig, damit sich die Umstellung auf unsere Software so nahtlos wie möglich gestaltet und um keine bisherigen bestehenden Abläufe
+	    zu blockieren. Studierende, die einen Dienstleistungsauftrag erstellen möchten, sollen nach wie vor alle Möglichkeiten des alten Prozesses zur Verfügung stehen. Unser Projekt soll sie dabei unterstützen und nicht behindern. Wir möchten diesen Vorgang jedoch vereinfachen und intuitiver gestalten. Dies ist uns besonders wichtig, da wir Rückfragen bezüglich der Nutzung der Website an das Pitshop-Team vermeiden möchten. Die Arbeitgeber sollen sich auf die Umsetzung ihrer Arbeit konzentrieren können, ohne ständig um Aufklärung gebeten zu werden. Ein Design, das effektiv die Funktionalitäten und Benutzbarkeit kommuniziert, war deshalb eine Priorität bei dem Entwurf unserer Software.
+
+	    \paragraph{Umsetzung:}
+
+	    Die Dienstleistungsplattform Pitshop wird, wie bereits vorher genannt, als Website aufgesetzt. Diese Website setzt sich nach dem Model-View-Controller Paradigma (MVC) aus verschiedenen Komponenten zusammen und stellt je nach Rolle des Nutzenden verschiedene Funktionen bereit. Als Kunde/Kundin (Studierende oder auch externe Unternehmen) hat man die Möglichkeit sich über den HRZ oder einen Login bestehend aus Nutzername und Passwort einzuloggen. Daraufhin stehen der Person verschiedene Funktionalitäten bereit. Zum einen können Aufträge wie der Laserschnitt oder ein Materialkauf zum Warenkorb hinzugefügt werden. Das Konfigurieren dieser einzelnen Aufträge entspricht den Vorgaben des Arbeitgebers und orientiert sich dementsprechend am bisherigen Prozess.
+
+	    Diese Bestellung kann daraufhin über den Warenkorb aufgegeben werden und steht ab sofort dem/der Nutzer*in über eine Auftragsübersicht zum Betrachten oder Bearbeiten zur Verfügung. Als Kunde/Kundin kann man hier außerdem den Status der Bestellung prüfen und Kontakt mit dem Pitshop Team aufnehmen. Als Mitarbeiter*in hat man dieselben Funktionalitäten wie ein*e Kunde/Kundin. Zusätzlich stehen jedoch auch weitere Features zur Verfügung. Zum einen existiert die Auftragsübersicht. Dort können Mitarbeitende eingehende Aufträge einsehen, bearbeiten und auch abschließen. Weiterhin können hier Quittungen und Rechnung erstellt werden, sowie Kontakt mit dem/der Kunden/Kundin aufgenommen werden. Zum anderen gibt es noch die Controlling-Funktion. Hier können bereits abgeschlossene Aufträge abgerechnet werden, damit diese Abrechnungen dann an das Sekretariat des Fachbereichs Architektur mit den bezahlten Barbeträgen weitergereicht werden können.
+
+	    Die Preise für die Dienstleistung werden für den Materialkauf basierend auf den Abmessungen automatisch ermittelt, können jedoch von den Mitarbeitenden überschrieben werden. Für den Laserkauf wird durch den/die Mitarbeiter*in die Anzahl an Minuten, die der Laserschnitt benötigt hat, eingegeben. Daraufhin werden die Preise automatisch berechnet. Vor Beginn des Projektes existierte im engeren Rahmen der Webplattform noch kein Code oder Ähnliches.
+
+	    Das Projekt wurde dementsprechend von Grund auf aufgezogen. Es waren jedoch bereits die benötigten Funktionalitäten klar, da diese sich basierend auf dem bestehenden System ergeben haben.
+
+	    Während der Entwicklung haben wir uns außerdem eng an den Qualitätszielen orientiert und ihre Einhaltung überprüft. Wir haben wiederholt sichergestellt,
+	    dass der von unserem Design implizierte Arbeitsfluss sich mit den Wünschen der Arbeitgebenden deckt. Durch die kontinuierliche Validierung unserer
+	    Arbeit durch die AGs, wollten wir sicher gehen, dass alle von ihnen gewünschten Projektziele nach ihren Vorstellungen abgeschlossen werden.
+
+	    Vor dem Übergabezeitpunkt wurde die Website bereits durch uns auf einer VM des Fachbereichs Architektur aufgesetzt und ist dort über https://pitshop.architektur.tu-darmstadt.de/ verfügbar. Die einzelnen Komponenten des Projekts laufen hier in separaten Docker-Containern, deren Einrichtung über docker-compose abstrahiert wird.
+
+	    \paragraph{Verwendete Technologien:}
+
+	    Bei den Technologien war es jedoch ein Wunsch des Arbeitgebers uns an den bestehenden Technologien einer weiteren Website des Fachbereichs Architektur zu orientieren, dem Druckzentrum Lichtwiese. Dementsprechend verwenden wir wie das Druckzentrum als Kerntechnologie Django~\footnote{\url{https://www.djangoproject.com/}}und als Datenbank PostgreSQL~\footnote{\url{https://www.postgresql.org/}}. Im Frontend wird primär mit Django Templates, HTML, Javascript und dem CSS-Framework Bootstrap gearbeitet. Weiterhin verwenden wir den Single-Sign-On des HRZ.
+
+	    Unser Projekt teilt sich aufgrund der Implementierung als Website in ein Frontend und Backend auf. Das Backend erfüllt dahingehend einige API Funktionalitäten und ist auch weiterhin für das Zusenden von Django HTML Templates und weiteren benötigten Dateien zuständig. Da wir primär mit Django Templates arbeiten, haben wir uns dazu entschieden im Frontend Vanilla Javascript zu verwenden. Mithilfe von Javascript wird primär die Interaktion des/der Nutzers/Nutzerin mit der Website sowie die Kommunikation mit dem Backend abgebildet. In Zusammenarbeit mit Bootstrap als CSS Framework kreieren wir damit eine möglichst ansprechende und einfach zu bedienende Website.
+
+	    Die Produktionsumgebung verwendet Docker und docker-compose zur Organisation und Isolation der Komponenten. Als reverse proxy wird Caddy~\footnote{\url{https://caddyserver.com/}} verwendet, die Website selbst sowie der separate Preview-Service verwenden jeweils gunicorn~\footnote{\url{https://gunicorn.org/}} in Kombination mit uvicorn~\footnote{\url{https://www.uvicorn.org/}}.
+
+	    Während der Entwicklung benutzen wir gitlab~\footnote{\url{https://git.rwth-aachen.de/}} für eine zufriedenstellende Versionskontrolle. Zum internen Austausch und Treffen verwenden wir primär Discord. Zur Kommunikation mit dem Arbeitgeber werden primär E-Mails und Zoom~\footnote{\url{https://zoom.us/}} verwendet.
+
+	\chapter{Qualitätssicherung}
+	    % Kurze Erklärung, dass und wozu Qualitätssicherung in diesem Projekt zum Einsatz kam.
+	    Wir haben verschiedene Qualitätssicherungsmaßnahmen in diesem Projekt ergriffen, um gewisse Qualitäten unserer Software
+	    sicherzustellen und uns von ihrem Nutzen für die Arbeitgeber*innen zu überzeugen. Die im Vorhinein
+	    vereinbarten QS-Maßnahmen, wurden während der Entwicklung als Orientierungen verwendet, um die QS-Ziele nicht
+	    aus den Augen zu verlieren.
+
+		\section{Qualitätsziel 1: Benutzbarkeit}
+		    Das QS-Ziel der Benutzbarkeit soll sicherstellen, dass jede/r Nutzer*in, unabhängig von seinem/ihrem Erfahrungsstand mit der Software, seine/ihre Wünsche
+		    effizient umsetzen kann. Die Navigation und Benutzeroberflächen sollen intuitiv gestaltet sein, um dem/der Nutzer*in einen reibungsfreien Ablauf zu ermöglichen.
+
+		    \paragraph{Bezug zum Projekt:}
+		    Im Rahmen unseres Projektes wird eine Webapplikation entwickelt, die es Nutzer*innen ermöglicht, die Dienste der Modellbauwerkstatt des Fachbereichs Architektur wahrzunehmen. Diese bestehen zum Beispiel aus Laserschnitt, 3D-Druck und dem Kauf von Werkstoffen. Die Anwendung wird primär von Studierenden mit verschiedenen technischen Vorkenntnissen verwendet. Da diese die Anwendung ohne vorherige Schulung und nicht hochfrequent nutzen werden, soll die Anwendung möglichst intuitiv und benutzerfreundlich sein.
+
+		    \paragraph{Maßnahme:}
+		    Als Maßnahme zur Sicherung der Benutzbarkeit werden je nach Entwicklungsstand und dem zeitlichen Rahmen ein bis zwei Nutzungsstudien durchgeführt. Wir planen die Nutzungsstudien zu einem Zeitpunkt durchzuführen, zu dem wir bereits einen Großteil der Software umgesetzt haben. Dieser Zeitpunkt ist außerdem so gewählt, dass wir noch mindestens ein bis zwei Iterationen Zeit haben, das Feedback in die Software einzuarbeiten. Aufgrund des Implementierungsfortschrittes und einigen größeren Änderungswünschen durch den Arbeitgeber wurde eine Nutzungsstudie durchgeführt.
+		    Wir halten Nutzungsstudien für die beste Wahl, da wir selber einen der wichtigsten Aspekte nur bedingt einschätzen können, die Nutzererfahrung.
+		    Als Entwickelnde wissen, wir im Vorhinein, wie die Benutzer*innenoberfläche zu verwenden ist. Wir können natürlich andere Aspekte, wie die Effizienz eines
+		    Ablaufs einschätzen, aber schlecht erste Erfahrungen eines/einer Nutzers/Nutzerin replizieren.
+
+            \paragraph{Prozessbeschreibung:} Die Nutzungsstudie ist eine geeignete Maßnahme, um Eindrücke von den späteren Nutzer*innen (primär Architekturstudierende) und Mitarbeitenden der Modellbauwerkstatt mit Domänenwissen für unseren Anwendungsfall zu gewinnen und daraus potenzielle Verbesserungen abzuleiten. Für die Nutzungsstudie erstellen wir einen Fragebogen mit qualitativen Fragen, um von jedem Nutzenden ausführliches Feedback zu erhalten. Wir kontaktieren hierzu den Arbeitgeber, um Kontakt mit Studierenden des Fachbereiches Architektur aufzunehmen. Wir fragen jedoch auch Studierende anderer Fachbereiche, um einen Nutzenden mit keinem Vorwissen zu simulieren und auch hier Feedback zur Benutzbarkeit zu erhalten. Der Versuchsablauf wird asynchron ablaufen, das heißt die Teilnehmer*innen erhalten von uns den Fragebogen und füllen diesen eigenständig innerhalb eines gewissen Zeitfensters aus. Bei Problemen sind wir per E-Mail erreichbar. Der Fragebogen wurde mithilfe von Google Forms erstellt. Dementsprechend gibt es hier auch kein Studienprotokoll im klassischen Sinne. Wir werten diesen Fragebogen danach aus und passen unsere Implementation an, um häufiges Feedback umzusetzen.  Dieses Feedback und die daraus resultierenden Anpassungen sollen zu einer Verbesserung der Benutzbarkeit unserer Software führen. Die Nutzungsstudie wurde Anfang März durchgeführt.
+
+
+		\section{Qualitätsziel 2: Funktionalität}
+
+    		Das QS-Ziel der Funktionalität soll garantieren, dass sich das Verhalten der Software jederzeit mit den Erwartungen des Nutzenden deckt. Aktionen sollen keine unvorhergesehenen Seiteneffekte auslösen und alle gewünschten Änderungen umsetzen.
+
+            \paragraph{Bezug zum Projekt:}
+            Das Projekt bietet den Studenten*innen eine wichtige Funktionalität an, die unter Umständen als essenziell für ihr Studium betrachtet werden und potenziellen Einfluss auf ihre Noten haben kann. Dadurch muss hier gewährleistet werden, dass der Prozess sicher und transparent abläuft. Dies äußert sich in korrekten Verhalten der Software und dem korrekten Behandeln von auftretenden Fehlern.
+
+            \paragraph{Maßnahme:}
+            Um die korrekte Funktionsweise der Plattform zu gewährleisten, führen wir manuelle Tests am Ende jeder Iteration durch.
+            Da die Pitshop-Software sehr nutzer*innenorientiert ist, benutzen wir diese, um gleichzeitig Fehler zu finden und den Arbeitsfluss zu validieren.
+            Da dieser Prozess unweigerlich einen Menschen erfordert, haben wir uns entschieden uns auf manuelle Test zu fokussieren.
+
+            \paragraph{Prozessbeschreibung:}
+            Hierzu werden nach Fertigstellung der Iteration alle in dieser Iteration erstellten Frontend-Interfaces von einer nicht an der Erstellung beteiligten,
+            Person aus der Projektgruppe gesichtet. Der Fokus liegt hierbei immer auf den in der Iteration fertiggestellten Interfaces, es wird jedoch auch der Rest der Website getestet. Die erstellten Frontend-Interfaces umfassen in der Regel Bedienelemente wie Buttons, Eingabefelder und deren beispielhafte Ausführung. Die Sichtung der Frontend-Interfaces wird am Ende der Iteration durchgeführt
+            und erfolgt mithilfe eines Testprotokolls, welches auf Kriterien der Funktionalität und Benutzerfreundlichkeit testet, die während dem
+            Planungstreffen definiert wurden. Sollten bei der Sichtung Fehler auffallen, so werden diese noch am selben
+            Tag als Issue mit dem ausgefüllten Testprotokoll in gitlab angelegt, und den an der Entwicklung beteiligten Personen zugewiesen. Nach Behebung der Issues, welche spätestens in der darauffolgenden
+            Iteration erfolgt, werden die behobenen Elemente im Testprotokoll durch den Entwickler beschrieben. In folgenden manuellen Tests werden diese Elemente mitgetestet.
+
+
+		\section{Qualitätsziel 3: Wartbarkeit}
+		    Das QS-Ziel der Wartbarkeit soll es ermöglichen, Fehler in der Software schnell beheben zu können und neue Funktionen einfach umzusetzen.
+
+	        \paragraph{Bezug zum Projekt:}
+	        Das Projekt soll für Drittparteien einfach zu verstehen und erweiterbar sein. Veränderungen, wie Bugfixes, neues Layout/Design oder Erweiterungen können nach der Entwicklung mit minimalem Aufwand umgesetzt werden, damit sich die Software an sich ändernde Geschäftsabläufe des Arbeitgebers anpassen kann. Die Software soll über einen langen Zeitraum genutzt werden und nicht direkt wieder durch eine Problematik im Code obsolet werden, aus diesem Grund legen wir Wert auf Entwicklung, die Wartbarkeit in den Mittelpunkt setzt.
+
+            \paragraph{Maßnahme:}
+            Wir setzen Code Reviews ein, um die Modularität unserer Codemodule zu überprüfen und zu verbessern. Es wird außerdem auf die Verständlichkeit und die Dokumentation des Codes geachtet. Ein Code Review wird immer nach der ersten Fertigstellung eines Moduls durchgeführt.
+            Wir halten Code Reviews für angemessen, da sie sich für diese Aufgabe wiederholt bewiesen haben und die Überprüfung von Code durch andere*r Entwickler*innen einen großen Mehrwert liefern kann.
+
+            \paragraph{Prozessbeschreibung:}
+            Hierzu werden nach Fertigstellung eines Features alle für dieses Feature relevanten Code Zeilen mit einem oder mehreren nicht an der Erstellung beteiligten Entwickler aus der Projektgruppe gesichtet. Der für die Erstellung zuständige Entwickler ist auch anwesend. Dieses Code Review erfolgt mithilfe eines Code Review Protokolls, welches auf Kriterien der Erweiterbarkeit, Wartbarkeit und Wiederverwendbarkeit ausgelegt ist, die bereits vorher definiert wurden. Sollten bei diesem Code Review Unstimmigkeiten auffallen, so werden diese noch am selben Tag als Issue mit dem ausgefüllten Protokoll in gitlab angelegt und dem Entwickler, der den Code verfasst hat, zugewiesen. Nach Behebung der Issues, welche spätestens in der darauffolgenden
+            Iteration erfolgt, werden die angepassten Elemente im Testprotokoll durch den Entwickler beschrieben.
+
+
+\chapter{Abweichende QS Ziele}
+Alle genannten QS Ziele konnten wie geplant durchgeführt und durch Maßnahmen gesichert werden.
+
+
+\chapter{Projektverlauf und Projektgefährdende Ereignisse}
+\paragraph{Projektverlauf:}
+\noindent
+Das erste Planungstreffen mit dem Auftraggeber und dem dazugehörigen Team der Modellbauwerkstatt fand am 12.11.2021 statt.
+Die Ergebnisse des Projekts wurden am 18.03.2022 im finalen Treffen übergeben.
+
+\begin{itemize}
+    \item Iteration 1: 13.12.2021 -- 26.12.2021
+    \item Iteration 2: 27.12.2021 -- 09.01.2022
+    \item Iteration 3: 10.01.2022 -- 23.01.2022
+    \item Iteration 4: 24.01.2022 -- 06.02.2022
+    \item Iteration 5: 07.02.2022 -- 20.02.2022
+    \item Iteration 6: 21.02.2022 -- 06.03.2022
+    \item Iteration 7: 07.03.2022 -- 18.03.2022
+\end{itemize}
+
+\paragraph{Projektgefährdende Ereignisse:}
+\noindent
+Für eine sinnvolle Nutzung von Pitshop durch Studierende der TU Darmstadt ist die Anmeldung über das HRZ notwendig.
+Um dieser Anforderung des Arbeitgebers nachzukommen, wurden wir vom Arbeitgeber an einen seiner Mitarbeiter weitergeleitet.
+Der erste Kontakt unsererseits mit diesem Mitarbeiter fand Mitte Dezember statt. Es kam hierbei jedoch recht schnell zu fehlenden Rückmeldungen des Mitarbeiters. Dies haben wir dann Mitte Februar, nach einem erneuten misslungenen Kontaktversuch, beim Arbeitgeber angesprochen.
+Dieser nahm dann Kontakt mit dem Mitarbeiter auf und trieb den Prozess voran.
+Daraufhin wurde dann Anfang März der Antrag an das HRZ für den SSO durch den Mitarbeiter durchgeführt. Seiner Aussage nach kann ein solcher Antrag jedoch teilweise bis zu mehreren Wochen dauern. Dementsprechend waren wir uns nicht sicher, ob wir diese essenzielle Anforderung umsetzen können. Wir bereiteten die Umsetzung so gut es uns möglich war vor und warteten auf eine Rückmeldung. Nach erneuter Nachfrage von uns am 10.03.2022 erhielten wir dann am 14.03.2022 die benötigten Zugangsdaten und Informationen um den HRZ Login erfolgreich umzusetzen. Da uns diese Informationen kurz vor Projektabgabe zur Verfügung gestellt wurden, es unsicher war, ob wir sie zeitig erhalten werden und es sich bei der Funktionalität um eine essenzielle Anforderung handelt, führen wir diesen Prozess hier als projektgefährdendes Ereignis auf.
+
+
+\chapter{Softwarelizenz}
+
+Der für dieses Projekt erstellte Code steht im Einvernehmen aller Beteiligten unter folgender Lizenz:\\
+
+\section{MIT Lizenz}
+
+
+\textit{Copyright 2022 Team Pitshop}
+\\\
+
+\noindent
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the ``Software''), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions: \\
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. \\
+
+
+\noindent
+THE SOFTWARE IS PROVIDED ``AS IS'', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+
+\end{document}

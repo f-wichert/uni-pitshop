@@ -1,0 +1,10 @@
+ID; 032  
+Name; 032_Laserschnitt_Auftrag_Bestätigen  
+Beschreibung; Der Auftrag wurde eingegeben, d.h. die Datei wurde hochgeladen und alle Parameter wurden passends gewählt. Ich als Nutzer*in möchte nun den Auftrag zum Warenkorb hinzufügen. Dies bestätige ich durch einen Abgabebutton.  
+Akzeptanzkriterium;Der Auftrag wird auf eventuelle Fehler geprüft. Ist die Prüfung erfolgreich, so wird der Auftrag zum Warenkorb hinzugefügt. Diese Änderung wird erfolgreich an den Server übermittelt.
+Geschätzter Aufwand (Story Points);8  
+Entwickler*in;Simon Jungherz  
+Fertiggestellt in Iteration;4  
+Tatsächlicher Aufwand (h);12h  
+Velocity (Story Points/h);0.67  
+Bemerkungen;

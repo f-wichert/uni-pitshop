@@ -1,0 +1,10 @@
+ID;008
+Name;008_Administration-Mitarbeiter-festlegen
+Beschreibung; Als Administrator*in möchte ich die Möglichkeit haben, bestehende User zu den Mitarbeitern hinzuzufügen, damit diese die Möglichkeit haben als Mitarbeiter*in mit der Website zu interagieren (z.B. Aufträge sehen und bearbeiten).
+Akzeptanzkriterium; Die Möglichkeit die Rolle 'Mitarbeiter' zu vergeben wird über eine Übersicht aller User gewährleistet, bei denen eine CheckBox 'ist_mitarbeiter' gesetzt werden kann. Ist diese CheckBox gesetzt, wird dies in der Datenbank hinterlegt und der Nutzende hat ab diesem Zeitpunkt die Rechte eines Mitarbeiters. Der Status 'Mitarbeiter' kann durch ein Entfernen der Checkbox auch widerrufen werden.
+Geschätzter Aufwand (Story Points); 1
+Entwickler*in; Jonas Milkovits
+Fertiggestellt in Iteration; 7
+Tatsächlicher Aufwand (h); 1h
+Velocity (Story Points/h); 1
+Bemerkungen;

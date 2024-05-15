@@ -1,0 +1,10 @@
+ID;023  
+Name;023_User-Orders_Auftragsänderung  
+Beschreibung;Als Nutzer*in möchte ich einen Auftrag ändern/löschen können, solange dieser nicht bereits den Status 'In Bearbeitung' hat.  
+Akzeptanzkriterium; Die Editierbarkeitsfunktion steht dem/der Nutzer*in über die Detailansicht eines Auftrages zur Verfügung. Einzelne Werte des gesamten Auftrags können verändert, sowie Unteraufträge hinzugefügt/entfernt werden. Ist der Status nicht 'In Bearbeitung', so kann die Editierungs-Ansicht nicht aufgerufen werden, und der Auftrag nicht verändert/gelöscht werden.  
+Geschätzter Aufwand (Story Points); 8    
+Entwickler*in; Jonas Milkovits, Laurenz Kammayer, Frederick Wichert    
+Fertiggestellt in Iteration; 7    
+Tatsächlicher Aufwand (h); 10h      
+Velocity (Story Points/h); 0.8   
+Bemerkungen;
